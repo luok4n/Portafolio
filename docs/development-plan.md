@@ -79,11 +79,13 @@ Entregable: [functional-design.md](functional-design.md).
 - [x] Metadatos SEO por locale, `hreflang`, canonical, sitemap.
 - [x] Wireframe textual y jerarquía visual.
 
-### Fase 3 — Backend .NET 10
+### Fase 3 — Backend .NET 10 ✅
 
-- [ ] Solución con `Portfolio.Api`, `Portfolio.Application`, `Portfolio.Domain`, `Portfolio.Infrastructure`, `Portfolio.Tests`.
-- [ ] Endpoints de lectura resueltos por locale.
-- [ ] OpenAPI/Swagger, manejo global de excepciones, correlation id, logging estructurado, validación, CORS, health checks (`/health/live`, `/health/ready`).
+Entregable: `src/services/portfolio-api`. Decisiones en [ADR-0004](adr/0004-backend-architecture.md).
+
+- [x] Solución con `Portfolio.Api`, `Portfolio.Application`, `Portfolio.Domain`, `Portfolio.Infrastructure`, `Portfolio.Tests`.
+- [x] Endpoints de lectura resueltos por locale.
+- [x] OpenAPI/Scalar, manejo global de excepciones, correlation id, logging estructurado, validación, CORS, health checks (`/health/live`, `/health/ready`).
 
 **Criterio de aceptación:** `dotnet run` levanta la API con Swagger y datos en memoria.
 
@@ -143,7 +145,7 @@ Entregable: [functional-design.md](functional-design.md).
 - [ ] Comparativa de opciones gratuitas y de pago para: frontend estático, API .NET y PostgreSQL.
 - [ ] Costo mensual estimado de cada opción, con fecha de verificación de precios.
 - [ ] Evaluación honesta de Kubernetes: qué demuestra en una entrevista frente a lo que cuesta operar.
-- [ ] `docs/adr/0004-hosting.md` con la decisión y el motivo.
+- [ ] `docs/adr/0005-hosting.md` con la decisión y el motivo.
 
 **Salida posible:** que Kubernetes no se justifique y el proyecto lo documente como decisión
 consciente — lo cual es en sí mismo una buena respuesta de arquitectura.

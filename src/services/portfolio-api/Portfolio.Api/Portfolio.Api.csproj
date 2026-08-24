@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Portfolio.Infrastructure\Portfolio.Infrastructure.csproj" />
+    <ProjectReference Include="..\Portfolio.Application\Portfolio.Application.csproj" />
+    <ProjectReference Include="..\Portfolio.Domain\Portfolio.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.17.1" />
+  </ItemGroup>
+
+  <!--
+    The reviewed content files are linked, not copied into the project. There is exactly one copy of
+    the portfolio content in the repository, under content/, and it is the same copy the CV builder
+    and the phase 4 database seed read. Duplicating it here would guarantee the two drift.
+  -->
+  <ItemGroup>
+    <Content Include="..\..\..\..\content\*.json"
+             Link="content\%(Filename)%(Extension)"
+             CopyToOutputDirectory="PreserveNewest"
+             CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <UserSecretsId>portfolio-api</UserSecretsId>
+  </PropertyGroup>
+
+</Project>

@@ -12,7 +12,8 @@ An ADR is never edited to hide history. Superseded records keep their number and
 | [0001](0001-bilingual-content.md) | Bilingual content, English default, Spanish parity | Accepted |
 | [0002](0002-frontend-rendering.md) | Prerendered Angular (SSG) with static content fallback | Accepted |
 | [0003](0003-content-privacy.md) | What personal and client information is published | Accepted |
-| 0004 | Hosting and whether Kubernetes is justified | Pending — phase 11 |
+| [0004](0004-backend-architecture.md) | Pragmatic Clean Architecture, minimal APIs, one storage seam | Accepted |
+| 0005 | Hosting and whether Kubernetes is justified | Pending — phase 11 |
 
 ## Format
 

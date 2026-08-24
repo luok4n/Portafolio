@@ -7,6 +7,38 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 3 — Backend (2026-08-24)
+
+#### Added
+- `src/services/portfolio-api` — ASP.NET Core on .NET 10, four projects: Domain, Application,
+  Infrastructure, Api, plus tests. See [ADR-0004](docs/adr/0004-backend-architecture.md).
+- Read endpoints resolved by locale, including a single `GET /api/content` returning the whole
+  bundle, which is what both the site and the build-time snapshot actually want.
+- `ProfessionalTenure` in the domain: the years of experience are computed by unioning the months
+  every role covers, so concurrent roles count once. Same rule as the CV builder.
+- Language negotiation: `?lang=` → `Accept-Language` (quality values and regional tags honoured) →
+  English. Every response reports which language it resolved and from where.
+- OpenAPI document plus a Scalar reference at `/docs`, both Development-only.
+- `/health/live` (no checks — process liveness only) and `/health/ready` (content loads in every
+  supported language).
+- Correlation id middleware: accepted from the caller when well-formed, generated otherwise,
+  echoed in the response and attached to the log scope.
+- RFC 7807 problem documents from a single exception handler; only exceptions this application
+  defines contribute their message, everything else stays generic.
+- 52 unit tests covering the tenure rule, date handling, the negotiation fallback chain and the
+  base-locale/translation merge.
+
+#### Decided
+- Minimal APIs rather than controllers: the plan's requirement is that endpoints hold no business
+  logic, and minimal APIs leave nowhere convenient to hide any.
+- One storage seam, `IPortfolioContentSource`, returning the whole resolved content for a language.
+  No repository per entity and no generic repository. Phase 4 swaps JSON for PostgreSQL by changing
+  one registration.
+- Built-in JSON console logging instead of Serilog. The plan allows an equivalent, container
+  platforms collect stdout, and the dependency would buy nothing.
+- Content is linked into the API project from `content/`, never copied — one copy in the repository,
+  shared with the CV builder and the phase 4 seed.
+
 ### Phase 2 — Functional design (2026-08-24)
 
 #### Added
