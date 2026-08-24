@@ -7,6 +7,28 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 1 — Content (in progress)
+
+#### Added
+- `content/clients-research.md` — public-source background for every client and project behind the
+  author's roles, each claim traceable to a cited URL and dated, per ADR-0003. Verified: Argos ONE
+  (Cementos Argos), Linkvest Capital, AES Chivor / AES Colombia, the Colombian wholesale energy
+  market and its operator XM, LendingFront, MVM Ingeniería de Software, Slang, Comfama and Woldev.
+
+#### Changed
+- `docs/development-plan.md` — recorded the author's answers of 2026-08-24: the employer is
+  Adagetech S.A.S.; Argos ONE and Linkvest belong to it; the LendingFront / AES Chivor overlap is
+  shown as parallel freelance work; the Feb–Sep 2019 gap stays visible; the author is actively
+  looking; UTP graduation year is 2018; years of experience are computed automatically without
+  double-counting overlapping periods.
+
+#### Open
+- A Universidad Tecnológica de Pereira engagement on the Ministry of Health's RIAS programme
+  surfaced that is **absent from the CV**. Dates, role and employment relationship are unknown, so
+  it is not publishable yet — it would also add public health as a sector.
+- Comfama (MVM client) and the Woldev engagement with the Gobernación de Risaralda need
+  confirmation before their descriptions are written.
+
 ### Phase 0 — Repository and environment (2026-08-24)
 
 #### Added

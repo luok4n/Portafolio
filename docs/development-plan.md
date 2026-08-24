@@ -66,7 +66,7 @@ reproducible de ejecutarse.
 - [ ] `content/content-review.md` — inconsistencias detectadas y su resolución.
 - [ ] Aprobación explícita del autor sobre la traducción al español.
 
-**Bloqueada por:** las preguntas abiertas de la sección 4.
+**Bloqueada por:** las preguntas abiertas de la sección 5.
 
 **Criterio de aceptación:** cada bloque de contenido tiene origen identificable (CV o fuente pública
 con URL). Nada inventado.
@@ -167,20 +167,42 @@ consciente — lo cual es en sí mismo una buena respuesta de arquitectura.
 Solo si aportan valor real: formulario de contacto con proveedor de email y antispam, analytics
 respetuoso con la privacidad, blog, panel de administración.
 
-## 4. Preguntas abiertas (bloquean la fase 1)
+## 4. Datos confirmados por el autor (2026-08-24)
 
-1. **Proyectos por empresa.** Confirmar y completar, para cada experiencia, en qué proyectos y con
-   qué clientes se trabajó — incluida la empresa a la que pertenecen *Argos One* y *Linkvest*, que
-   el CV lista sin asociar.
-2. **Años de experiencia.** El CV dice "7+"; las fechas dan ~8.4 años brutos (~7.6 netos).
-3. **Solapamiento** LendingFront (Ene–Dic 2022) y AES Chivor freelance (Mar–Dic 2022): cómo
-   representarlo en el timeline.
-4. **Hueco** Feb 2019 – Sep 2019 entre Woldev y MVM.
-5. **Nombre de la empresa:** "Adagetech" (CV) frente a "Adage Technologies LATAM" (LinkedIn).
-6. **Situación actual:** Adagetech figura hasta Jul 2026; define el CTA del hero.
-7. **Año de grado:** el CV dice 2018; el perfil público de LinkedIn muestra rangos distintos.
+| Punto | Resolución |
+|---|---|
+| Nombre de la empresa | **Adagetech S.A.S.** |
+| *Argos One* y *Linkvest* | Pertenecen a **Adagetech** |
+| Solapamiento LendingFront / AES Chivor | Se representa como **trabajo paralelo** (freelance) |
+| Hueco Feb – Sep 2019 | **Se deja visible**, sin relleno |
+| Situación actual | **Buscando activamente** → el hero lo refleja |
+| Año de grado (UTP) | **2018** |
+| Años de experiencia | **Calculados automáticamente**, sin duplicar periodos solapados |
 
-## 5. Convenciones
+**Proyectos por empresa** (fuente: autor + investigación pública en
+[`content/clients-research.md`](../content/clients-research.md)):
+
+- **Adagetech S.A.S.** — *Argos ONE* (soporte y desarrollo para Estados Unidos, Colombia y otros
+  países) y *Linkvest* (reportes mensuales y trimestrales sobre las inversiones de cada cliente).
+- **AES Chivor** — *MOA*, plataforma de compra y venta de energía con generación de reportes en Excel.
+- **LendingFront** — *Marketplace BackOffice*; equipos de **desarrollo, innovación y optimización**.
+- **MVM Ingeniería de Software** — *CHIVOR XM*, *Slang* y **Comfama**.
+- **Woldev S.A.S.** — *Teach at Home* y un proyecto con la **Gobernación de Risaralda**.
+- **Universidad Tecnológica de Pereira** — *RIAS* (Rutas Integrales de Atención en Salud) para el
+  **Ministerio de Salud**. ⚠️ No figura en el CV.
+
+## 5. Preguntas abiertas (bloquean la fase 1)
+
+1. **UTP / RIAS.** Faltan fechas, cargo y relación laboral. Define si entra en el timeline de
+   experiencia o solo en proyectos destacados, y añade el sector **salud pública**, hoy ausente del
+   resumen del CV. Podría además adelantar el inicio de la carrera profesional antes de Feb 2018.
+2. **Regla de cálculo de años de experiencia.** Años calendario distintos frente a meses únicos
+   trabajados; hoy dan resultados diferentes (9 frente a 7).
+3. **Comfama.** Confirmar que es la Caja de Compensación Familiar de Antioquia y cuál fue el aporte.
+4. **Proyecto de Woldev con la Gobernación de Risaralda.** Confirmar si es *SimuDat Salud Risaralda*
+   o uno distinto, y si se relaciona con el trabajo posterior en RIAS.
+
+## 6. Convenciones
 
 **Commits** — Conventional Commits, en inglés, sin trailer de coautoría, con cuerpo que explique
 qué cambió y por qué:
