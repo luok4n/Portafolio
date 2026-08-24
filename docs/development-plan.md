@@ -174,10 +174,13 @@ respetuoso con la privacidad, blog, panel de administración.
 | Nombre de la empresa | **Adagetech S.A.S.** |
 | *Argos One* y *Linkvest* | Pertenecen a **Adagetech** |
 | Solapamiento LendingFront / AES Chivor | Se representa como **trabajo paralelo** (freelance) |
-| Hueco Feb – Sep 2019 | **Se deja visible**, sin relleno |
+| Hueco Feb – Sep 2019 | **Ya no existe**: lo cubre la UTP (Ene – Oct 2019), ausente del CV |
 | Situación actual | **Buscando activamente** → el hero lo refleja |
 | Año de grado (UTP) | **2018** |
-| Años de experiencia | **Calculados automáticamente**, sin duplicar periodos solapados |
+| Años de experiencia | **Meses únicos trabajados ÷ 12**, calculado en tiempo de build. Con la UTP incluida: 102 meses → **8 años** (ago 2026) |
+| Cliente Comfama (MVM) | **Comfama**, Caja de Compensación Familiar de Antioquia |
+| Proyecto Woldev / Gobernación | **Sitio web de la Gobernación de Risaralda**, PHP heredado. No es SimuDat Salud |
+| UTP | **Ene – Oct 2019**, Java + Spring Boot y Angular, programa RIAS del Ministerio de Salud. Entra al timeline y **al CV** |
 
 **Proyectos por empresa** (fuente: autor + investigación pública en
 [`content/clients-research.md`](../content/clients-research.md)):
@@ -193,14 +196,25 @@ respetuoso con la privacidad, blog, panel de administración.
 
 ## 5. Preguntas abiertas (bloquean la fase 1)
 
-1. **UTP / RIAS.** Faltan fechas, cargo y relación laboral. Define si entra en el timeline de
-   experiencia o solo en proyectos destacados, y añade el sector **salud pública**, hoy ausente del
-   resumen del CV. Podría además adelantar el inicio de la carrera profesional antes de Feb 2018.
-2. **Regla de cálculo de años de experiencia.** Años calendario distintos frente a meses únicos
-   trabajados; hoy dan resultados diferentes (9 frente a 7).
-3. **Comfama.** Confirmar que es la Caja de Compensación Familiar de Antioquia y cuál fue el aporte.
-4. **Proyecto de Woldev con la Gobernación de Risaralda.** Confirmar si es *SimuDat Salud Risaralda*
-   o uno distinto, y si se relaciona con el trabajo posterior en RIAS.
+1. **Cargo y responsabilidades en la UTP.** Falta el título del puesto y las viñetas de
+   responsabilidades para el CV y el timeline.
+2. **Aporte concreto en Comfama** (cliente de MVM), para poder describirlo.
+3. **Aprobación de la traducción al español** de todo el contenido, una vez redactado.
+
+## 5.1 Tarea derivada — actualizar el CV
+
+El autor pidió actualizar el CV, que omite la experiencia en la UTP. El CV corregido debe:
+
+- Añadir **Universidad Tecnológica de Pereira, Ene – Oct 2019** (Java, Spring Boot, Angular; RIAS).
+- Añadir **Java** y **Spring Boot** a Technical Skills.
+- Añadir el sector **salud pública** (*public health*) al resumen profesional.
+- Actualizar **"7+ years"** a **"8+ years"** (102 meses únicos a agosto de 2026).
+- Mantener el resto del contenido y el formato del PDF original.
+
+Se genera desde `content/` como HTML con estilos de impresión y se convierte a PDF con Chrome
+headless, de modo que el CV sea reproducible y quede versionado como código, no como binario
+editado a mano. Se producen dos variantes: una completa para postulaciones y otra **sin teléfono**
+para publicar en el sitio, según [ADR-0003](adr/0003-content-privacy.md).
 
 ## 6. Convenciones
 

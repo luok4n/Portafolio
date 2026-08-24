@@ -137,15 +137,15 @@ the world's 100 most important technology pioneers — the only Colombian startu
   - https://forbes.co/2021/12/20/emprendedores/ensenando-ingles-para-tecnologia-y-negocios-slang-recauda-us14-millones (checked 2026-08-24)
   - https://www.endeavor.org.co/novedades/ecosistemas/slang-a-un-paso-de-ser-parte-de-la-red-endeavor/ (checked 2026-08-24)
 
-### Comfama ⚠️ — needs confirmation
+### Comfama ✅
 
-Author-supplied client. The most likely match is **Comfama**, the *Caja de Compensación Familiar de
-Antioquia*: a private non-profit founded on 29 November 1954 that performs social-security functions
-in Antioquia, providing credit, subsidies, health, education, housing, recreation, culture and
-tourism services. Its Medellín base fits MVM's client profile.
+Confirmed by the author as **Comfama**, the *Caja de Compensación Familiar de Antioquia*: a private
+non-profit founded on 29 November 1954 that performs social-security functions in Antioquia,
+providing credit, subsidies, health, education, housing, recreation, culture and tourism services
+across the department. Its Medellín base fits MVM's client profile.
 
-- ⚠️ To confirm: that this is the right entity (rather than, for example, Comfamiliar Risaralda),
-  and what the author's contribution was.
+- Sector: social security / family welfare fund
+- ⚠️ Still to capture: what the author's specific contribution to the Comfama work was.
 - Source: https://www.comfama.com/conoce-comfama/ (checked 2026-08-24)
 
 ---
@@ -164,38 +164,42 @@ digital strategy, mobile applications, server administration and video game deve
 Author-supplied project; no public source found. Described by function only: an education platform
 the author contributed to on both frontend and backend.
 
-### Gobernación de Risaralda project ⚠️ — needs confirmation
+### Gobernación de Risaralda website ⚠️
 
-Author-supplied. The department government of Risaralda's best-documented technology programme in
-that period is **SimuDat Salud Risaralda**, a science-technology-and-innovation project started in
-2015 to build simulation-based evidence for health-policy decision making in the department, run
-with participation from Universidad Tecnológica de Pereira research groups.
+Author-confirmed: the engagement was the **Gobernación de Risaralda** institutional website, an
+older PHP codebase. The author recalls no further detail, and no public record of the project itself
+was found, so it is described by client and technology only — website work for the departmental
+government of Risaralda on a legacy PHP application.
 
-- ⚠️ To confirm: whether the Woldev engagement was SimuDat Salud Risaralda or a different project,
-  and whether it is related to the author's later RIAS work at UTP.
-- Sources:
-  - https://simudatsalud-risaralda.co/ (checked 2026-08-24)
-  - http://simudatsalud-risaralda.co/normatividad-oca/mias-rias (checked 2026-08-24)
+- Sector: public sector / departmental government
+- **Not** SimuDat Salud Risaralda. That connection was considered and ruled out by the author; it is
+  recorded here only so the question is not re-opened later.
 
 ---
 
-## Universidad Tecnológica de Pereira — RIAS ⚠️ — not in the CV
+## Universidad Tecnológica de Pereira — Jan 2019 – Oct 2019 ✅
 
-Author-supplied and **absent from the current CV**. Dates, role and employment relationship are
-still unknown, so this section is not yet publishable.
+**Missing from the current CV.** The author confirmed this role on 2026-08-24 and asked for the CV
+to be updated: it sits exactly in what previously looked like an employment gap between Woldev
+(ends Jan 2019) and MVM (starts Oct 2019).
+
+- Stack: **Java, Spring Boot** (backend) and **Angular** (frontend). Java and Spring Boot are not
+  listed in the CV's technical skills and must be added.
+- Sector: **public health** — a sector the CV summary does not currently mention.
+- ⚠️ Still to capture: job title and the specific responsibilities to list as bullets.
+
+### RIAS — Ministry of Health ✅
 
 **RIAS** (*Rutas Integrales de Atención en Salud*) are Colombia's integrated health-care pathways,
 established by the Ministry of Health and Social Protection in **Resolution 3202 of 2016** and
 extended by **Resolution 3280 of 2018**, within the MIAS comprehensive care model. They shift the
-system from a treatment-centred to a preventive approach across life stages, and cover pathways such
+system from a treatment-centred to a preventive approach across life stages, covering pathways such
 as health promotion and maintenance (mandatory), maternal-perinatal, cardio-cerebro-vascular,
 cancer, nutritional disorders, substance-use disorders and infectious diseases.
 
-- Sector: **public health** — a sector not currently mentioned in the CV summary.
+This is a national public-health programme, which makes it the largest-reach project in the
+portfolio by affected population.
+
 - Sources:
   - https://www.minsalud.gov.co/paginas/rutas-integrales-de-atencion-en-salud.aspx (checked 2026-08-24)
   - https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/COM/enlace-minsalud-81-rias.pdf (checked 2026-08-24)
-
-**Open questions before this can be published:** start and end dates, job title, whether the
-employer was UTP itself or a contracted party, and whether it belongs in the experience timeline or
-only in the featured-projects section.
