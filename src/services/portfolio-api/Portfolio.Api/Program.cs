@@ -48,6 +48,10 @@ builder.Services.AddOutputCache(options =>
 
 var app = builder.Build();
 
+// Schema and content before the first request is served, so a fresh environment comes up ready
+// rather than healthy-but-empty. A no-op when the file source is in use.
+await app.Services.InitialisePortfolioDatabaseAsync().ConfigureAwait(false);
+
 // --- pipeline --------------------------------------------------------------------------------
 app.UseExceptionHandler();
 

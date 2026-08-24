@@ -117,11 +117,29 @@ public sealed partial class JsonFileContentSource : IPortfolioContentSource
         var skills = Read<SkillsFileRoot>("skills.json").Categories;
         var links = Read<SocialLinksFileRoot>("social-links.json").Links;
 
+        var projects = baseProjects.Select(p => MapProject(p, projectTranslations.GetValueOrDefault(p.Id))).ToList();
+
+        // A role's project list is derived from the projects themselves, in the order they are
+        // authored in projects.*.json — the same rule the database uses, so the two sources cannot
+        // disagree about ordering. The `projects` array inside experience.*.json stays as a
+        // human-readable cross-reference that the content validator checks for membership.
+        var projectsByExperience = projects
+            .GroupBy(p => p.ExperienceId, StringComparer.OrdinalIgnoreCase)
+            .ToDictionary(
+                g => g.Key,
+                g => (IReadOnlyList<string>)g.Select(p => p.Id).ToList(),
+                StringComparer.OrdinalIgnoreCase);
+
         return new PortfolioContent(
             language,
             MapProfile(profile),
-            baseExperience.Select(e => MapExperience(e, experienceTranslations.GetValueOrDefault(e.Id))).ToList(),
-            baseProjects.Select(p => MapProject(p, projectTranslations.GetValueOrDefault(p.Id))).ToList(),
+            baseExperience
+                .Select(e => MapExperience(
+                    e,
+                    experienceTranslations.GetValueOrDefault(e.Id),
+                    projectsByExperience.GetValueOrDefault(e.Id, [])))
+                .ToList(),
+            projects,
             skills.Select(s => MapSkills(s, language)).ToList(),
             baseEducation.Select(e => MapEducation(e, educationTranslations.GetValueOrDefault(e.Id))).ToList(),
             links.Select(l => new SocialLink(l.Id, l.Label, l.Url, l.Display, l.Public)).ToList());
@@ -162,7 +180,7 @@ public sealed partial class JsonFileContentSource : IPortfolioContentSource
         Required(f.SummaryTemplate, "profile.summaryTemplate"),
         (f.Languages ?? []).Select(l => new SpokenLanguage(l.Language, l.Level)).ToList());
 
-    private static WorkExperience MapExperience(ExperienceFile b, ExperienceFile? t) => new(
+    private static WorkExperience MapExperience(ExperienceFile b, ExperienceFile? t, IReadOnlyList<string> projectIds) => new(
         b.Id,
         t?.Company ?? Required(b.Company, $"experience[{b.Id}].company"),
         t?.Role ?? Required(b.Role, $"experience[{b.Id}].role"),
@@ -170,7 +188,7 @@ public sealed partial class JsonFileContentSource : IPortfolioContentSource
         DateRange.Create(
             YearMonth.Parse(Required(b.Start, $"experience[{b.Id}].start")),
             YearMonth.Parse(Required(b.End, $"experience[{b.Id}].end"))),
-        b.Projects ?? [],
+        projectIds,
         b.ParallelWith ?? [],
         t?.Teams ?? b.Teams ?? [],
         b.Technologies ?? [],

@@ -1,0 +1,37 @@
+# Local development dependencies.
+#
+# Phase 4 needs only PostgreSQL: the API and the frontend still run from the SDK on the host, which
+# keeps the edit-run loop fast. Phase 7 adds the api and web services here so the whole system comes
+# up with one command.
+#
+#   docker compose up -d db
+#
+# The credentials below are local-only and deliberately boring. Nothing real is ever configured this
+# way — see docs/adr/0003-content-privacy.md.
+
+services:
+  db:
+    image: postgres:17.5-alpine
+    container_name: portfolio-db
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio
+      # Slightly faster startup and smaller images; the locale is irrelevant for this data.
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      # pg_isready returns success before the server finishes its first-boot restart, so the check
+      # runs a real query instead.
+      test: ["CMD-SHELL", "psql -U portfolio -d portfolio -c 'select 1' || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  db-data:

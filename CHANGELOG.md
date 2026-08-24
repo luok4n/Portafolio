@@ -7,6 +7,35 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 4 — PostgreSQL (2026-08-24)
+
+#### Added
+- EF Core schema of 20 tables: facts on the base tables, translated text in `*_translations` keyed
+  by `(entity_id, language_code)`, so a third language is a data change and not a migration.
+- Initial migration, snake_case naming, indexes, and check constraints that refuse a period ending
+  before it starts or a month outside 1–12.
+- `ContentSeeder`, which reuses `JsonFileContentSource` as its loader so the base-locale/translation
+  merge exists in one place, and stores a fingerprint of the content files so a run that would
+  change nothing does nothing.
+- `EfPortfolioContentSource`, loading the whole content for a language in one pass with no-tracking
+  split queries.
+- `docker-compose.yml` with PostgreSQL 17 for local development.
+- `tools/api/parity-check.mjs`, which compares `/api/content` from both sources in both languages.
+
+#### Fixed
+- The two content sources disagreed about the order of a role's project list: the file source used
+  the array authored on the role, the database derived it from the projects' own foreign key. Both
+  now derive it from the projects, so ordering has one authority. Found by the parity check, not by
+  a unit test.
+- EF Core package versions were split between 10.0.4 and 10.0.11, which built cleanly and then
+  failed at runtime with a missing assembly. Pinned to one version.
+- EF migrations are generated code and were failing the solution's warnings-as-errors; the
+  `Migrations` folder is now marked generated in `.editorconfig` rather than weakening the rule for
+  hand-written code.
+
+#### Verified
+- `/api/content` is byte-identical from files and from PostgreSQL, in both languages.
+
 ### Phase 3 — Backend (2026-08-24)
 
 #### Added

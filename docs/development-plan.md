@@ -89,12 +89,13 @@ Entregable: `src/services/portfolio-api`. Decisiones en [ADR-0004](adr/0004-back
 
 **Criterio de aceptación:** `dotnet run` levanta la API con Swagger y datos en memoria.
 
-### Fase 4 — PostgreSQL + EF Core
+### Fase 4 — PostgreSQL + EF Core ✅
 
-- [ ] Modelo mínimo derivado del CV, con tablas de traducción `(EntityId, LanguageCode)`.
-- [ ] Configuraciones Fluent API, migraciones e índices.
-- [ ] Seed reproducible alimentado desde `content/`.
-- [ ] Tests de integración básicos.
+- [x] Modelo de 20 tablas con traducciones `(entity_id, language_code)`.
+- [x] Configuraciones Fluent API, migración inicial, índices y check constraints.
+- [x] Seed reproducible alimentado desde `content/`, con huella para no reescribir sin cambios.
+- [x] Verificación de paridad entre fuente de archivos y base de datos (`tools/api/parity-check.mjs`).
+- [ ] Tests de integración automatizados contra PostgreSQL — Fase 6, con Testcontainers.
 
 **Criterio de aceptación:** base recreable desde cero con un comando, sin inserts manuales.
 
