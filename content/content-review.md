@@ -69,14 +69,20 @@ the startup. Slang and Comfama ran an alliance giving the fund's affiliates acce
 courses with member benefits, so the research stands and the two entries describe one engagement
 from two sides.
 
+## Approvals
+
+| Item | Status |
+|---|---|
+| UTP responsibility bullets | ✅ Approved by the author, 2026-08-24 |
+| Full Spanish translation (`profile`, `experience`, `projects`, `education`) | ✅ Approved by the author, 2026-08-24 |
+| Slang identity | ✅ Resolved by the author, 2026-08-24 |
+
 ## Still open
 
-1. **Spanish translation approval.** `profile.es.json`, `experience.es.json`, `projects.es.json` and
-   `education.es.json` now exist as a complete first pass. The CV has no Spanish source of truth, so
-   every translated string needs the author's explicit approval (ADR-0001) before it is treated as
-   final.
-2. **A Spanish CV.** The builder currently emits English only. `cvSummary` fields already exist in
-   Spanish, so this is a small addition once the translation is approved.
+Nothing blocking. Two facts remain described by function only because no public source exists —
+**MOA** and **Teach at Home** — plus the **Gobernación de Risaralda** website, which the author
+recalls no further detail about. All three carry `verified: false` and the content validator
+reports them as warnings on every run, so their status stays visible rather than being forgotten.
 
 ## Regenerating the CV
 
