@@ -101,6 +101,9 @@ jobs:
         working-directory: src/services/portfolio-api
         run: dotnet build --configuration Release
 
+      # Includes the PostgreSQL integration tests, which start a container through Testcontainers.
+      # The runner has Docker, so they run here; on a machine without it they skip rather than fail,
+      # because a suite that fails for environmental reasons is a suite people stop running.
       - name: Test
         working-directory: src/services/portfolio-api
         run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=results.trx"
@@ -128,6 +131,10 @@ jobs:
       - name: Install
         working-directory: src/frontend/portfolio-web
         run: npm ci
+
+      - name: Test
+        working-directory: src/frontend/portfolio-web
+        run: npm run test:ci
 
       # Builds from the committed snapshot, so it needs no API and no network — the property
       # ADR-0002 was chosen for.

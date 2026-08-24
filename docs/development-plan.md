@@ -96,7 +96,7 @@ Entregable: `src/services/portfolio-api`. Decisiones en [ADR-0004](adr/0004-back
 - [x] Configuraciones Fluent API, migración inicial, índices y check constraints.
 - [x] Seed reproducible alimentado desde `content/`, con huella para no reescribir sin cambios.
 - [x] Verificación de paridad entre fuente de archivos y base de datos (`tools/api/parity-check.mjs`).
-- [ ] Tests de integración automatizados contra PostgreSQL — Fase 6, con Testcontainers.
+- [x] Tests de integración automatizados contra PostgreSQL con Testcontainers — Fase 6.
 
 **Criterio de aceptación:** base recreable desde cero con un comando, sin inserts manuales.
 
@@ -113,10 +113,12 @@ Entregable: `src/frontend/portfolio-web`.
 
 **Criterio de aceptación:** el sitio se ve completo en ambos idiomas con la API apagada.
 
-### Fase 6 — Tests
+### Fase 6 — Tests ✅
 
-- [ ] Backend: unitarios (dominio, aplicación, validaciones) e integración (endpoints, persistencia, cadena de fallback de locale).
-- [ ] Frontend: servicios, componentes críticos, estados de error/carga y cambio de idioma.
+- [x] Backend: 89 pruebas — dominio, negociación de idioma, merge de traducciones, contrato HTTP por el pipeline real, y PostgreSQL real con Testcontainers.
+- [x] Frontend: 62 pruebas — rutas por idioma, formato de fechas, fallback al snapshot, SEO/hreflang y el selector de idioma renderizado.
+
+**Criterio de aceptación:** 151 pruebas, todas ejecutadas en CI.
 
 ### Fase 7 — Docker y Compose ✅
 

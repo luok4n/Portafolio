@@ -130,12 +130,13 @@
   },
   "testing": {
     "title": "Testing",
-    "description": "{tests} tests, covering the parts where being wrong would be invisible rather than obvious.",
+    "description": "{tests} tests — {backendTests} on the backend, {frontendTests} on the frontend — covering the parts where being wrong would be invisible rather than obvious.",
     "items": [
-      "The tenure rule, including overlapping roles, a role inside another, a career gap, and one test pinned to the real career so the site and the CV cannot drift apart.",
-      "The language fallback chain, including quality values, regional tags, unsupported languages and headers that are simply malformed.",
-      "The merge between a translation and the base locale, where a missing field must fall back rather than render empty.",
-      "A parity check comparing the file source and the database source across both languages. It found a real disagreement about ordering that no unit test would have caught, which is the reason it exists."
+      "The tenure rule: overlapping roles, a role inside another, a career gap, and one test pinned to the real career so the site and the CV cannot drift apart.",
+      "The HTTP contract through the real pipeline against the real content — language negotiation, the problem-document shape, correlation ids that are sanitised before they reach a log, and an assertion that no response ever contains a phone number.",
+      "The database path against a real PostgreSQL in a container: the migration, the check constraints that refuse an impossible period, and the fact that reseeding unchanged content changes nothing.",
+      "A parity check comparing the file source and the database source across both languages, as a script and as a test. It found a real disagreement about ordering that no unit test would have caught, which is the reason it exists.",
+      "The frontend: the URL-to-locale wiring, the rendered links of the language switcher, and the fallback to the embedded snapshot when the API is unreachable or answers with something that is not content."
     ]
   },
   "operations": {

@@ -3,7 +3,6 @@
   "locale": "es",
   "title": "Cómo está construido este sitio",
   "lead": "Este portafolio es un sistema en funcionamiento, no un CV maquetado. Tiene frontend, API y base de datos porque el objetivo era recorrer el camino completo — modelo de datos, capa de aplicación, contrato HTTP, cliente, despliegue — y poder explicar cada decisión del recorrido.",
-
   "why": {
     "title": "Por qué un frontend, una API y una base de datos",
     "paragraphs": [
@@ -12,7 +11,6 @@
       "La restricción que me impuse es la que se rompe fácil: ninguna capa, patrón o dependencia existe si no puedo decir qué problema resuelve y qué cuesta. Donde decidí no agregar algo, también quedó escrito."
     ]
   },
-
   "focus": {
     "title": "Dónde está el peso",
     "paragraphs": [
@@ -20,7 +18,6 @@
       "Aquí está lo que sí querría que me preguntaran: una regla de negocio lo bastante sutil como para equivocarse, un modelo de traducción que sobrevive a un tercer idioma, una sola costura que permitió cambiar el almacenamiento sin mover el contrato, y una verificación que atrapó a dos implementaciones contradiciéndose en silencio."
     ]
   },
-
   "architecture": {
     "title": "Arquitectura",
     "description": "Angular prerenderiza cada ruta e idioma a HTML estático en tiempo de build, servido por nginx. La API es stateless y de solo lectura. PostgreSQL guarda el contenido, sembrado desde archivos revisados en el repositorio.",
@@ -29,7 +26,6 @@
       "Eso no es adorno. Un portafolio que muestra un error mientras alguien lo mira en una entrevista falló en el único momento que importaba."
     ]
   },
-
   "decisions": [
     {
       "id": "bilingual",
@@ -80,28 +76,44 @@
       "cost": "Un poco más de configuración a mano, y un nombre que un revisor podría esperar ver y no encuentra."
     }
   ],
-
   "flows": [
     {
       "id": "language",
       "title": "Cómo una petición resuelve su idioma",
       "description": "Parámetro explícito, luego la cabecera Accept-Language respetando los valores de calidad y reduciendo las etiquetas regionales, y finalmente inglés. Cada respuesta informa qué idioma resolvió y desde dónde, para que quien llama nunca tenga que adivinar. Una cabecera malformada cae al idioma por defecto en vez de fallar: una cabecera rota de algún cliente no es razón para negar una página pública.",
-      "steps": ["?lang=es", "Accept-Language", "inglés", "la respuesta dice cómo resolvió"]
+      "steps": [
+        "?lang=es",
+        "Accept-Language",
+        "inglés",
+        "la respuesta dice cómo resolvió"
+      ]
     },
     {
       "id": "content",
       "title": "Cómo llega el contenido a la página",
       "description": "Los archivos revisados del repositorio son la fuente de verdad. Un seeder los carga en PostgreSQL y guarda una huella, de modo que un despliegue que no cambió nada no reescribe nada. La API lee de ahí. El frontend prerenderiza contra la API en el build y revalida en tiempo de ejecución, con lo prerenderizado como respaldo.",
-      "steps": ["archivos de contenido", "seed", "PostgreSQL", "API", "prerender", "navegador"]
+      "steps": [
+        "archivos de contenido",
+        "seed",
+        "PostgreSQL",
+        "API",
+        "prerender",
+        "navegador"
+      ]
     },
     {
       "id": "cv",
       "title": "El CV se genera desde el mismo contenido",
       "description": "El CV no es un archivo editado a mano que convive con el sitio: se construye desde el mismo contenido revisado, en ambos idiomas, y cabe en dos páginas midiendo el resultado renderizado en vez de adivinar un tamaño de fuente. Una corrección se hace una sola vez.",
-      "steps": ["archivos de contenido", "hoja de estilos de impresión", "render headless", "medir páginas", "PDF"]
+      "steps": [
+        "archivos de contenido",
+        "hoja de estilos de impresión",
+        "render headless",
+        "medir páginas",
+        "PDF"
+      ]
     }
   ],
-
   "dataModel": {
     "title": "Modelo de datos",
     "description": "{tables} tablas. Los hechos viven en las tablas base; el texto traducido vive en tablas de traducción indexadas por entidad e idioma, lo que convierte un tercer idioma en un cambio de datos y no en una migración.",
@@ -110,18 +122,17 @@
       "Los proyectos referencian los roles con borrado restringido y no en cascada: eliminar un rol que todavía tiene proyectos es un error que conviene que se note, no una pérdida silenciosa de contenido."
     ]
   },
-
   "testing": {
     "title": "Pruebas",
-    "description": "{tests} pruebas, sobre las partes donde equivocarse sería invisible en vez de evidente.",
+    "description": "{tests} pruebas — {backendTests} en el backend y {frontendTests} en el frontend — sobre las partes donde equivocarse sería invisible en vez de evidente.",
     "items": [
       "La regla de experiencia: roles solapados, un rol contenido en otro, un hueco laboral, y una prueba fijada a la carrera real para que el sitio y el CV no puedan separarse.",
-      "La cadena de fallback de idioma, con valores de calidad, etiquetas regionales, idiomas no soportados y cabeceras simplemente malformadas.",
-      "El merge entre una traducción y el locale base, donde un campo ausente debe caer al base y no renderizarse vacío.",
-      "Una verificación de paridad que compara la fuente de archivos con la de base de datos en ambos idiomas. Encontró un desacuerdo real de ordenamiento que ninguna prueba unitaria habría detectado, que es exactamente por lo que existe."
+      "El contrato HTTP a través del pipeline real y con el contenido real — negociación de idioma, forma del documento de error, correlation ids saneados antes de llegar a un log, y una aserción de que ninguna respuesta contiene jamás un teléfono.",
+      "La ruta de base de datos contra un PostgreSQL real en un contenedor: la migración, los check constraints que rechazan un periodo imposible, y que resembrar contenido sin cambios no cambia nada.",
+      "Una verificación de paridad que compara la fuente de archivos con la de base de datos en ambos idiomas, como script y como prueba. Encontró un desacuerdo real de ordenamiento que ninguna prueba unitaria habría detectado, que es exactamente por lo que existe.",
+      "El frontend: el cableado de URL a idioma, los enlaces renderizados del selector, y el respaldo al snapshot embebido cuando la API no responde o devuelve algo que no es contenido."
     ]
   },
-
   "operations": {
     "title": "Operación",
     "items": [
@@ -132,12 +143,10 @@
       "No se publica ningún teléfono, y el CV que está en el repositorio es la versión sin datos personales. El número vive en un archivo fuera de control de versiones que el build lee si existe."
     ]
   },
-
   "stack": {
     "title": "Stack",
     "description": "{endpoints} endpoints, {languages} idiomas, {adrs} decisiones registradas."
   },
-
   "repository": {
     "label": "Ver el código",
     "note": "Cada decisión de arriba está escrita en el repositorio como un registro numerado, incluidas aquellas de las que terminé desistiendo."

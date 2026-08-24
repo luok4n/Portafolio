@@ -7,6 +7,45 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 6 — Tests (2026-08-24)
+
+**151 tests**: 89 on the backend, 62 on the frontend. Both suites run in CI.
+
+#### Added — backend
+- HTTP contract tests through the real pipeline against the real content files, so they also check
+  that the published content still satisfies the contract rather than that a fixture does. Language
+  negotiation, the problem-document shape, and a test asserting **no response ever contains a phone
+  number** — ADR-0003 enforced at the edge, where a future content change cannot slip past it.
+- Correlation id tests, including hostile input: a value with newlines, a script tag, and one 4096
+  characters long. It reaches log files and a response header, so it must be sanitised, not echoed.
+- `/docs` and `/openapi/v1.json` return 404 outside Development. Shipping an interactive API
+  explorer publicly should be a decision, not a default.
+- PostgreSQL integration tests with Testcontainers against a real database: the migration applies,
+  the check constraints refuse a period ending before it starts and a month of 13, a role cannot be
+  deleted while projects reference it, translations are stored resolved one row per language, and
+  **reseeding unchanged content changes nothing**.
+- The parity check is now a test as well as a script, so the two content sources are compared on
+  every push instead of when someone remembers.
+- `RequiresDockerFact` skips the container tests where there is no Docker rather than failing the
+  suite. A suite that fails for environmental reasons is a suite people stop running.
+
+#### Added — frontend
+- `pathFor` and `translateUrl`, the two functions that already produced two shipped bugs. Every case
+  now asserts the path is absolute.
+- `ContentService`: content before any request, the snapshot kept when the API errors, the
+  cached-content flag not raised before anything was tried, and a response that parses but is not
+  content being rejected — a captive portal returning valid JSON would otherwise blank the site.
+- `SeoService`: reciprocal `hreflang` pointing at the translated page, and tags replaced rather than
+  appended across navigations, since appending would leave a page declaring four canonicals.
+- `LocaleService` against a real router, checking the four things that must never disagree about the
+  current language: the URL, Transloco, the content and `<html lang>`.
+- The language switcher rendered, asserting every link is absolute and that switching from
+  `/es/proyectos/linkvest` produces `/en/projects/linkvest`.
+
+#### Changed
+- `collect-facts.mjs` counts both suites, so the engineering page reports 151 rather than only the
+  backend's 89. The testing section now describes what is actually covered.
+
 ### Phase 8 — CI (2026-08-24)
 
 Every check in this pipeline already existed as a script somebody had to remember to run. Moving
