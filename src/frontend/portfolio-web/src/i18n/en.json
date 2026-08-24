@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "skipToContent": "Skip to content",
+    "sections": "Sections",
+    "switchTo": "Ver en español",
+    "languageLabel": "Language"
+  },
+  "hero": {
+    "openToWork": "Open to opportunities",
+    "yearsAcross": "{{years}}+ years across energy, fintech, real estate, public health and education.",
+    "contact": "Get in touch",
+    "downloadCv": "Download CV"
+  },
+  "section": {
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "engineering": "Engineering",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "experience": {
+    "present": "Present",
+    "concurrent": "Held alongside another role",
+    "duration": "{{months}} months",
+    "durationYears": "{{years}} yr {{months}} mo",
+    "teams": "Teams",
+    "technologies": "Technologies"
+  },
+  "projects": {
+    "viewDetail": "Read more",
+    "featured": "Featured",
+    "client": "Client",
+    "sector": "Sector",
+    "contribution": "My contribution",
+    "sources": "Sources",
+    "checked": "checked {{date}}",
+    "partOf": "Part of",
+    "back": "All projects",
+    "noSources": "Described by function only — no public source was found for this project."
+  },
+  "engineering": {
+    "readMore": "How this site is built",
+    "summary": "This site is a working system — a prerendered Angular frontend, an ASP.NET Core API and PostgreSQL — built to walk the whole path rather than to look like a CV.",
+    "viewRepository": "Read the source",
+    "problem": "Problem",
+    "decision": "Decision",
+    "rejected": "Rejected",
+    "cost": "Cost",
+    "readAdr": "Decision record",
+    "facts": {
+      "tests": "tests",
+      "tables": "tables",
+      "endpoints": "endpoints",
+      "adrs": "decisions"
+    },
+    "generatedNote": "These figures are measured from the repository at build time, not written by hand."
+  },
+  "education": {
+    "graduated": "Graduated {{year}}"
+  },
+  "contact": {
+    "lead": "The quickest way to reach me is email or LinkedIn.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "state": {
+    "cachedContent": "Showing cached content — the API is unreachable right now."
+  },
+  "error": {
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "That link does not point anywhere on this site.",
+    "backHome": "Back to the start"
+  },
+  "footer": {
+    "builtWith": "Built with Angular, ASP.NET Core and PostgreSQL.",
+    "source": "Source on GitHub",
+    "rights": "Content is not licensed for reuse."
+  }
+}

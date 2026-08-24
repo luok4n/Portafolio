@@ -29,10 +29,14 @@ Two distinct risks:
 | **Phone number** | **No** | **No** |
 | Exact home address | No | No |
 | Original CV PDF | No | **No** — listed in `.gitignore` |
-| Redacted CV PDF (no phone) | Yes, as a download | Yes, as a frontend asset |
+| Redacted CV PDF (no phone) | Yes, as a download | **No** — generated into the frontend at build time |
 
-The original `Sebastian_Velez_CV_Updated.pdf` stays on the author's machine only. A redacted copy
-is generated for the "Download CV" action.
+The original `Sebastian_Velez_CV_Updated.pdf` stays on the author's machine only. A redacted copy is
+generated for the "Download CV" action by `tools/cv/build-cv.mjs` and copied into the frontend by
+`tools/frontend/build-snapshot.mjs`. Neither variant is committed: the redacted one because a binary
+a command reproduces does not belong in the history, and the full one because it carries the phone
+number. Only the redacted variant is ever copied into a bundle, so a mistake in the build cannot
+publish the number.
 
 ### Client and project information
 

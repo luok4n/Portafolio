@@ -1,0 +1,131 @@
+/* Design tokens and the handful of global rules the sections share.
+   Everything else is scoped to its component. */
+
+:root {
+  color-scheme: light dark;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  --measure: 68ch;
+  --measure-wide: 1080px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --radius: 6px;
+  --radius-lg: 12px;
+
+  --bg: #fbfbfd;
+  --surface: #ffffff;
+  --surface-sunken: #f3f4f7;
+  --border: #e0e2e8;
+  --text: #16181d;
+  --text-muted: #5b616e;
+  --accent: #1a4f8a;
+  --accent-soft: #9db8d8;
+  --accent-contrast: #ffffff;
+  --positive: #1f7a4d;
+  --warning: #8a5a1a;
+}
+
+/* The palette is defined once in each mode rather than patched, so nothing inherits a colour that
+   only makes sense in the other theme. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1014;
+    --surface: #14171d;
+    --surface-sunken: #1a1e26;
+    --border: #2a2f3a;
+    --text: #e9ecf2;
+    --text-muted: #98a0b0;
+    --accent: #79aee6;
+    --accent-soft: #35557a;
+    --accent-contrast: #0e1014;
+    --positive: #56c48a;
+    --warning: #d9a557;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+h1, h2, h3 { line-height: 1.25; }
+
+/* Anchored sections need to clear the sticky header when linked to directly. */
+[id] { scroll-margin-top: 4.5rem; }
+
+.band {
+  padding: 2.75rem 0;
+}
+
+.band + .band { padding-top: 1.5rem; }
+
+.band .inner {
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.band h2 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover { border-color: var(--accent-soft); }
+
+.button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.button.ghost { background: transparent; }
+
+.sep { opacity: 0.5; }

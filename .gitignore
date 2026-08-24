@@ -66,3 +66,13 @@ desktop.ini
 # ---------------------------------------------------------------------------
 .docker-data/
 postgres-data/
+
+# ---------------------------------------------------------------------------
+# Generated frontend assets
+# The downloadable CV is built from content/ by tools/cv/build-cv.mjs. Binaries
+# that a command reproduces do not belong in the history.
+# The content snapshot under src/content-snapshot/ IS committed: it is a build
+# input the TypeScript compiler imports, so a fresh clone must be able to build,
+# and being JSON it shows content changes as a readable diff.
+# ---------------------------------------------------------------------------
+src/frontend/portfolio-web/public/cv/

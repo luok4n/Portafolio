@@ -1,0 +1,637 @@
+{
+  "profile": {
+    "name": "Sebastián Vélez Ramírez",
+    "headline": "Desarrollador .NET Senior | Ingeniería de Software | Microservicios y Azure",
+    "title": "Desarrollador .NET Senior",
+    "location": "Risaralda, Colombia",
+    "email": "sebasp1234@utp.edu.co",
+    "openToWork": true,
+    "summary": "Ingeniero de Software y Desarrollador .NET Senior con más de 8 años de experiencia construyendo y entregando soluciones de software escalables en los sectores de energía, fintech, finca raíz, salud pública y educación. Amplia experiencia en C#, .NET, ASP.NET Core, APIs REST, microservicios, SQL Server y Microsoft Azure, complementada con experiencia práctica en Python, Java, React, PostgreSQL, Angular, PHP y Laravel. Experiencia en arquitectura de software, aplicaciones en la nube, mensajería asíncrona, CI/CD, pruebas automatizadas y prácticas de desarrollo ágil.",
+    "yearsOfExperience": 8,
+    "monthsOfExperience": 102,
+    "languages": [
+      {
+        "language": "Español",
+        "level": "Nativo"
+      },
+      {
+        "language": "Inglés",
+        "level": "B2"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "id": "adagetech",
+      "company": "Adagetech S.A.S.",
+      "role": "Desarrollador .NET Senior",
+      "employmentType": "tiempo completo",
+      "start": "2022-12",
+      "end": "2026-07",
+      "durationMonths": 44,
+      "concurrent": false,
+      "parallelWith": [],
+      "teams": [],
+      "technologies": [
+        "C#",
+        ".NET",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "SQL Server",
+        "Azure Service Bus",
+        "Azure App Service",
+        "Azure Functions",
+        "Azure Storage",
+        "Key Vault",
+        "Azure DevOps",
+        "Angular"
+      ],
+      "highlights": [
+        "Diseñé y desarrollé soluciones backend y microservicios con C#, .NET, ASP.NET Core, Entity Framework Core y SQL Server.",
+        "Diseñé e implementé arquitecturas basadas en microservicios y APIs RESTful para aplicaciones de misión crítica.",
+        "Construí e integré comunicación asíncrona y flujos orientados a eventos con Azure Service Bus.",
+        "Desarrollé y mantuve soluciones cloud-native con Azure App Services, Azure Functions, Azure Storage, Key Vault y Azure DevOps.",
+        "Implementé pipelines de CI/CD y procesos de despliegue automatizado con Azure DevOps.",
+        "Apliqué Clean Architecture, principios SOLID, inyección de dependencias, patrones de diseño y pruebas automatizadas para mejorar la mantenibilidad y la calidad del código.",
+        "Realicé revisiones de código, planeación técnica, estimación de esfuerzo y decisiones de arquitectura.",
+        "Acompañé a otros desarrolladores y contribuí a los estándares de ingeniería y a la documentación técnica."
+      ],
+      "projectIds": [
+        "argos-one",
+        "linkvest"
+      ]
+    },
+    {
+      "id": "aes-chivor",
+      "company": "AES Chivor & Cía. S.C.A. E.S.P.",
+      "role": "Ingeniero de Software (Freelance)",
+      "employmentType": "freelance",
+      "start": "2022-03",
+      "end": "2022-12",
+      "durationMonths": 10,
+      "concurrent": true,
+      "parallelWith": [
+        "lendingfront"
+      ],
+      "teams": [],
+      "technologies": [
+        "C#",
+        ".NET Core",
+        "ASP.NET Core",
+        "SQL Server",
+        "Microsoft Azure"
+      ],
+      "highlights": [
+        "Diseñé y desarrollé servicios backend con C#, .NET Core, ASP.NET Core y SQL Server para la plataforma MOA, que opera en el mercado mayorista de energía de Colombia.",
+        "Desarrollé APIs REST e integraciones para procesos críticos de gestión de energía.",
+        "Participé en la migración de aplicaciones heredadas hacia una arquitectura moderna de microservicios.",
+        "Implementé soluciones en la nube con Microsoft Azure e integré servicios distribuidos.",
+        "Optimicé consultas complejas y operaciones de base de datos en SQL Server, reduciendo los tiempos de respuesta en un 30%.",
+        "Participé en análisis de requerimientos, diseño técnico, análisis de impacto e implementación de nuevas funcionalidades.",
+        "Apliqué prácticas de ingeniería de software como SOLID, inyección de dependencias, clean code, revisiones de código y pruebas automatizadas."
+      ],
+      "projectIds": [
+        "moa"
+      ]
+    },
+    {
+      "id": "lendingfront",
+      "company": "LendingFront",
+      "role": "Ingeniero de Software",
+      "employmentType": "tiempo completo",
+      "start": "2022-01",
+      "end": "2022-12",
+      "durationMonths": 12,
+      "concurrent": true,
+      "parallelWith": [
+        "aes-chivor"
+      ],
+      "teams": [
+        "Desarrollo",
+        "Innovación",
+        "Optimización"
+      ],
+      "technologies": [
+        "Python",
+        "React",
+        "Redux",
+        "PostgreSQL",
+        "AWS"
+      ],
+      "highlights": [
+        "Desarrollé y mantuve el Marketplace BackOffice con Python, React, Redux, PostgreSQL y AWS.",
+        "Desarrollé funcionalidad backend y lógica de negocio con Python.",
+        "Construí y mantuve funcionalidades de frontend con React y Redux.",
+        "Diseñé y consumí APIs para integrar las aplicaciones frontend con los servicios backend.",
+        "Implementé pruebas unitarias y datos simulados para mejorar la confiabilidad del software y la cobertura de pruebas.",
+        "Trabajé con PostgreSQL para la persistencia de datos y las consultas de la aplicación.",
+        "Participé en análisis de requerimientos, estimación técnica, revisiones de código y planeación de sprints bajo SCRUM.",
+        "Colaboré con equipos multidisciplinarios para entregar nuevas funcionalidades y mejoras en producción."
+      ],
+      "projectIds": [
+        "marketplace-backoffice"
+      ]
+    },
+    {
+      "id": "mvm",
+      "company": "MVM Ingeniería de Software",
+      "role": "Analista de Desarrollo",
+      "employmentType": "tiempo completo",
+      "start": "2019-10",
+      "end": "2021-12",
+      "durationMonths": 27,
+      "concurrent": false,
+      "parallelWith": [],
+      "teams": [],
+      "technologies": [
+        "C#",
+        "ASP.NET",
+        ".NET Core",
+        "Entity Framework",
+        "SQL Server",
+        "Microsoft Azure",
+        "Angular"
+      ],
+      "highlights": [
+        "Diseñé y desarrollé aplicaciones en la nube con C#, ASP.NET, .NET Core, Entity Framework y SQL Server.",
+        "Desarrollé APIs REST y servicios backend siguiendo buenas prácticas de ingeniería de software e integración.",
+        "Diseñé integraciones entre sistemas internos y externos mediante arquitecturas basadas en APIs.",
+        "Desarrollé y mantuve soluciones desplegadas en Microsoft Azure.",
+        "Usé servicios de Azure para hosting de aplicaciones, integración, almacenamiento y cargas de trabajo en la nube.",
+        "Apliqué Entity Framework Code First para el acceso a datos y el modelado del dominio.",
+        "Trabajé en CHIVOR XM, desarrollando funcionalidad backend con .NET Core y SQL Server para procesos de gestión de energía.",
+        "Trabajé en SLANG, desarrollando funcionalidad web con ASP.NET y Angular para una plataforma de aprendizaje en línea.",
+        "Trabajé en Comfama, desarrollando la gestión interna de su sitio web y una plataforma para que los docentes registraran las notas de los estudiantes en sus distintos cursos.",
+        "Participé en análisis de requerimientos, diseño técnico, desarrollo, pruebas, despliegue y soporte en producción.",
+        "Mejoré los procesos de desarrollo y despliegue, reduciendo el tiempo de entrega en un 15%."
+      ],
+      "projectIds": [
+        "slang",
+        "chivor-xm",
+        "comfama-intranet",
+        "comfama-grades"
+      ]
+    },
+    {
+      "id": "utp",
+      "company": "Universidad Tecnológica de Pereira",
+      "role": "Desarrollador de Software",
+      "employmentType": "tiempo completo",
+      "start": "2019-01",
+      "end": "2019-10",
+      "durationMonths": 10,
+      "concurrent": false,
+      "parallelWith": [],
+      "teams": [],
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "Angular",
+        "REST APIs"
+      ],
+      "highlights": [
+        "Desarrollé servicios backend con Java y Spring Boot para el programa RIAS (Rutas Integrales de Atención en Salud) del Ministerio de Salud de Colombia.",
+        "Construí funcionalidades e interfaces de usuario con Angular.",
+        "Diseñé y consumí APIs REST entre el frontend en Angular y el backend en Spring Boot.",
+        "Participé en análisis de requerimientos, desarrollo, pruebas y despliegue."
+      ],
+      "projectIds": [
+        "rias"
+      ]
+    },
+    {
+      "id": "woldev",
+      "company": "Woldev S.A.S.",
+      "role": "Desarrollador de Software",
+      "employmentType": "tiempo completo",
+      "start": "2018-02",
+      "end": "2019-01",
+      "durationMonths": 12,
+      "concurrent": false,
+      "parallelWith": [],
+      "teams": [],
+      "technologies": [
+        "PHP",
+        "Laravel",
+        "Angular",
+        "Python"
+      ],
+      "highlights": [
+        "Desarrollé aplicaciones web y funcionalidades full-stack con PHP, Laravel, Angular y Python.",
+        "Desarrollé funcionalidad backend y lógica de negocio con PHP y Laravel.",
+        "Construí componentes de frontend e interfaces de usuario con Angular.",
+        "Diseñé y consumí APIs REST para la comunicación entre las aplicaciones de frontend y backend.",
+        "Trabajé con bases de datos e implementé el acceso a datos que requerían las aplicaciones de negocio.",
+        "Desarrollé la plataforma Teach at Home, aportando tanto en frontend como en backend.",
+        "Traduje los requerimientos de los clientes en soluciones técnicas y funcionalidades de la aplicación.",
+        "Participé en depuración, mantenimiento, pruebas y despliegue de aplicaciones web."
+      ],
+      "projectIds": [
+        "teach-at-home",
+        "gobernacion-risaralda"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "argos-one",
+      "name": "Argos ONE",
+      "client": "Cementos Argos",
+      "experienceId": "adagetech",
+      "company": "Adagetech S.A.S.",
+      "sector": "Materiales de construcción",
+      "featured": true,
+      "verified": true,
+      "summary": "Plataforma de gestión de pedidos de Cementos Argos, la multinacional colombiana de materiales de construcción. Los clientes realizan, hacen seguimiento y modifican sus pedidos de cemento y concreto en tiempo real, siguen el estado del despacho desde el cargue en planta hasta la entrega en obra, consultan fichas técnicas y certificaciones de producto, y revisan facturas y pagos — en web y móvil, con una aplicación dedicada para el mercado de Estados Unidos.",
+      "contribution": "Soporte y desarrollo de módulos para operaciones en Estados Unidos, Colombia y otros países.",
+      "technologies": [
+        "Angular",
+        ".NET",
+        "SQL Server",
+        "Microsoft Azure"
+      ],
+      "sources": [
+        {
+          "url": "https://argos.co/en/argos-one/",
+          "checked": "2026-08-24"
+        },
+        {
+          "url": "https://www.argosone.com/",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "linkvest",
+      "name": "Linkvest",
+      "client": "Linkvest Capital",
+      "experienceId": "adagetech",
+      "company": "Adagetech S.A.S.",
+      "sector": "Inversión inmobiliaria",
+      "featured": true,
+      "verified": true,
+      "summary": "Plataforma para Linkvest Capital, firma de coinversión alternativa e inmobiliaria verticalmente integrada con sede en Miami, que opera en Florida y el sureste de Estados Unidos en préstamos comerciales de corto plazo, participación accionaria en desarrollos de uso mixto y gestión de activos comerciales, industriales y triple net.",
+      "contribution": "Desarrollo full-stack de los reportes mensuales y trimestrales sobre las inversiones de cada cliente.",
+      "technologies": [
+        "Angular",
+        ".NET",
+        "SQL Server"
+      ],
+      "sources": [
+        {
+          "url": "https://linkvestcapital.com/",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "moa",
+      "name": "AES Chivor MOA",
+      "client": "AES Chivor & Cía. S.C.A. E.S.P.",
+      "experienceId": "aes-chivor",
+      "company": "AES Chivor & Cía. S.C.A. E.S.P.",
+      "sector": "Energía",
+      "featured": true,
+      "verified": false,
+      "summary": "Plataforma de compra y venta de energía en el mercado mayorista colombiano, administrado por XM S.A. E.S.P. AES Chivor opera la central hidroeléctrica de Chivor como parte de AES Colombia, la quinta generadora del país con un portafolio totalmente renovable. La plataforma también producía los reportes en Excel usados en la operación del mercado.",
+      "contribution": "Servicios backend sobre una arquitectura de microservicios, además de APIs REST e integraciones para procesos críticos de gestión de energía.",
+      "technologies": [
+        ".NET",
+        "SQL Server",
+        "Microsoft Azure"
+      ],
+      "sources": [
+        {
+          "url": "https://www.xm.com.co/nuestra-empresa/nosotros/quienes-somos",
+          "checked": "2026-08-24"
+        },
+        {
+          "url": "https://www.aescol.com/en/press-release/aes-colombia-reinicia-operaciones-de-la-central-hidroelectrica-chivor",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "rias",
+      "name": "RIAS — Rutas Integrales de Atención en Salud",
+      "client": "Ministerio de Salud y Protección Social (Colombia)",
+      "experienceId": "utp",
+      "company": "Universidad Tecnológica de Pereira",
+      "sector": "Salud pública",
+      "featured": false,
+      "verified": true,
+      "summary": "Programa nacional de salud pública que establece las rutas integrales de atención en salud de Colombia, creadas por la Resolución 3202 de 2016 y ampliadas por la Resolución 3280 de 2018 dentro del modelo de atención MIAS. Lleva al sistema de salud de un enfoque centrado en el tratamiento a uno preventivo en todas las etapas de la vida, con rutas como promoción y mantenimiento de la salud, materno-perinatal, cardio-cerebro-vascular, cáncer, alteraciones nutricionales, trastornos asociados al consumo de sustancias y enfermedades infecciosas.",
+      "contribution": "Desarrollo backend con Java y Spring Boot y desarrollo frontend con Angular.",
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "Angular"
+      ],
+      "sources": [
+        {
+          "url": "https://www.minsalud.gov.co/paginas/rutas-integrales-de-atencion-en-salud.aspx",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "slang",
+      "name": "Slang",
+      "client": "Slang — en alianza con Comfama",
+      "experienceId": "mvm",
+      "company": "MVM Ingeniería de Software",
+      "sector": "EdTech",
+      "featured": false,
+      "verified": true,
+      "summary": "Plataforma de aprendizaje de inglés profesional y técnico que nació como proyecto de investigación del MIT y llegó a ser líder de la categoría en Latinoamérica, con un motor adaptativo basado en machine learning, más de 200 cursos profesionales, presencia en Colombia, México, Brasil y Estados Unidos, una Serie A de US$14 millones y el reconocimiento del Foro Económico Mundial en 2022 como una de las 100 empresas tecnológicas pioneras más importantes del mundo — la única startup colombiana en esa lista. El trabajo se desarrolló en el marco de una alianza entre Slang y Comfama que permitió a los afiliados de la caja de compensación acceder a los cursos de inglés con beneficios.",
+      "contribution": "Funcionalidad web con ASP.NET y Angular para la alianza Slang–Comfama.",
+      "technologies": [
+        "ASP.NET",
+        "Angular",
+        "SQL Server"
+      ],
+      "sources": [
+        {
+          "url": "https://forbes.co/2021/12/20/emprendedores/ensenando-ingles-para-tecnologia-y-negocios-slang-recauda-us14-millones",
+          "checked": "2026-08-24"
+        },
+        {
+          "url": "https://www.endeavor.org.co/novedades/ecosistemas/slang-a-un-paso-de-ser-parte-de-la-red-endeavor/",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "chivor-xm",
+      "name": "CHIVOR XM",
+      "client": "AES Chivor / XM",
+      "experienceId": "mvm",
+      "company": "MVM Ingeniería de Software",
+      "sector": "Energía",
+      "featured": false,
+      "verified": true,
+      "summary": "Procesos de gestión de energía en el mercado mayorista colombiano, operado y administrado por XM S.A. E.S.P., filial de ISA, que además opera el Sistema Interconectado Nacional a través del Centro Nacional de Despacho.",
+      "contribution": "Funcionalidad backend con .NET Core y SQL Server.",
+      "technologies": [
+        ".NET Core",
+        "SQL Server"
+      ],
+      "sources": [
+        {
+          "url": "https://www.xm.com.co/nuestra-empresa/nosotros/quienes-somos",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "comfama-intranet",
+      "name": "Comfama — gestión interna del sitio",
+      "client": "Comfama — Caja de Compensación Familiar de Antioquia",
+      "experienceId": "mvm",
+      "company": "MVM Ingeniería de Software",
+      "sector": "Seguridad social",
+      "featured": false,
+      "verified": true,
+      "summary": "Comfama es una corporación privada sin ánimo de lucro fundada en 1954 que cumple funciones de seguridad social en Antioquia, con servicios de crédito, subsidios, salud, educación, vivienda, recreación, cultura y turismo para los trabajadores afiliados y sus familias.",
+      "contribution": "Gestión interna del sitio web de Comfama.",
+      "technologies": [
+        "ASP.NET",
+        "Angular",
+        "SQL Server"
+      ],
+      "sources": [
+        {
+          "url": "https://www.comfama.com/conoce-comfama/",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "comfama-grades",
+      "name": "Comfama — plataforma de notas para docentes",
+      "client": "Comfama — Caja de Compensación Familiar de Antioquia",
+      "experienceId": "mvm",
+      "company": "MVM Ingeniería de Software",
+      "sector": "Educación",
+      "featured": false,
+      "verified": true,
+      "summary": "Plataforma usada por los docentes de Comfama para registrar las notas de los estudiantes en sus distintos cursos. La educación es uno de los servicios que Comfama presta a los trabajadores afiliados y sus familias en Antioquia.",
+      "contribution": "Desarrollo de la plataforma de registro de notas para docentes.",
+      "technologies": [
+        "ASP.NET",
+        "Angular",
+        "SQL Server"
+      ],
+      "sources": [
+        {
+          "url": "https://www.comfama.com/conoce-comfama/",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "marketplace-backoffice",
+      "name": "Marketplace BackOffice",
+      "client": "LendingFront",
+      "experienceId": "lendingfront",
+      "company": "LendingFront",
+      "sector": "Fintech",
+      "featured": false,
+      "verified": true,
+      "summary": "Back office del marketplace de LendingFront, startup neoyorquina que construye software white-label de crédito para pymes dirigido a bancos e instituciones financieras, cubriendo radicación de solicitudes, gestión documental, agregación de datos, decisión basada en reglas, originación, monitoreo y administración de cartera.",
+      "contribution": "Lógica de negocio en el backend con Python y funcionalidades de frontend con React y Redux, trabajando en los equipos de desarrollo, innovación y optimización.",
+      "technologies": [
+        "Python",
+        "React",
+        "Redux",
+        "PostgreSQL",
+        "AWS"
+      ],
+      "sources": [
+        {
+          "url": "https://www.crunchbase.com/organization/lendingfront",
+          "checked": "2026-08-24"
+        }
+      ]
+    },
+    {
+      "id": "teach-at-home",
+      "name": "Teach at Home",
+      "client": "Woldev S.A.S.",
+      "experienceId": "woldev",
+      "company": "Woldev S.A.S.",
+      "sector": "Educación",
+      "featured": false,
+      "verified": false,
+      "summary": "Plataforma educativa desarrollada en Woldev. No se encontró ninguna fuente pública, por lo que se describe únicamente por su función.",
+      "contribution": "Funcionalidad de frontend y backend.",
+      "technologies": [
+        "PHP",
+        "Laravel",
+        "Angular"
+      ],
+      "sources": []
+    },
+    {
+      "id": "gobernacion-risaralda",
+      "name": "Sitio web de la Gobernación de Risaralda",
+      "client": "Gobernación de Risaralda",
+      "experienceId": "woldev",
+      "company": "Woldev S.A.S.",
+      "sector": "Sector público",
+      "featured": false,
+      "verified": false,
+      "summary": "Sitio web institucional de la Gobernación de Risaralda, sobre una base de código antigua en PHP.",
+      "contribution": "Desarrollo y mantenimiento web sobre la aplicación heredada en PHP.",
+      "technologies": [
+        "PHP"
+      ],
+      "sources": []
+    }
+  ],
+  "skills": [
+    {
+      "id": "languages",
+      "label": "Lenguajes",
+      "items": [
+        "C#",
+        "SQL",
+        "Python",
+        "Java",
+        "TypeScript",
+        "JavaScript",
+        "PHP"
+      ]
+    },
+    {
+      "id": "backend",
+      "label": "Backend",
+      "items": [
+        ".NET",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "Spring Boot",
+        "Laravel",
+        "REST APIs"
+      ]
+    },
+    {
+      "id": "frontend",
+      "label": "Frontend",
+      "items": [
+        "Angular",
+        "React",
+        "Redux"
+      ]
+    },
+    {
+      "id": "architecture",
+      "label": "Arquitectura",
+      "items": [
+        "Microservices",
+        "Clean Architecture",
+        "DDD",
+        "CQRS",
+        "MVC",
+        "Event-Driven Architecture"
+      ]
+    },
+    {
+      "id": "cloud",
+      "label": "Cloud",
+      "items": [
+        "Microsoft Azure",
+        "AWS"
+      ]
+    },
+    {
+      "id": "azure",
+      "label": "Azure",
+      "items": [
+        "App Service",
+        "Functions",
+        "Service Bus",
+        "Storage",
+        "Key Vault",
+        "Azure DevOps"
+      ]
+    },
+    {
+      "id": "databases",
+      "label": "Bases de datos",
+      "items": [
+        "SQL Server",
+        "PostgreSQL",
+        "Redis"
+      ]
+    },
+    {
+      "id": "messaging",
+      "label": "Mensajería",
+      "items": [
+        "Azure Service Bus",
+        "asynchronous messaging",
+        "event-driven systems"
+      ]
+    },
+    {
+      "id": "devops",
+      "label": "DevOps",
+      "items": [
+        "Azure DevOps",
+        "Docker",
+        "CI/CD",
+        "Git"
+      ]
+    },
+    {
+      "id": "testing",
+      "label": "Testing",
+      "items": [
+        "xUnit",
+        "NUnit",
+        "Moq",
+        "Integration Testing"
+      ]
+    },
+    {
+      "id": "methodologies",
+      "label": "Metodologías",
+      "items": [
+        "SCRUM",
+        "Kanban",
+        "Code Review",
+        "Technical Mentoring"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "utp-bsc",
+      "degree": "Ingeniería de Sistemas y Computación",
+      "institution": "Universidad Tecnológica de Pereira",
+      "location": "Pereira, Colombia",
+      "year": 2018
+    }
+  ],
+  "socialLinks": [
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://co.linkedin.com/in/sebastian-velez-ramirez",
+      "display": "co.linkedin.com/in/sebastian-velez-ramirez"
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "url": "https://github.com/luok4n",
+      "display": "github.com/luok4n"
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "url": "mailto:sebasp1234@utp.edu.co",
+      "display": "sebasp1234@utp.edu.co"
+    }
+  ]
+}

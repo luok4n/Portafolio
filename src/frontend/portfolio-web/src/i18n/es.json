@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "skipToContent": "Ir al contenido",
+    "sections": "Secciones",
+    "switchTo": "View in English",
+    "languageLabel": "Idioma"
+  },
+  "hero": {
+    "openToWork": "Disponible para nuevas oportunidades",
+    "yearsAcross": "Más de {{years}} años en energía, fintech, finca raíz, salud pública y educación.",
+    "contact": "Hablemos",
+    "downloadCv": "Descargar CV"
+  },
+  "section": {
+    "about": "Perfil",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "engineering": "Ingeniería",
+    "education": "Educación",
+    "contact": "Contacto"
+  },
+  "experience": {
+    "present": "Actualidad",
+    "concurrent": "En paralelo con otro rol",
+    "duration": "{{months}} meses",
+    "durationYears": "{{years}} a {{months}} m",
+    "teams": "Equipos",
+    "technologies": "Tecnologías"
+  },
+  "projects": {
+    "viewDetail": "Ver más",
+    "featured": "Destacado",
+    "client": "Cliente",
+    "sector": "Sector",
+    "contribution": "Mi aporte",
+    "sources": "Fuentes",
+    "checked": "verificado {{date}}",
+    "partOf": "Parte de",
+    "back": "Todos los proyectos",
+    "noSources": "Descrito solo por su función — no se encontró una fuente pública para este proyecto."
+  },
+  "engineering": {
+    "readMore": "Cómo está construido este sitio",
+    "summary": "Este sitio es un sistema en funcionamiento — frontend Angular prerenderizado, API en ASP.NET Core y PostgreSQL — construido para recorrer el camino completo, no para parecer un CV.",
+    "viewRepository": "Ver el código",
+    "problem": "Problema",
+    "decision": "Decisión",
+    "rejected": "Descartado",
+    "cost": "Costo",
+    "readAdr": "Registro de decisión",
+    "facts": {
+      "tests": "pruebas",
+      "tables": "tablas",
+      "endpoints": "endpoints",
+      "adrs": "decisiones"
+    },
+    "generatedNote": "Estas cifras se miden desde el repositorio en tiempo de build; no están escritas a mano."
+  },
+  "education": {
+    "graduated": "Graduado en {{year}}"
+  },
+  "contact": {
+    "lead": "La forma más rápida de contactarme es por correo o LinkedIn.",
+    "email": "Correo",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "state": {
+    "cachedContent": "Mostrando contenido en caché — la API no responde en este momento."
+  },
+  "error": {
+    "notFoundTitle": "Página no encontrada",
+    "notFoundBody": "Ese enlace no apunta a ninguna parte de este sitio.",
+    "backHome": "Volver al inicio"
+  },
+  "footer": {
+    "builtWith": "Construido con Angular, ASP.NET Core y PostgreSQL.",
+    "source": "Código en GitHub",
+    "rights": "El contenido no está licenciado para reutilización."
+  }
+}

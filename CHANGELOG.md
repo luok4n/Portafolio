@@ -7,6 +7,42 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 5 — Frontend (2026-08-24)
+
+#### Added
+- `src/frontend/portfolio-web` — Angular 22, zoneless, prerendered. **27 static routes**: home,
+  engineering and 11 project pages in each language, plus the locale entry point.
+- Bilingual routing with translated path segments (`/en/projects/x`, `/es/proyectos/x`) generated
+  from one table that the router, the language switcher, the prerender route generator and
+  `hreflang` all share.
+- The language switcher preserves route and anchor — `/es/proyectos/slang` goes to
+  `/en/projects/slang`, verified in the browser.
+- Per-locale SEO: title, description, Open Graph, self-referencing canonical, reciprocal `hreflang`
+  with `x-default`, and `Person` JSON-LD.
+- The engineering section: a summary on the home page and a full page with hand-written inline SVG
+  diagrams for the architecture, the three flows and the data model.
+- `tools/frontend/build-snapshot.mjs`, which pulls the content snapshot from the API and copies the
+  redacted CVs into the frontend.
+- Content and UI strings are imported into the bundle rather than fetched, so prerendering is
+  deterministic and offline.
+
+#### Fixed
+- `pathFor` and `translateUrl` both dropped the leading slash: filtering blank segments out of the
+  array removed the empty first element too. Produced `href="es#about"` and a canonical of
+  `https://sebastianvelez.deven`. Caught by reading the prerendered HTML rather than the source.
+- The "back to projects" link concatenated `#projects` into a `routerLink`, which percent-encodes
+  it — `/en%23projects`, a link that silently 404s. Now uses routerLink's `fragment` input.
+- Transloco's loader must return an Observable, not a plain object.
+
+#### Verified
+- With the API stopped: every page renders complete from the snapshot and shows the cached-content
+  notice. With the API running: the notice is gone and content comes from the API.
+- Prerendered HTML contains the real text, not an empty root element — checked in both languages.
+- The engineering page renders its generated figures (52 / 20 / 8 / 5) and all five diagrams.
+
+#### Open
+- The internal labels inside the SVG diagrams are still English-only. Deferred to phase 10.
+
 ### Engineering section (2026-08-24)
 
 Requested by the author: the site should explain how it was built — why a frontend, an API and a

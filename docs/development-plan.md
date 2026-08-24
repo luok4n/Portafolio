@@ -100,13 +100,16 @@ Entregable: `src/services/portfolio-api`. Decisiones en [ADR-0004](adr/0004-back
 
 **Criterio de aceptación:** base recreable desde cero con un comando, sin inserts manuales.
 
-### Fase 5 — Frontend Angular 22
+### Fase 5 — Frontend Angular 22 ✅
 
-- [ ] Aplicación con layout y secciones de la fase 2, incluida la de Engineering con sus diagramas SVG.
-- [ ] Transloco para strings de UI; contenido desde la API.
-- [ ] Prerender por ruta y locale; snapshot de contenido como fallback.
-- [ ] Estados de carga, error y "contenido en caché".
-- [ ] Responsive y accesibilidad básica.
+Entregable: `src/frontend/portfolio-web`.
+
+- [x] Aplicación con layout y secciones de la fase 2, incluida la de Engineering con sus diagramas SVG.
+- [x] Transloco para strings de UI; contenido desde la API con revalidación en el navegador.
+- [x] Prerender por ruta y locale (27 rutas); snapshot de contenido embebido como fallback.
+- [x] Sin spinner ni pantalla de error: solo el aviso de "contenido en caché".
+- [x] Responsive, landmarks, skip link, foco visible y `prefers-reduced-motion`.
+- [ ] Etiquetas internas de los diagramas SVG aún sin traducir — Fase 10.
 
 **Criterio de aceptación:** el sitio se ve completo en ambos idiomas con la API apagada.
 
