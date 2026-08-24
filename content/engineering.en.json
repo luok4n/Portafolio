@@ -1,0 +1,159 @@
+{
+  "$comment": "Describes this codebase, so it ships with the frontend rather than coming from the API — see docs/adr/0005-engineering-section.md. Placeholders like {tests} are filled from content/engineering-facts.json, which is generated from the repository. Never write a number here by hand.",
+  "locale": "en",
+  "title": "How this site is built",
+  "lead": "This portfolio is a working system, not a styled CV. It has a frontend, an API and a database because the point was to walk the whole path — data model, application layer, HTTP contract, client, deployment — and be able to explain every decision along it.",
+  "why": {
+    "title": "Why a frontend, an API and a database",
+    "paragraphs": [
+      "A personal portfolio does not need a database. Ten static pages would have loaded faster and cost nothing to run. That is precisely why building it that way would have said nothing about the work I actually do.",
+      "So the content lives in PostgreSQL, is served by an ASP.NET Core API with a real contract, and is consumed by an Angular frontend that prerenders to static files. Every layer is small on purpose — the goal was a complete flow that holds together, not a large system that impresses by size.",
+      "The constraint I set myself was the one that is easy to break: no layer, pattern or dependency exists unless I can say what problem it solves and what it costs. Where I chose not to add something, that is written down too."
+    ]
+  },
+  "focus": {
+    "title": "Where the weight sits",
+    "paragraphs": [
+      "I work on backend. The site reflects that honestly rather than hiding it: the depth is in the domain model, the bilingual content design, the API contract and the infrastructure. The frontend is careful and deliberately plain — it is the window, not the exhibit.",
+      "The parts I would actually want to be asked about are here: a business rule that is subtle enough to get wrong, a translation model that survives a third language, one seam that let storage change without the contract moving, and a check that caught two implementations quietly disagreeing."
+    ]
+  },
+  "architecture": {
+    "title": "Architecture",
+    "description": "Angular prerenders every route and locale to static HTML at build time, served by nginx. The API is stateless and read-only. PostgreSQL holds the content, seeded from reviewed files in the repository.",
+    "notes": [
+      "The frontend ships a build-time snapshot of the content. If the API is unreachable or cold-starting, the page still renders — it shows cached content rather than a spinner or an error.",
+      "That is not decoration. A portfolio that shows an error while someone is looking at it during an interview has failed at the only moment that mattered."
+    ]
+  },
+  "decisions": [
+    {
+      "id": "bilingual",
+      "adr": "0001",
+      "title": "Bilingual content, English default",
+      "problem": "Two audiences that do not overlap: international recruiters and the Colombian market. Serving one halves the reach.",
+      "decision": "English at /en, Spanish at /es with full parity. UI strings switch at runtime; content is translated per locale in the database.",
+      "rejected": "Auto-redirecting by Accept-Language, which would destabilise the canonical URLs prerendering depends on and take control away from the reader.",
+      "cost": "Every content change is two changes, and prerendering doubles the generated routes."
+    },
+    {
+      "id": "prerender",
+      "adr": "0002",
+      "title": "Prerendered, not a single-page app",
+      "problem": "A plain SPA returns an empty document to crawlers and to the link-preview bots used by LinkedIn and WhatsApp — exactly the channels a portfolio travels through.",
+      "decision": "Angular with prerendering. Every route and locale becomes static HTML, served by nginx with no Node process in production.",
+      "rejected": "Server-side rendering on every request, for content that changes a handful of times a year.",
+      "cost": "Content edits need a rebuild, and build time grows with routes times locales."
+    },
+    {
+      "id": "tenure",
+      "adr": null,
+      "title": "Years of experience are computed, never stored",
+      "problem": "Two roles held at the same time are not double the experience, and a career gap is not experience at all. A number typed into a file goes stale the month after it is written.",
+      "decision": "The domain unions the months every role covers and divides by twelve. The same rule drives the site and the generated CV, so the two cannot disagree.",
+      "rejected": "Summing role durations, which inflates any overlap; and measuring first start to last end, which counts gaps as experience.",
+      "cost": "A subtle rule needs tests that state the intent, including one pinned to the real career."
+    },
+    {
+      "id": "seam",
+      "adr": "0004",
+      "title": "One seam between the application and its storage",
+      "problem": "The content started as files and had to become PostgreSQL without the API contract moving.",
+      "decision": "A single interface returning the whole resolved content for one language. Both a file source and a database source implement it; which one runs is configuration.",
+      "rejected": "A repository per entity, and a generic repository wrapped around Entity Framework — patterns with nothing to do here.",
+      "cost": "Two implementations of one contract, which is why the parity check below exists."
+    },
+    {
+      "id": "translations",
+      "adr": "0001",
+      "title": "Translations as rows, resolved at seed time",
+      "problem": "Storing translated text in columns makes a third language a schema migration. Storing it sparsely makes every read do fallback logic.",
+      "decision": "Base tables hold the facts; translation tables are keyed by entity and language code, and are written already resolved — one complete row per language.",
+      "rejected": "Per-language columns, and field-level fallback at read time.",
+      "cost": "The seed does more work so that reads do less, and the resolution logic must exist in exactly one place."
+    },
+    {
+      "id": "no-serilog",
+      "adr": "0004",
+      "title": "No dependency that earns nothing",
+      "problem": "It is easy to add a well-known library because it looks professional rather than because it is needed.",
+      "decision": "Structured JSON logging with what the framework already provides, since every container platform collects stdout.",
+      "rejected": "A third-party logging library that would have produced the same lines.",
+      "cost": "Slightly more setup by hand, and a name a reviewer might expect to see and not find."
+    }
+  ],
+  "flows": [
+    {
+      "id": "language",
+      "title": "How a request resolves its language",
+      "description": "Explicit parameter, then the Accept-Language header honouring quality values and reducing regional tags, then English. Every response reports which language it resolved and from where, so a caller never has to guess. A malformed header falls back rather than failing — a broken header from some client is not a reason to refuse a public page.",
+      "steps": [
+        "?lang=es",
+        "Accept-Language",
+        "English",
+        "response states how it resolved"
+      ]
+    },
+    {
+      "id": "content",
+      "title": "How content reaches the page",
+      "description": "Reviewed files in the repository are the source of truth. A seeder loads them into PostgreSQL, recording a fingerprint so a deploy that changed nothing rewrites nothing. The API reads from there. The frontend prerenders against the API at build time and revalidates at runtime, falling back to what it prerendered.",
+      "steps": [
+        "content files",
+        "seed",
+        "PostgreSQL",
+        "API",
+        "prerender",
+        "browser"
+      ]
+    },
+    {
+      "id": "cv",
+      "title": "The CV is generated from the same content",
+      "description": "The CV is not a hand-edited file kept alongside the site — it is built from the same reviewed content, in both languages, and fits two pages by measuring the rendered output rather than by guessing a font size. A correction is made once.",
+      "steps": [
+        "content files",
+        "print stylesheet",
+        "headless render",
+        "measure pages",
+        "PDF"
+      ]
+    }
+  ],
+  "dataModel": {
+    "title": "Data model",
+    "description": "{tables} tables. Facts live on the base tables; translated text lives in translation tables keyed by entity and language, which makes a third language a data change rather than a migration.",
+    "notes": [
+      "Check constraints refuse a period that ends before it starts and a month outside 1–12, because a negative duration would render as nonsense on a public page.",
+      "Projects reference roles with a restricted delete rather than a cascade: removing a role that still has projects is a mistake worth surfacing, not a silent loss of content."
+    ]
+  },
+  "testing": {
+    "title": "Testing",
+    "description": "{tests} tests, covering the parts where being wrong would be invisible rather than obvious.",
+    "items": [
+      "The tenure rule, including overlapping roles, a role inside another, a career gap, and one test pinned to the real career so the site and the CV cannot drift apart.",
+      "The language fallback chain, including quality values, regional tags, unsupported languages and headers that are simply malformed.",
+      "The merge between a translation and the base locale, where a missing field must fall back rather than render empty.",
+      "A parity check comparing the file source and the database source across both languages. It found a real disagreement about ordering that no unit test would have caught, which is the reason it exists."
+    ]
+  },
+  "operations": {
+    "title": "Operations",
+    "items": [
+      "Liveness runs no checks at all — it answers whether the process is wedged. A content problem must not make an orchestrator restart a healthy process.",
+      "Readiness loads the content in every supported language, which catches the case where English works and Spanish does not — a failure that would otherwise only be seen by Spanish-speaking visitors.",
+      "Every request carries a correlation id, accepted from the caller when well-formed and generated otherwise, echoed back and attached to the logs.",
+      "Errors are RFC 7807 problem documents from one handler. Only exceptions the application defines contribute their message; anything unexpected stays generic.",
+      "No phone number is published, and the CV in the repository is the redacted one. The personal number lives in an untracked file the build reads if it is there."
+    ]
+  },
+  "stack": {
+    "title": "Stack",
+    "description": "{endpoints} endpoints, {languages} languages, {adrs} recorded decisions."
+  },
+  "repository": {
+    "label": "Read the source",
+    "note": "Every decision above is written down in the repository as a numbered record, including the ones I argued myself out of."
+  }
+}

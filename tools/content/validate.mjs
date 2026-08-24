@@ -84,6 +84,52 @@ for (const role of en) {
   if (role.highlightsStatus) warn(`experience "${role.id}": ${role.highlightsStatus}`);
 }
 
+// --- engineering section -------------------------------------------------------------------------
+// Ships with the app rather than through the API (ADR-0005), so nothing else checks it.
+if (existsSync(join(contentDir, 'engineering.en.json'))) {
+  const engEn = readJson('engineering.en.json');
+  const engEs = readJson('engineering.es.json');
+
+  const idsOf = (doc, key) => (doc[key] ?? []).map((x) => x.id);
+  for (const key of ['decisions', 'flows']) {
+    const a = idsOf(engEn, key);
+    const b = idsOf(engEs, key);
+    for (const id of a) if (!b.includes(id)) fail(`engineering.${key}: "${id}" has no Spanish translation`);
+    for (const id of b) if (!a.includes(id)) fail(`engineering.${key}: Spanish "${id}" has no English entry`);
+  }
+
+  for (const key of ['testing', 'operations']) {
+    if ((engEn[key]?.items?.length ?? 0) !== (engEs[key]?.items?.length ?? 0)) {
+      fail(`engineering.${key}: item counts differ between languages`);
+    }
+  }
+
+  // Every {placeholder} the copy uses must be a fact the collector actually produces. A placeholder
+  // with no matching fact would render as literal braces on a public page.
+  if (!existsSync(join(contentDir, 'engineering-facts.json'))) {
+    fail('engineering-facts.json is missing — run node tools/engineering/collect-facts.mjs');
+  } else {
+    const facts = readJson('engineering-facts.json');
+    for (const [name, doc] of [['en', engEn], ['es', engEs]]) {
+      const placeholders = new Set([...JSON.stringify(doc).matchAll(/\{([a-zA-Z]+)\}/g)].map((m) => m[1]));
+      for (const p of placeholders) {
+        if (!(p in facts)) fail(`engineering.${name}: "{${p}}" matches no generated fact`);
+      }
+    }
+
+    // A number written into the copy is a number that will go stale. The generated facts exist so
+    // that never happens; this catches someone taking the shortcut later.
+    for (const [name, doc] of [['en', engEn], ['es', engEs]]) {
+      const prose = Object.entries(doc)
+        .filter(([k]) => !k.startsWith('$'))
+        .map(([, v]) => JSON.stringify(v))
+        .join(' ');
+      const suspicious = prose.match(/\b\d{2,}\s+(tests|tables|endpoints|decisions|pruebas|tablas|endpoints|decisiones)\b/gi);
+      if (suspicious) fail(`engineering.${name}: hardcoded count "${suspicious[0]}" — use a {placeholder}`);
+    }
+  }
+}
+
 // --- privacy ----------------------------------------------------------------------------------
 // A phone number must never appear in a tracked content file.
 const tracked = ['profile.en.json', 'profile.es.json', 'social-links.json', 'cv-source.md', 'experience.en.json', 'experience.es.json'];

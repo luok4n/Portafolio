@@ -7,6 +7,31 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Engineering section (2026-08-24)
+
+Requested by the author: the site should explain how it was built — why a frontend, an API and a
+database, that the author's focus is backend and the site should say so, and the full technical
+documentation (diagrams, flows, tests).
+
+#### Added
+- `docs/adr/0005-engineering-section.md` — it ships with the application rather than coming from
+  the API, because it describes this codebase and must never survive the architecture it describes.
+  Hosting moves to ADR-0006.
+- `content/engineering.{en,es}.json` — the section's copy in both languages: why the shape, where
+  the engineering weight sits, architecture, six decisions each with its rejected alternative and
+  its cost, three flows, the data model, testing and operations.
+- `tools/engineering/collect-facts.mjs` — measures the repository and writes
+  `content/engineering-facts.json`. Currently 52 tests, 20 tables, 8 endpoints, 5 accepted ADRs,
+  2 languages, 6 roles, 11 projects.
+- `docs/functional-design.md` gains section 4.6 and the `/en/engineering` and `/es/ingenieria`
+  routes.
+
+#### Changed
+- The content validator now checks the engineering files: matching decision and flow ids across
+  languages, equal item counts, every `{placeholder}` backed by a generated fact, and **no
+  hardcoded counts in the prose**. Verified by deliberately breaking both rules and watching it
+  fail.
+
 ### Phase 4 — PostgreSQL (2026-08-24)
 
 #### Added

@@ -30,6 +30,8 @@ la persona construye software real.
 /es                                 → home español
 /en/projects/{slug}                 → detalle de proyecto, inglés
 /es/proyectos/{slug}                → detalle de proyecto, español
+/en/engineering                     → cómo está construido el sitio, inglés
+/es/ingenieria                      → cómo está construido el sitio, español
 /en/404, /es/404                    → no encontrado, localizado
 sitemap.xml, robots.txt             → sin locale
 ```
@@ -131,7 +133,78 @@ Los proyectos con `verified: false` (MOA, Teach at Home, sitio de la Gobernació
 bloque de fuentes. No se marcan con ninguna insignia negativa: la ausencia de fuentes es la señal
 correcta y suficiente.
 
-### 4.6 Education, Contact, Footer
+### 4.6 Engineering — cómo está construido este sitio
+
+La sección que justifica el proyecto. Un portafolio de un ingeniero **backend** que solo muestra
+tarjetas bonitas se contradice a sí mismo; este explica el sistema que lo sirve.
+
+**Qué responde, en este orden:**
+
+1. **Por qué frontend + API + base de datos**, y no un HTML estático. Porque el objetivo no era
+   publicar un CV, sino recorrer el flujo completo — modelo de datos, capa de aplicación, contrato
+   HTTP, cliente, despliegue — y poder explicar cada decisión.
+2. **Dónde está el peso.** El autor se enfoca en backend, y el sitio lo refleja: el trabajo profundo
+   está en el dominio, el modelo bilingüe, el contrato de la API y la infraestructura. El frontend
+   es correcto y sobrio a propósito, no el escaparate.
+3. **La arquitectura**, con diagrama: Angular prerenderizado → nginx → API .NET → PostgreSQL.
+4. **Las decisiones**, cada una con su problema, su alternativa descartada y su costo. Enlazan a los
+   ADR del repositorio.
+5. **Los flujos**: resolución de idioma, carga de contenido con su fallback, y el ciclo
+   `content/` → seed → base de datos → API → prerender.
+6. **El modelo de datos**: tablas base con los hechos, tablas de traducción por
+   `(entity_id, language_code)`.
+7. **Las pruebas**: qué se prueba, por qué esos casos, y qué encontró la verificación de paridad.
+8. **Operación**: health checks, logging estructurado, correlation ids, CI, seguridad.
+
+**Regla que hace la diferencia:** las cifras de esta sección —número de pruebas, de tablas, de
+endpoints, de ADR— **se generan desde el repositorio en tiempo de build**, no se escriben a mano.
+Una sección de ingeniería que presume 52 pruebas cuando hay 30 es peor que no tenerla, y es
+exactamente el tipo de detalle que un entrevistador técnico verifica. Ver
+[ADR-0005](adr/0005-engineering-section.md).
+
+**Estructura visual:**
+
+```text
+┌──────────────────────────────────────────────────────────┐
+│  How this site is built                                  │
+│                                                          │
+│  Why a frontend, an API and a database                   │
+│  ─ prosa corta, 2 párrafos                               │
+│                                                          │
+│  [ 52 tests ] [ 20 tables ] [ 8 endpoints ] [ 5 ADRs ]   │
+│    ↑ generados desde el repo, no escritos a mano         │
+│                                                          │
+│  ── Architecture ──────────────────────────────────────  │
+│  [ diagrama SVG: Angular → nginx → API → PostgreSQL ]    │
+│                                                          │
+│  ── Decisions ─────────────────────────────────────────  │
+│  ▸ Bilingual content            problema / decisión /    │
+│  ▸ Prerendering instead of SPA    alternativa / costo    │
+│  ▸ One storage seam                       → enlace ADR   │
+│  ▸ …                                                     │
+│                                                          │
+│  ── How a request resolves a language ─────────────────  │
+│  [ diagrama de flujo ]                                   │
+│                                                          │
+│  ── Data model ────────────────────────────────────────  │
+│  [ diagrama: base ← traducciones ]                       │
+│                                                          │
+│  ── Testing ───────────────────────────────────────────  │
+│  ── Operations ────────────────────────────────────────  │
+│                                                          │
+│  [ Ver el repositorio ]                                  │
+└──────────────────────────────────────────────────────────┘
+```
+
+**Diagramas:** SVG en línea, escritos a mano, con colores por token de tema. Sin librería de
+diagramas: se prerenderizan, funcionan sin JavaScript, y no añaden una dependencia para dibujar
+cuatro cajas.
+
+**Ruta propia:** además del resumen en el home, `/en/engineering` y `/es/ingenieria` son páginas
+completas prerenderizadas. Es contenido con entidad suficiente para indexarse por su cuenta y es el
+enlace que se comparte en una entrevista.
+
+### 4.7 Education, Contact, Footer
 
 - **Education**: título, institución, año. Una línea.
 - **Contact**: email, LinkedIn, GitHub y descarga del CV en el idioma activo. **Sin teléfono**

@@ -22,6 +22,7 @@ poder rastrear qué cambió y por qué.
 | 6 | Se añade **política de privacidad de contenido**: sin teléfono público, sin PDF del CV en el repo, clientes solo con información pública y trazable | El repositorio es público e indexable | [ADR-0003](adr/0003-content-privacy.md) |
 | 7 | Se fijan versiones concretas: **.NET 10 LTS, Angular 22, PostgreSQL 17** | El plan decía "LTS disponible"; conviene dejarlo escrito | [environment.md](environment.md) |
 | 8 | Se añade `content/` con archivos bilingües y trazabilidad de fuentes | Necesario para el seed y para la revisión de contenido | Fase 1 |
+| 9 | Se añade una sección **Engineering** que documenta cómo está construido el sitio, con cifras generadas desde el repositorio | Pedido del autor: es un portafolio de un ingeniero backend y debe demostrar el flujo completo, no solo presentarlo | [ADR-0005](adr/0005-engineering-section.md) |
 
 Todo lo demás del plan original se mantiene: Clean Architecture pragmática, un solo bounded context,
 sin sobrearquitectura, Conventional Commits, y el protocolo Inspect → Understand → Plan → Implement
@@ -73,7 +74,7 @@ con URL). Nada inventado.
 
 Entregable: [functional-design.md](functional-design.md).
 
-- [x] Secciones definitivas: Hero, About, Experience, Skills, Projects, Education, Contact.
+- [x] Secciones definitivas: Hero, About, Experience, Skills, Projects, **Engineering**, Education, Contact.
 - [x] Mapa de rutas por locale (`/en/...`, `/es/...`) y comportamiento del selector de idioma.
 - [x] Claves de traducción de UI y convención de nombres.
 - [x] Metadatos SEO por locale, `hreflang`, canonical, sitemap.
@@ -101,7 +102,7 @@ Entregable: `src/services/portfolio-api`. Decisiones en [ADR-0004](adr/0004-back
 
 ### Fase 5 — Frontend Angular 22
 
-- [ ] Aplicación con layout y secciones de la fase 2.
+- [ ] Aplicación con layout y secciones de la fase 2, incluida la de Engineering con sus diagramas SVG.
 - [ ] Transloco para strings de UI; contenido desde la API.
 - [ ] Prerender por ruta y locale; snapshot de contenido como fallback.
 - [ ] Estados de carga, error y "contenido en caché".
@@ -146,7 +147,7 @@ Entregable: `src/services/portfolio-api`. Decisiones en [ADR-0004](adr/0004-back
 - [ ] Comparativa de opciones gratuitas y de pago para: frontend estático, API .NET y PostgreSQL.
 - [ ] Costo mensual estimado de cada opción, con fecha de verificación de precios.
 - [ ] Evaluación honesta de Kubernetes: qué demuestra en una entrevista frente a lo que cuesta operar.
-- [ ] `docs/adr/0005-hosting.md` con la decisión y el motivo.
+- [ ] `docs/adr/0006-hosting.md` con la decisión y el motivo.
 
 **Salida posible:** que Kubernetes no se justifique y el proyecto lo documente como decisión
 consciente — lo cual es en sí mismo una buena respuesta de arquitectura.
