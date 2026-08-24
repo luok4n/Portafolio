@@ -1,33 +1,52 @@
 # Content
 
-Structured, reviewed portfolio content. This directory is the single source for the database seed —
-no professional information is hardcoded in templates or in C# files.
-
-Populated in phase 1. Planned files:
+Structured, reviewed portfolio content. This directory is the single source for the database seed
+and for the generated CV — no professional information is hardcoded in templates or in C# files.
 
 ```text
 content/
-├── cv-source.md              # Text extracted from the CV, unaltered
-├── profile.en.json
-├── profile.es.json
+├── cv-source.md              # Text extracted from the CV, unaltered (phone redacted)
+├── content-review.md         # Every difference from the CV, its reason and who authorised it
+├── clients-research.md       # Public-source background for each client, with cited URLs
+│
+├── profile.en.json           # Base locale — carries structure and facts
+├── profile.es.json           # Translation — carries only translatable fields
 ├── experience.en.json
 ├── experience.es.json
 ├── projects.en.json
 ├── projects.es.json
-├── skills.json               # Locale-independent identifiers + localised labels
 ├── education.en.json
 ├── education.es.json
-├── social-links.json
-└── content-review.md         # Detected inconsistencies and how each was resolved
+├── skills.json               # Locale-independent items, labels translated inline
+├── social-links.json         # Locale-independent
+│
+└── private/                  # Untracked. Personal data that must not reach a public repo
+    └── contact.local.json
 ```
+
+## Base locale and translations
+
+`*.en.json` is the **base locale**. It owns everything factual and structural: ids, dates,
+technologies, project links, source URLs and verification flags.
+
+`*.es.json` carries **only translatable fields**, matched to the base locale by `id`. Dates and
+technologies are deliberately *not* repeated there — duplicating a fact across two files is how the
+two quietly stop agreeing.
+
+Run `node tools/content/validate.mjs` to check that every translation matches the base locale: same
+ids, same number of bullets, nothing missing and nothing orphaned.
 
 ## Rules
 
 1. **Nothing is invented.** Every company, role, date, technology, project, metric and achievement
    comes from the CV or from a public source cited inline.
 2. **Every enriched fact carries a source.** Client and project descriptions gathered from public
-   sources include a `sources` array with URLs and the date they were checked.
-3. **Spanish is a translation, not a rewrite.** The `.es.json` files mirror the `.en.json`
-   structure exactly, key for key, and are approved by the author before being committed.
+   sources include a `sources` array with URLs and the date they were checked, and a `verified`
+   flag that is `false` when no public source backs the description.
+3. **Spanish is a translation, not a rewrite.** Same claims, same scope, approved by the author
+   before publication — the CV has no Spanish source of truth, so nothing is assumed.
 4. **No confidential material.** See [ADR-0003](../docs/adr/0003-content-privacy.md) for what may
    and may not be published about clients.
+5. **Anything uncertain is flagged, not smoothed over.** Fields such as `identityStatus` or
+   `verified: false` exist so an unresolved question stays visible instead of becoming a confident
+   sentence on a public page.

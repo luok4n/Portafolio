@@ -43,10 +43,30 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 - Comfama identified as the Caja de Compensación Familiar de Antioquia; the Woldev engagement
   identified as the Gobernación de Risaralda institutional website on legacy PHP.
 
+#### Added (Spanish content and validation)
+- `content/profile.es.json`, `experience.es.json`, `projects.es.json`, `education.es.json` — a
+  complete Spanish first pass. `*.en.json` is the base locale and owns ids, dates, technologies and
+  sources; the Spanish files carry only translatable fields, matched by id, so no fact is stored
+  twice.
+- `tools/content/validate.mjs` — fails the build when a translation is missing, has a different
+  number of bullets, references an unknown project, claims `verified` without a source, or when a
+  phone number appears in a tracked file.
+- `cvSummary` on featured projects: a CV and a web page have different length budgets, and the
+  research-length summaries pushed the CV onto a third page.
+
+#### Resolved
+- Comfama covered three pieces of work: the Slang alliance, internal management of Comfama's
+  website, and a grading platform for teachers. The CV's MVM section now names Comfama alongside
+  CHIVOR XM and SLANG.
+- Slang's identity was flagged pending disambiguation — "SLANG" under the Comfama account could
+  have been an unrelated internal project name, which would have attached another company's
+  achievements to it. Confirmed as the startup: Slang and Comfama ran an alliance giving affiliates
+  access to the English courses with member benefits.
+- UTP responsibility bullets approved by the author.
+
 #### Open
-- The UTP responsibility bullets are drafted from the author's description and await approval.
-- The author's specific contribution at Comfama is not yet captured.
-- No Spanish content exists yet; every translated string needs explicit approval (ADR-0001).
+- Spanish translation awaits the author's approval before it is treated as final (ADR-0001).
+- The CV builder emits English only; a Spanish variant is a small addition once approved.
 
 ### Phase 0 — Repository and environment (2026-08-24)
 

@@ -34,7 +34,9 @@ content with no visible sign that anything was wrong.
 | Item | Basis |
 |---|---|
 | UTP role, Jan–Oct 2019, Software Developer, Java + Spring Boot + Angular, RIAS programme | Author, 2026-08-24. Job title chosen by the author from the options offered. |
-| **UTP responsibility bullets** | ⚠️ **Drafted, pending approval.** Written from the author's description (Java/Spring Boot backend, Angular frontend, RIAS) and flagged `highlightsStatus: draft-pending-author-approval` in `experience.en.json`. They must be approved or rewritten before publication. |
+| UTP responsibility bullets | Drafted from the author's description and **approved by the author on 2026-08-24**. |
+| Comfama account: Slang alliance, internal website management, teacher grading platform | Author, 2026-08-24. |
+| MVM bullet naming Comfama | Added to the CV: the CV named CHIVOR XM and SLANG but not Comfama, which was a third of the MVM work. |
 | LendingFront teams: development, innovation, optimisation | Author, 2026-08-24. |
 | Linkvest contribution: monthly and quarterly investment reporting | Author, 2026-08-24. |
 | MOA: Excel report generation | Author, 2026-08-24. |
@@ -54,12 +56,27 @@ content with no visible sign that anything was wrong.
 - No metric appears that is not already in the CV (the 30% query improvement and the 15% delivery
   time reduction are quoted verbatim; nothing new was invented).
 
+## Slang: an identity that had to be checked
+
+When the author said Slang was one of the projects under the Comfama account, the description
+already researched — the Colombian EdTech startup with the MIT origin, the US$14M Series A and the
+2022 World Economic Forum recognition — stopped being safe to publish. "SLANG" could equally have
+been an internal project name for a Comfama learning platform with no connection to the startup,
+and attaching another company's achievements to it would have been a factual error on a public page.
+
+Flagged as `identityStatus: pending-disambiguation` and resolved by the author on 2026-08-24: it is
+the startup. Slang and Comfama ran an alliance giving the fund's affiliates access to the English
+courses with member benefits, so the research stands and the two entries describe one engagement
+from two sides.
+
 ## Still open
 
-1. **UTP responsibility bullets** — need the author's approval or corrections.
-2. **Comfama contribution** — what the author actually did there; `contribution` is `null` until then.
-3. **Spanish translation** — no `*.es.json` exists yet. The CV has no Spanish source of truth, so
-   every translated string needs explicit approval before it is committed (ADR-0001).
+1. **Spanish translation approval.** `profile.es.json`, `experience.es.json`, `projects.es.json` and
+   `education.es.json` now exist as a complete first pass. The CV has no Spanish source of truth, so
+   every translated string needs the author's explicit approval (ADR-0001) before it is treated as
+   final.
+2. **A Spanish CV.** The builder currently emits English only. `cvSummary` fields already exist in
+   Spanish, so this is a small addition once the translation is approved.
 
 ## Regenerating the CV
 

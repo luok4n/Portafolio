@@ -1,0 +1,13 @@
+{
+  "$comment": "Traducción de profile.en.json, que es el locale base y define la estructura. Aquí solo van los campos traducibles. Pendiente de aprobación del autor — ver content-review.md.",
+  "locale": "es",
+  "name": "Sebastián Vélez Ramírez",
+  "headline": "Desarrollador .NET Senior | Ingeniería de Software | Microservicios y Azure",
+  "title": "Desarrollador .NET Senior",
+  "location": "Risaralda, Colombia",
+  "summaryTemplate": "Ingeniero de Software y Desarrollador .NET Senior con más de {years} años de experiencia construyendo y entregando soluciones de software escalables en los sectores de energía, fintech, finca raíz, salud pública y educación. Amplia experiencia en C#, .NET, ASP.NET Core, APIs REST, microservicios, SQL Server y Microsoft Azure, complementada con experiencia práctica en Python, Java, React, PostgreSQL, Angular, PHP y Laravel. Experiencia en arquitectura de software, aplicaciones en la nube, mensajería asíncrona, CI/CD, pruebas automatizadas y prácticas de desarrollo ágil.",
+  "languages": [
+    { "language": "Español", "level": "Nativo" },
+    { "language": "Inglés", "level": "B2" }
+  ]
+}

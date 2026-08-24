@@ -1,0 +1,95 @@
+{
+  "$comment": "Traducción de experience.en.json, que es el locale base y define fechas, ids, proyectos y tecnologías. Aquí solo van los campos traducibles, referenciados por id. Pendiente de aprobación del autor.",
+  "locale": "es",
+  "experience": [
+    {
+      "id": "adagetech",
+      "role": "Desarrollador .NET Senior",
+      "employmentType": "tiempo completo",
+      "highlights": [
+        "Diseñé y desarrollé soluciones backend y microservicios con C#, .NET, ASP.NET Core, Entity Framework Core y SQL Server.",
+        "Diseñé e implementé arquitecturas basadas en microservicios y APIs RESTful para aplicaciones de misión crítica.",
+        "Construí e integré comunicación asíncrona y flujos orientados a eventos con Azure Service Bus.",
+        "Desarrollé y mantuve soluciones cloud-native con Azure App Services, Azure Functions, Azure Storage, Key Vault y Azure DevOps.",
+        "Implementé pipelines de CI/CD y procesos de despliegue automatizado con Azure DevOps.",
+        "Apliqué Clean Architecture, principios SOLID, inyección de dependencias, patrones de diseño y pruebas automatizadas para mejorar la mantenibilidad y la calidad del código.",
+        "Realicé revisiones de código, planeación técnica, estimación de esfuerzo y decisiones de arquitectura.",
+        "Acompañé a otros desarrolladores y contribuí a los estándares de ingeniería y a la documentación técnica."
+      ]
+    },
+    {
+      "id": "aes-chivor",
+      "role": "Ingeniero de Software (Freelance)",
+      "employmentType": "freelance",
+      "highlights": [
+        "Diseñé y desarrollé servicios backend con C#, .NET Core, ASP.NET Core y SQL Server para la plataforma MOA, que opera en el mercado mayorista de energía de Colombia.",
+        "Desarrollé APIs REST e integraciones para procesos críticos de gestión de energía.",
+        "Participé en la migración de aplicaciones heredadas hacia una arquitectura moderna de microservicios.",
+        "Implementé soluciones en la nube con Microsoft Azure e integré servicios distribuidos.",
+        "Optimicé consultas complejas y operaciones de base de datos en SQL Server, reduciendo los tiempos de respuesta en un 30%.",
+        "Participé en análisis de requerimientos, diseño técnico, análisis de impacto e implementación de nuevas funcionalidades.",
+        "Apliqué prácticas de ingeniería de software como SOLID, inyección de dependencias, clean code, revisiones de código y pruebas automatizadas."
+      ]
+    },
+    {
+      "id": "lendingfront",
+      "role": "Ingeniero de Software",
+      "employmentType": "tiempo completo",
+      "teams": ["Desarrollo", "Innovación", "Optimización"],
+      "highlights": [
+        "Desarrollé y mantuve el Marketplace BackOffice con Python, React, Redux, PostgreSQL y AWS.",
+        "Desarrollé funcionalidad backend y lógica de negocio con Python.",
+        "Construí y mantuve funcionalidades de frontend con React y Redux.",
+        "Diseñé y consumí APIs para integrar las aplicaciones frontend con los servicios backend.",
+        "Implementé pruebas unitarias y datos simulados para mejorar la confiabilidad del software y la cobertura de pruebas.",
+        "Trabajé con PostgreSQL para la persistencia de datos y las consultas de la aplicación.",
+        "Participé en análisis de requerimientos, estimación técnica, revisiones de código y planeación de sprints bajo SCRUM.",
+        "Colaboré con equipos multidisciplinarios para entregar nuevas funcionalidades y mejoras en producción."
+      ]
+    },
+    {
+      "id": "mvm",
+      "role": "Analista de Desarrollo",
+      "employmentType": "tiempo completo",
+      "highlights": [
+        "Diseñé y desarrollé aplicaciones en la nube con C#, ASP.NET, .NET Core, Entity Framework y SQL Server.",
+        "Desarrollé APIs REST y servicios backend siguiendo buenas prácticas de ingeniería de software e integración.",
+        "Diseñé integraciones entre sistemas internos y externos mediante arquitecturas basadas en APIs.",
+        "Desarrollé y mantuve soluciones desplegadas en Microsoft Azure.",
+        "Usé servicios de Azure para hosting de aplicaciones, integración, almacenamiento y cargas de trabajo en la nube.",
+        "Apliqué Entity Framework Code First para el acceso a datos y el modelado del dominio.",
+        "Trabajé en CHIVOR XM, desarrollando funcionalidad backend con .NET Core y SQL Server para procesos de gestión de energía.",
+        "Trabajé en SLANG, desarrollando funcionalidad web con ASP.NET y Angular para una plataforma de aprendizaje en línea.",
+        "Trabajé en Comfama, desarrollando la gestión interna de su sitio web y una plataforma para que los docentes registraran las notas de los estudiantes en sus distintos cursos.",
+        "Participé en análisis de requerimientos, diseño técnico, desarrollo, pruebas, despliegue y soporte en producción.",
+        "Mejoré los procesos de desarrollo y despliegue, reduciendo el tiempo de entrega en un 15%."
+      ]
+    },
+    {
+      "id": "utp",
+      "role": "Desarrollador de Software",
+      "employmentType": "tiempo completo",
+      "highlights": [
+        "Desarrollé servicios backend con Java y Spring Boot para el programa RIAS (Rutas Integrales de Atención en Salud) del Ministerio de Salud de Colombia.",
+        "Construí funcionalidades e interfaces de usuario con Angular.",
+        "Diseñé y consumí APIs REST entre el frontend en Angular y el backend en Spring Boot.",
+        "Participé en análisis de requerimientos, desarrollo, pruebas y despliegue."
+      ]
+    },
+    {
+      "id": "woldev",
+      "role": "Desarrollador de Software",
+      "employmentType": "tiempo completo",
+      "highlights": [
+        "Desarrollé aplicaciones web y funcionalidades full-stack con PHP, Laravel, Angular y Python.",
+        "Desarrollé funcionalidad backend y lógica de negocio con PHP y Laravel.",
+        "Construí componentes de frontend e interfaces de usuario con Angular.",
+        "Diseñé y consumí APIs REST para la comunicación entre las aplicaciones de frontend y backend.",
+        "Trabajé con bases de datos e implementé el acceso a datos que requerían las aplicaciones de negocio.",
+        "Desarrollé la plataforma Teach at Home, aportando tanto en frontend como en backend.",
+        "Traduje los requerimientos de los clientes en soluciones técnicas y funcionalidades de la aplicación.",
+        "Participé en depuración, mantenimiento, pruebas y despliegue de aplicaciones web."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$comment": "Traducción de education.en.json. Solo campos traducibles; el año vive en el locale base.",
+  "locale": "es",
+  "education": [
+    {
+      "id": "utp-bsc",
+      "degree": "Ingeniería de Sistemas y Computación",
+      "institution": "Universidad Tecnológica de Pereira",
+      "location": "Pereira, Colombia"
+    }
+  ]
+}

@@ -70,7 +70,7 @@
       "employmentType": "full-time",
       "start": "2019-10",
       "end": "2021-12",
-      "projects": ["chivor-xm", "slang", "comfama"],
+      "projects": ["chivor-xm", "slang", "comfama-intranet", "comfama-grades"],
       "technologies": ["C#", "ASP.NET", ".NET Core", "Entity Framework", "SQL Server", "Microsoft Azure", "Angular"],
       "highlights": [
         "Designed and developed cloud-based applications using C#, ASP.NET, .NET Core, Entity Framework, and SQL Server.",
@@ -81,6 +81,7 @@
         "Applied Entity Framework Code First for database access and domain modeling.",
         "Worked on CHIVOR XM, developing backend functionality with .NET Core and SQL Server for energy management processes.",
         "Worked on SLANG, developing web functionality using ASP.NET and Angular for an online learning platform.",
+        "Worked on Comfama, developing internal website management functionality and a platform for teachers to record student grades across courses.",
         "Participated in requirements analysis, technical design, development, testing, deployment, and production support.",
         "Improved development and deployment processes, reducing delivery time by 15%."
       ]
@@ -94,7 +95,6 @@
       "end": "2019-10",
       "projects": ["rias"],
       "technologies": ["Java", "Spring Boot", "Angular", "REST APIs"],
-      "highlightsStatus": "draft-pending-author-approval",
       "highlights": [
         "Developed backend services using Java and Spring Boot for the RIAS programme (Rutas Integrales de Atención en Salud) of Colombia's Ministry of Health.",
         "Built frontend features and user interfaces using Angular.",

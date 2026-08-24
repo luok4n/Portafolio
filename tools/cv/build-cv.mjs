@@ -82,7 +82,7 @@ function render({ includePhone }) {
   html, body { background: #ffffff; }
   body {
     font-family: Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
-    font-size: 9.5pt; line-height: 1.34; color: #1a1a1a; margin: 0;
+    font-size: 9.2pt; line-height: 1.28; color: #1a1a1a; margin: 0;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   header { text-align: center; margin-bottom: 9pt; }
@@ -92,10 +92,10 @@ function render({ includePhone }) {
   .contact a { color: #1a4f8a; text-decoration: none; }
   h2 {
     font-size: 10.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: .4pt;
-    margin: 11pt 0 4pt; padding-bottom: 1.5pt; border-bottom: .8pt solid #1a4f8a; color: #1a4f8a;
+    margin: 9pt 0 3.5pt; padding-bottom: 1.5pt; border-bottom: .8pt solid #1a4f8a; color: #1a4f8a;
   }
   section { break-inside: auto; }
-  .role { break-inside: avoid; margin-bottom: 7pt; }
+  .role { break-inside: avoid; margin-bottom: 5.5pt; }
   .role-head { display: flex; justify-content: space-between; gap: 8pt; align-items: baseline; }
   .role-title { font-weight: 700; }
   .role-company { font-weight: 700; }
@@ -156,7 +156,12 @@ function render({ includePhone }) {
 
 <section class="projects">
   <h2>Featured Projects</h2>
-  ${featured.map((p) => `<p><span class="label">${esc(p.name)}</span> &mdash; ${esc(p.summary)} ${esc(p.contribution ?? '')}</p>`).join('')}
+  ${featured.map((p) => {
+    // A CV and a web page have different length budgets. cvSummary is the short form; the long
+    // research-backed summary is for the site.
+    const text = p.cvSummary ?? `${p.summary} ${p.contribution ?? ''}`.trim();
+    return `<p><span class="label">${esc(p.name)}</span> &mdash; ${esc(text)}</p>`;
+  }).join('')}
 </section>
 
 </body>

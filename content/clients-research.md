@@ -132,6 +132,10 @@ adaptive engine, 200+ professional English courses, presence in Colombia, Mexico
 United States, a US$14M Series A, and recognition by the World Economic Forum in 2022 as one of
 the world's 100 most important technology pioneers — the only Colombian startup on that list.
 
+The work was delivered under an **alliance between Slang and Comfama** that let the fund's affiliates
+access the English courses with member benefits — so this project and the Comfama account below are
+the same engagement seen from two sides, not two unrelated clients.
+
 - Author's contribution: web functionality with ASP.NET and Angular.
 - Sources:
   - https://forbes.co/2021/12/20/emprendedores/ensenando-ingles-para-tecnologia-y-negocios-slang-recauda-us14-millones (checked 2026-08-24)
@@ -144,8 +148,16 @@ non-profit founded on 29 November 1954 that performs social-security functions i
 providing credit, subsidies, health, education, housing, recreation, culture and tourism services
 across the department. Its Medellín base fits MVM's client profile.
 
-- Sector: social security / family welfare fund
-- ⚠️ Still to capture: what the author's specific contribution to the Comfama work was.
+Three pieces of work under this account, per the author:
+
+1. **The Slang alliance** described above — access to Slang's English courses for Comfama affiliates
+   with member benefits.
+2. **Internal management of Comfama's website.**
+3. **A grading platform for teachers**, used to record students' marks across their courses.
+   Education is one of the services Comfama provides to affiliated workers and their families, which
+   is consistent with a first-party teaching platform.
+
+- Sector: social security / family welfare fund, with an education component
 - Source: https://www.comfama.com/conoce-comfama/ (checked 2026-08-24)
 
 ---
