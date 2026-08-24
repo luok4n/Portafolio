@@ -7,7 +7,7 @@ CI/CD and — if the final evaluation justifies it — Kubernetes.
 The goal is twofold: publish the portfolio itself, and make every technical decision in this
 repository explainable in a Software Engineer / Senior Backend / Technical Lead interview.
 
-> **Status:** Phase 0 — repository scaffolding. Nothing is deployed yet.
+> **Status:** phases 0–9 complete. The whole system runs locally with one command; **it is not deployed yet** — hosting is a deliberate decision left to phase 11, and HTTPS comes with it in phase 13.
 
 ---
 
@@ -17,10 +17,15 @@ repository explainable in a Software Engineer / Senior Backend / Technical Lead 
 |---|---|
 | Bilingual content model (EN default, ES full parity) | [ADR-0001](docs/adr/0001-bilingual-content.md) |
 | Prerendered Angular (SSG) instead of SPA or Node SSR | [ADR-0002](docs/adr/0002-frontend-rendering.md) |
+| Pragmatic Clean Architecture, minimal APIs, one storage seam | [ADR-0004](docs/adr/0004-backend-architecture.md) |
+| The engineering section ships with the app, and its numbers are generated | [ADR-0005](docs/adr/0005-engineering-section.md) |
 | What personal data is published, and what is not | [ADR-0003](docs/adr/0003-content-privacy.md) |
 | Kubernetes and hosting deliberately deferred to the end | [Development plan, phases 11–13](docs/development-plan.md) |
 
-## Planned architecture
+What the project defends against, how, and what it deliberately does not do:
+[docs/security.md](docs/security.md).
+
+## Architecture
 
 ```text
                 Internet
@@ -53,11 +58,12 @@ empty if the API is unavailable. See [ADR-0002](docs/adr/0002-frontend-rendering
 ```text
 .
 ├── content/        # Structured, reviewed portfolio content (EN/ES) — source for the DB seed
-├── docs/           # Architecture, decisions (ADRs), environment, development plan
-├── infra/          # Docker, Kubernetes manifests, helper scripts
+├── docs/           # Architecture, decisions (ADRs), security, environment, development plan
+├── infra/          # Dockerfiles, nginx, and Kubernetes manifests if phase 11 justifies them
+├── tools/          # Content validation, security scan, CV builder, generated engineering facts
 └── src/
-    ├── frontend/   # Angular application
-    └── services/   # ASP.NET Core services
+    ├── frontend/   # Angular 22, prerendered
+    └── services/   # ASP.NET Core on .NET 10
 ```
 
 ## Run it

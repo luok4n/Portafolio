@@ -142,11 +142,12 @@
   "operations": {
     "title": "Operations",
     "items": [
-      "Liveness runs no checks at all — it answers whether the process is wedged. A content problem must not make an orchestrator restart a healthy process.",
-      "Readiness loads the content in every supported language, which catches the case where English works and Spanish does not — a failure that would otherwise only be seen by Spanish-speaking visitors.",
-      "Every request carries a correlation id, accepted from the caller when well-formed and generated otherwise, echoed back and attached to the logs.",
-      "Errors are RFC 7807 problem documents from one handler. Only exceptions the application defines contribute their message; anything unexpected stays generic.",
-      "No phone number is published, and the CV in the repository is the redacted one. The personal number lives in an untracked file the build reads if it is there."
+      "Liveness runs no checks at all — it answers whether the process is wedged. A content or database problem must not make an orchestrator restart a healthy process; that is what readiness is for, and readiness loads the content in every supported language.",
+      "One structured line per request with method, route template, status, duration and correlation id. The route template, not the raw path, so a thousand requests for different projects aggregate into one series instead of a thousand.",
+      "Request count, error count and latency exposed in Prometheus format, instrumented with the standard .NET metrics API so an OpenTelemetry collector can consume them later without changing anything. Only 5xx counts as an error: a crawler probing for pages that do not exist is not an outage.",
+      "Errors are RFC 7807 problem documents from one handler. Only exceptions the application defines contribute their message; anything unexpected stays generic, because a stack trace is not the public's business.",
+      "A read-only container running as a non-root user with no shell, not published to the host, reachable only through nginx. Rate limiting exists so one badly written scraper cannot spend the compute budget — never applied to health or metrics, which would let traffic convince an orchestrator the service is down.",
+      "No phone number is published, and the CV in the repository is the redacted one. A test asserts that no API response contains a phone number, so a future content change cannot reintroduce it."
     ]
   },
   "stack": {

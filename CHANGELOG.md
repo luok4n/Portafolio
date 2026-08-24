@@ -7,6 +7,38 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 9 — Observability and security (2026-08-24)
+
+#### Added
+- `RequestLoggingMiddleware` — one structured line per request with method, **route template**,
+  status, duration and correlation id. The template rather than the raw path, so a thousand requests
+  for different projects aggregate into one series instead of a thousand. Health checks log at Debug:
+  they run every fifteen seconds forever and at Information would bury every line that matters.
+- `PortfolioMetrics` — request count, error count and a latency histogram, exposed at `/metrics` in
+  Prometheus text format. Instrumented with `System.Diagnostics.Metrics`, the standard .NET API that
+  OpenTelemetry consumes, so adding an exporter later changes nothing here. Aggregation and
+  rendering are done in-process because there is nowhere to export to; a telemetry pipeline
+  configured to scrape itself is ceremony.
+- Only 5xx counts as an error. A crawler probing for `/wp-admin` generates 404s all day, and
+  counting those would hide a broken deployment in the noise.
+- `/metrics` is not proxied by nginx, so it is reachable only from inside the network — verified.
+- Rate limiting: a fixed window per caller, 300/minute by default, partitioned by forwarded address.
+  Health and metrics are **never** limited, because limiting them would let a burst of traffic
+  convince an orchestrator the service is down. Rejections carry `Retry-After`.
+- [`docs/security.md`](docs/security.md) — secrets, what is published, headers, CORS, input, rate
+  limiting, containers, dependencies, least privilege, and an explicit section on **what this does
+  not do**: no auth, no WAF, no history scanning, no CSP nonces, no HTTPS yet.
+- 16 more tests, including the Prometheus rendering and the rate limiter.
+
+#### Fixed
+- **Health checks and metrics were being output-cached for five minutes.** `AddBasePolicy` with no
+  predicate caches every GET, so an orchestrator would have gone on reading a stale `Healthy` after
+  the service stopped being healthy, and a scraper would have recorded identical counters forever.
+  Found by a metrics test whose counter refused to move. Caching now applies to `/api` only.
+- The rate limit was read from configuration while the host was being built, so configuration added
+  afterwards was silently ignored and the limiter appeared not to work at all. Bound through the
+  options system and resolved per request instead.
+
 ### Phase 6 — Tests (2026-08-24)
 
 **151 tests**: 89 on the backend, 62 on the frontend. Both suites run in CI.

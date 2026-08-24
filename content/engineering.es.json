@@ -136,11 +136,12 @@
   "operations": {
     "title": "Operación",
     "items": [
-      "El chequeo de liveness no ejecuta ninguna comprobación: responde si el proceso está trabado. Un problema de contenido no debe hacer que un orquestador reinicie un proceso sano.",
-      "El de readiness carga el contenido en todos los idiomas soportados, lo que atrapa el caso de que inglés funcione y español no — un fallo que si no solo verían los visitantes hispanohablantes.",
-      "Cada petición lleva un correlation id, aceptado del cliente cuando viene bien formado y generado si no, devuelto en la respuesta y adjunto a los logs.",
-      "Los errores son documentos RFC 7807 producidos por un solo manejador. Solo las excepciones que define la aplicación aportan su mensaje; lo inesperado se queda genérico.",
-      "No se publica ningún teléfono, y el CV que está en el repositorio es la versión sin datos personales. El número vive en un archivo fuera de control de versiones que el build lee si existe."
+      "El chequeo de liveness no ejecuta ninguna comprobación: responde si el proceso está trabado. Un problema de contenido o de base de datos no debe hacer que un orquestador reinicie un proceso sano; para eso está readiness, que carga el contenido en todos los idiomas soportados.",
+      "Una línea estructurada por petición con método, plantilla de ruta, estado, duración y correlation id. La plantilla y no la ruta literal, para que mil peticiones a proyectos distintos se agreguen en una serie y no en mil.",
+      "Conteo de peticiones, de errores y latencia expuestos en formato Prometheus, instrumentados con la API estándar de métricas de .NET para que un colector de OpenTelemetry pueda consumirlos después sin cambiar nada. Solo los 5xx cuentan como error: un crawler buscando páginas que no existen no es una caída.",
+      "Los errores son documentos RFC 7807 producidos por un solo manejador. Solo las excepciones que define la aplicación aportan su mensaje; lo inesperado se queda genérico, porque un stack trace no es asunto del público.",
+      "Un contenedor de solo lectura corriendo como usuario sin privilegios ni shell, sin publicar al host, alcanzable únicamente a través de nginx. El rate limiting existe para que un scraper mal escrito no consuma el presupuesto de cómputo — nunca aplicado a health ni a métricas, lo que permitiría que el tráfico convenciera a un orquestador de que el servicio está caído.",
+      "No se publica ningún teléfono, y el CV del repositorio es la versión sin datos personales. Una prueba afirma que ninguna respuesta de la API contiene un teléfono, así que un cambio de contenido futuro no puede reintroducirlo."
     ]
   },
   "stack": {

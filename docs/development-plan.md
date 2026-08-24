@@ -134,11 +134,12 @@ Entregable: `src/frontend/portfolio-web`.
 - [x] El pipeline falla si no compila, si fallan tests, si el snapshot o las cifras generadas están desactualizados, si las dos fuentes de contenido discrepan, o si hay hallazgos críticos.
 - [x] Smoke test del stack completo, incluida la caída de la API.
 
-### Fase 9 — Observabilidad y seguridad
+### Fase 9 — Observabilidad y seguridad ✅
 
-- [ ] Logging estructurado con requestId, endpoint, status y duración.
-- [ ] Métricas: request count, error count, latencia.
-- [ ] `docs/security.md`: secretos, CORS, HTTPS, validación, rate limiting, headers, imágenes actualizadas, mínimo privilegio.
+- [x] Logging estructurado con correlation id, plantilla de ruta, estado y duración; health checks a nivel Debug para no enterrar lo que importa.
+- [x] Métricas en formato Prometheus en `/metrics`, no expuesto por nginx. Solo los 5xx cuentan como error.
+- [x] Rate limiting por llamante, nunca sobre health ni métricas, con `Retry-After`.
+- [x] [`docs/security.md`](security.md): secretos, qué se publica, cabeceras, CORS, entrada, rate limiting, contenedores, dependencias, mínimo privilegio — y una sección explícita de lo que **no** hace.
 
 ### Fase 10 — Pulido del portafolio
 
