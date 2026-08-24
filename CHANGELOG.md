@@ -7,6 +7,40 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 8 — CI (2026-08-24)
+
+Every check in this pipeline already existed as a script somebody had to remember to run. Moving
+them here is the point: they now run whether or not anyone remembers.
+
+#### Added
+- `.github/workflows/ci.yml` with six jobs:
+  - **content** — regenerates the engineering figures and fails if the committed ones are stale, so
+    the page cannot claim more tests than exist; runs the content validator.
+  - **security** — the secret scan, vulnerable NuGet packages, and `npm audit` on production
+    dependencies.
+  - **api** — build with warnings as errors (which makes "it compiles" a real gate, so no separate
+    lint step is needed) and the test suite, with results uploaded.
+  - **web** — `npm ci`, prerender, then assertions that the generated HTML actually contains the
+    content, the reciprocal `hreflang` and the JSON-LD. A prerendered page that renders an empty root
+    element passes every build check and fails at the only thing prerendering is for.
+  - **contract** — starts both content sources against a PostgreSQL service and runs the parity
+    check, then verifies the committed snapshot still matches what the API serves.
+  - **images** — builds the CVs, builds both images, brings the stack up and smoke-tests it through
+    nginx, including **stopping the API** to confirm the site still serves its content.
+- `tools/security/scan.mjs` — private keys, cloud credentials, tokens, passwords in connection
+  strings, a Colombian phone number, and files that must never be tracked. Dependency-free on
+  purpose: a security check that pulls a third-party action to run is new supply-chain surface for
+  the thing it protects. Verified by planting a fake AWS key and password and watching it fail.
+- `SKIP_CV=1` on the snapshot builder, for the CI job that has no browser to render a PDF with.
+
+#### Notes
+- The NuGet vulnerability gate is written as an `if`. `grep -q X && (exit 1) || true` always
+  succeeds — a gate that reports green while finding vulnerabilities is worse than no gate.
+- `npm audit` runs with `--omit=dev`. A dev-only advisory never reaches a user, and failing on one
+  turns the job into noise people learn to skip, which is how the real ones get missed.
+- Images are built but not pushed. A registry belongs with a deployment target, and that decision is
+  deliberately deferred to phase 11.
+
 ### Phase 7 — Docker (2026-08-24)
 
 #### Added

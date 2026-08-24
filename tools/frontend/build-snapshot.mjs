@@ -72,10 +72,15 @@ for (const file of ['engineering.en.json', 'engineering.es.json', 'engineering-f
 // The downloadable CV is generated into the frontend rather than committed: it is an artefact of
 // content/, and only the redacted variant may ever be published (ADR-0003). Copying the "full" one
 // here would put the phone number into a public bundle.
+//
+// SKIP_CV=1 is for the CI job that only wants to know whether the committed snapshot is still
+// current. It has no browser to render a PDF with, and failing there would say nothing about the
+// snapshot.
+const skipCv = process.env.SKIP_CV === '1';
 const cvDir = join(root, 'src', 'frontend', 'portfolio-web', 'public', 'cv');
-mkdirSync(cvDir, { recursive: true });
+if (!skipCv) mkdirSync(cvDir, { recursive: true });
 
-for (const locale of ['EN', 'ES']) {
+for (const locale of skipCv ? [] : ['EN', 'ES']) {
   const built = join(root, 'dist', 'cv', `Sebastian_Velez_CV_${locale}_public.pdf`);
   if (!existsSync(built)) {
     failed = true;

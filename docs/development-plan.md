@@ -126,10 +126,11 @@ Entregable: `src/frontend/portfolio-web`.
 
 **Criterio de aceptación:** `docker compose up --build` levanta el sistema completo.
 
-### Fase 8 — CI (GitHub Actions)
+### Fase 8 — CI (GitHub Actions) ✅
 
-- [ ] Build, tests, analizadores/lint, build de imágenes, escaneo de secretos y dependencias.
-- [ ] El pipeline falla si no compila, si fallan tests o si hay hallazgos críticos.
+- [x] Build, tests, analizadores, build de imágenes, escaneo de secretos y de dependencias vulnerables.
+- [x] El pipeline falla si no compila, si fallan tests, si el snapshot o las cifras generadas están desactualizados, si las dos fuentes de contenido discrepan, o si hay hallazgos críticos.
+- [x] Smoke test del stack completo, incluida la caída de la API.
 
 ### Fase 9 — Observabilidad y seguridad
 

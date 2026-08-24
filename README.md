@@ -60,10 +60,56 @@ empty if the API is unavailable. See [ADR-0002](docs/adr/0002-frontend-rendering
     └── services/   # ASP.NET Core services
 ```
 
-## Getting started
+## Run it
 
-Nothing to run yet — the application is created in phase 3 onwards. Verified toolchain and
-required versions are documented in [docs/environment.md](docs/environment.md).
+```bash
+docker compose up --build
+```
+
+http://localhost:8080. nginx serves the prerendered site and proxies `/api` to the API, so the
+browser sees one origin. Details and the container posture: [infra/README.md](infra/README.md).
+
+For the fast edit-run loop, start only the database and run the API and frontend from the host —
+see [the API](src/services/portfolio-api/README.md) and
+[the frontend](src/frontend/portfolio-web/README.md).
+
+Verified toolchain and pinned versions: [docs/environment.md](docs/environment.md).
+
+## Checks
+
+Every check in CI is a script that can be run locally, because a check nobody can run before pushing
+is a check people learn to ignore.
+
+```bash
+node tools/content/validate.mjs
+```
+
+Translations in step, no orphaned projects, every claimed source actually cited, no phone number in a
+tracked file, and no hardcoded number in the engineering section's copy.
+
+```bash
+node tools/security/scan.mjs
+```
+
+Secrets, private keys, and files that must never be tracked. Baseline, not a replacement for a real
+scanner — it covers the mistakes this repository can actually make.
+
+```bash
+node tools/api/parity-check.mjs
+```
+
+With both content sources running, proves the files and PostgreSQL return byte-identical payloads.
+This one has already earned its keep: it caught the two disagreeing about ordering, which no unit
+test would have found.
+
+```bash
+dotnet test src/services/portfolio-api
+```
+
+[CI](.github/workflows/ci.yml) runs all of these plus the .NET build with warnings as errors, the
+Angular prerender, a check that the committed content snapshot and the generated engineering figures
+are still current, both container images, and a smoke test that includes stopping the API to confirm
+the site still serves its content.
 
 ## Content sourcing
 
