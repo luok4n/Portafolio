@@ -221,7 +221,7 @@ internal sealed partial class ContentSeeder(
                 Id = source.Id,
                 ExperienceId = source.ExperienceId,
                 Featured = source.Featured,
-                Verified = source.Verified,
+                PubliclySourced = source.PubliclySourced,
                 Ordinal = index,
             };
 

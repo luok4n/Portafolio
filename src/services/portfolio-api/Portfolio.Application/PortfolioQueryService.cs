@@ -157,7 +157,7 @@ public sealed class PortfolioQueryService(IPortfolioContentSource source)
             company,
             p.Sector,
             p.Featured,
-            p.Verified,
+            p.PubliclySourced,
             p.Summary,
             p.Contribution,
             p.Technologies,

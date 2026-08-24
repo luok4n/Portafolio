@@ -48,8 +48,8 @@ content with no visible sign that anything was wrong.
 
 ## Deliberately not written
 
-- **Teach at Home** and the **Gobernación de Risaralda** website have no public source. Described by
-  function and client only, with `verified: false`.
+- **Teach at Home** has no public source. Described by function and client only, with
+  `publiclySourced: false`.
 - **SimuDat Salud Risaralda** was considered as a candidate for the Woldev engagement because it is
   the Gobernación's best-documented technology programme of that period and touches RIAS. The author
   ruled it out. Recorded so the hypothesis is not revived later.
@@ -77,12 +77,23 @@ from two sides.
 | Full Spanish translation (`profile`, `experience`, `projects`, `education`) | ✅ Approved by the author, 2026-08-24 |
 | Slang identity | ✅ Resolved by the author, 2026-08-24 |
 
-## Still open
+## The flag was called `verified`, and that was the wrong name
 
-Nothing blocking. Two facts remain described by function only because no public source exists —
-**MOA** and **Teach at Home** — plus the **Gobernación de Risaralda** website, which the author
-recalls no further detail about. All three carry `verified: false` and the content validator
-reports them as warnings on every run, so their status stays visible rather than being forgotten.
+It never meant "this work happened" — it meant "a reader can check the client and the domain against
+a public source". Called `verified`, a `false` read as doubt about work the author actually did, on
+his own portfolio. Renamed to **`publiclySourced`**, which is what it measures, on 2026-08-24.
+
+The rename made the remaining question a real one instead of a semantic one: which projects can a
+reader actually check?
+
+| Project | `publiclySourced` | Why |
+|---|---|---|
+| **AES Chivor MOA** | ✅ true | The client, the Chivor plant and the Colombian wholesale market are documented by AES Colombia and XM. Only the internal product name is not public, and the description does not claim otherwise. |
+| **Gobernación de Risaralda** | ✅ true | `risaralda.gov.co` is the department's official site — the client and the artefact are both public record. Source added 2026-08-24. |
+| **Teach at Home** | ❌ false | Searched again on 2026-08-24; no public trace. Setting it true would assert a citation that does not exist, and the page shows no sources block either way — the flag would change nothing except break the validator. |
+
+Nine of eleven projects now carry a source. If a public link for Teach at Home ever turns up — a
+company page, an app listing, a press note — adding it flips the flag honestly.
 
 ## Regenerating the CV
 
@@ -92,8 +103,8 @@ The CV is generated from this content, not edited by hand, so it cannot drift fr
 node tools/cv/build-cv.mjs
 ```
 
-Outputs to `dist/cv/` (untracked):
+Outputs four files to `dist/cv/` (untracked) — two locales times two variants:
 
-- `Sebastian_Velez_CV_public.pdf` — no phone number. This is the one published on the site.
-- `Sebastian_Velez_CV_full.pdf` — includes the phone, read from `content/private/contact.local.json`,
-  which is untracked. On a fresh clone this variant is simply skipped.
+- `Sebastian_Velez_CV_{EN,ES}_public.pdf` — no phone number. Published on the site.
+- `Sebastian_Velez_CV_{EN,ES}_full.pdf` — includes the phone, read from
+  `content/private/contact.local.json`, which is untracked. On a fresh clone these are skipped.

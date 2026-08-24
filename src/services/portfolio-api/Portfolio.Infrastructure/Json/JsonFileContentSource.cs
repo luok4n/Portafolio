@@ -201,7 +201,7 @@ public sealed partial class JsonFileContentSource : IPortfolioContentSource
         Required(b.ExperienceId, $"projects[{b.Id}].experienceId"),
         t?.Sector ?? b.Sector ?? string.Empty,
         b.Featured ?? false,
-        b.Verified ?? false,
+        b.PubliclySourced ?? false,
         t?.Summary ?? Required(b.Summary, $"projects[{b.Id}].summary"),
         t?.CvSummary ?? b.CvSummary,
         t?.Contribution ?? b.Contribution,

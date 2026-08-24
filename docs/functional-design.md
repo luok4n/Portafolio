@@ -129,7 +129,7 @@ El detalle usa el `summary` largo con la investigación, la contribución del au
 **los enlaces a las fuentes públicas**. Mostrar las fuentes no es adorno: es la diferencia entre
 "trabajé en una plataforma multinacional" y una afirmación que el lector puede verificar en un clic.
 
-Los proyectos con `verified: false` (MOA, Teach at Home, sitio de la Gobernación) se muestran sin
+Los proyectos con `publiclySourced: false` (MOA, Teach at Home, sitio de la Gobernación) se muestran sin
 bloque de fuentes. No se marcan con ninguna insignia negativa: la ausencia de fuentes es la señal
 correcta y suficiente.
 

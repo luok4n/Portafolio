@@ -61,8 +61,8 @@ export interface Project {
   company: string;
   sector: string;
   featured: boolean;
-  /** False when no public source backs the description. The page shows no sources block rather than a badge. */
-  verified: boolean;
+  /** Whether a public source backs the client and domain description. Says nothing about whether the work happened. */
+  publiclySourced: boolean;
   summary: string;
   contribution: string | null;
   technologies: string[];

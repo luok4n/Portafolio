@@ -152,7 +152,7 @@ internal sealed class ProjectRow
 
     public bool Featured { get; set; }
 
-    public bool Verified { get; set; }
+    public bool PubliclySourced { get; set; }
 
     public int Ordinal { get; set; }
 

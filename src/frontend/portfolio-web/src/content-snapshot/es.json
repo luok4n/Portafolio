@@ -241,7 +241,7 @@
       "company": "Adagetech S.A.S.",
       "sector": "Materiales de construcción",
       "featured": true,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Plataforma de gestión de pedidos de Cementos Argos, la multinacional colombiana de materiales de construcción. Los clientes realizan, hacen seguimiento y modifican sus pedidos de cemento y concreto en tiempo real, siguen el estado del despacho desde el cargue en planta hasta la entrega en obra, consultan fichas técnicas y certificaciones de producto, y revisan facturas y pagos — en web y móvil, con una aplicación dedicada para el mercado de Estados Unidos.",
       "contribution": "Soporte y desarrollo de módulos para operaciones en Estados Unidos, Colombia y otros países.",
       "technologies": [
@@ -269,7 +269,7 @@
       "company": "Adagetech S.A.S.",
       "sector": "Inversión inmobiliaria",
       "featured": true,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Plataforma para Linkvest Capital, firma de coinversión alternativa e inmobiliaria verticalmente integrada con sede en Miami, que opera en Florida y el sureste de Estados Unidos en préstamos comerciales de corto plazo, participación accionaria en desarrollos de uso mixto y gestión de activos comerciales, industriales y triple net.",
       "contribution": "Desarrollo full-stack de los reportes mensuales y trimestrales sobre las inversiones de cada cliente.",
       "technologies": [
@@ -292,7 +292,7 @@
       "company": "AES Chivor & Cía. S.C.A. E.S.P.",
       "sector": "Energía",
       "featured": true,
-      "verified": false,
+      "publiclySourced": true,
       "summary": "Plataforma de compra y venta de energía en el mercado mayorista colombiano, administrado por XM S.A. E.S.P. AES Chivor opera la central hidroeléctrica de Chivor como parte de AES Colombia, la quinta generadora del país con un portafolio totalmente renovable. La plataforma también producía los reportes en Excel usados en la operación del mercado.",
       "contribution": "Servicios backend sobre una arquitectura de microservicios, además de APIs REST e integraciones para procesos críticos de gestión de energía.",
       "technologies": [
@@ -319,7 +319,7 @@
       "company": "Universidad Tecnológica de Pereira",
       "sector": "Salud pública",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Programa nacional de salud pública que establece las rutas integrales de atención en salud de Colombia, creadas por la Resolución 3202 de 2016 y ampliadas por la Resolución 3280 de 2018 dentro del modelo de atención MIAS. Lleva al sistema de salud de un enfoque centrado en el tratamiento a uno preventivo en todas las etapas de la vida, con rutas como promoción y mantenimiento de la salud, materno-perinatal, cardio-cerebro-vascular, cáncer, alteraciones nutricionales, trastornos asociados al consumo de sustancias y enfermedades infecciosas.",
       "contribution": "Desarrollo backend con Java y Spring Boot y desarrollo frontend con Angular.",
       "technologies": [
@@ -342,7 +342,7 @@
       "company": "MVM Ingeniería de Software",
       "sector": "EdTech",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Plataforma de aprendizaje de inglés profesional y técnico que nació como proyecto de investigación del MIT y llegó a ser líder de la categoría en Latinoamérica, con un motor adaptativo basado en machine learning, más de 200 cursos profesionales, presencia en Colombia, México, Brasil y Estados Unidos, una Serie A de US$14 millones y el reconocimiento del Foro Económico Mundial en 2022 como una de las 100 empresas tecnológicas pioneras más importantes del mundo — la única startup colombiana en esa lista. El trabajo se desarrolló en el marco de una alianza entre Slang y Comfama que permitió a los afiliados de la caja de compensación acceder a los cursos de inglés con beneficios.",
       "contribution": "Funcionalidad web con ASP.NET y Angular para la alianza Slang–Comfama.",
       "technologies": [
@@ -369,7 +369,7 @@
       "company": "MVM Ingeniería de Software",
       "sector": "Energía",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Procesos de gestión de energía en el mercado mayorista colombiano, operado y administrado por XM S.A. E.S.P., filial de ISA, que además opera el Sistema Interconectado Nacional a través del Centro Nacional de Despacho.",
       "contribution": "Funcionalidad backend con .NET Core y SQL Server.",
       "technologies": [
@@ -391,7 +391,7 @@
       "company": "MVM Ingeniería de Software",
       "sector": "Seguridad social",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Comfama es una corporación privada sin ánimo de lucro fundada en 1954 que cumple funciones de seguridad social en Antioquia, con servicios de crédito, subsidios, salud, educación, vivienda, recreación, cultura y turismo para los trabajadores afiliados y sus familias.",
       "contribution": "Gestión interna del sitio web de Comfama.",
       "technologies": [
@@ -414,7 +414,7 @@
       "company": "MVM Ingeniería de Software",
       "sector": "Educación",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Plataforma usada por los docentes de Comfama para registrar las notas de los estudiantes en sus distintos cursos. La educación es uno de los servicios que Comfama presta a los trabajadores afiliados y sus familias en Antioquia.",
       "contribution": "Desarrollo de la plataforma de registro de notas para docentes.",
       "technologies": [
@@ -437,7 +437,7 @@
       "company": "LendingFront",
       "sector": "Fintech",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Back office del marketplace de LendingFront, startup neoyorquina que construye software white-label de crédito para pymes dirigido a bancos e instituciones financieras, cubriendo radicación de solicitudes, gestión documental, agregación de datos, decisión basada en reglas, originación, monitoreo y administración de cartera.",
       "contribution": "Lógica de negocio en el backend con Python y funcionalidades de frontend con React y Redux, trabajando en los equipos de desarrollo, innovación y optimización.",
       "technologies": [
@@ -462,7 +462,7 @@
       "company": "Woldev S.A.S.",
       "sector": "Educación",
       "featured": false,
-      "verified": false,
+      "publiclySourced": false,
       "summary": "Plataforma educativa desarrollada en Woldev. No se encontró ninguna fuente pública, por lo que se describe únicamente por su función.",
       "contribution": "Funcionalidad de frontend y backend.",
       "technologies": [
@@ -480,13 +480,18 @@
       "company": "Woldev S.A.S.",
       "sector": "Sector público",
       "featured": false,
-      "verified": false,
+      "publiclySourced": true,
       "summary": "Sitio web institucional de la Gobernación de Risaralda, sobre una base de código antigua en PHP.",
       "contribution": "Desarrollo y mantenimiento web sobre la aplicación heredada en PHP.",
       "technologies": [
         "PHP"
       ],
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.risaralda.gov.co/",
+          "checked": "2026-08-24"
+        }
+      ]
     }
   ],
   "skills": [

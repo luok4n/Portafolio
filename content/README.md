@@ -45,7 +45,7 @@ ids, same number of bullets, nothing missing and nothing orphaned.
 1. **Nothing is invented.** Every company, role, date, technology, project, metric and achievement
    comes from the CV or from a public source cited inline.
 2. **Every enriched fact carries a source.** Client and project descriptions gathered from public
-   sources include a `sources` array with URLs and the date they were checked, and a `verified`
+   sources include a `sources` array with URLs and the date they were checked, and a `publiclySourced`
    flag that is `false` when no public source backs the description.
 3. **Spanish is a translation, not a rewrite.** Same claims, same scope, approved by the author
    before publication — the CV has no Spanish source of truth, so nothing is assumed.
@@ -57,5 +57,5 @@ ids, same number of bullets, nothing missing and nothing orphaned.
    `node tools/engineering/collect-facts.mjs`. Writing a count by hand fails the validator. See
    [ADR-0005](../docs/adr/0005-engineering-section.md).
 6. **Anything uncertain is flagged, not smoothed over.** Fields such as `identityStatus` or
-   `verified: false` exist so an unresolved question stays visible instead of becoming a confident
+   `publiclySourced: false` exist so an unresolved question stays visible instead of becoming a confident
    sentence on a public page.

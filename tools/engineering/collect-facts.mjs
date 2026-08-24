@@ -123,7 +123,7 @@ function contentFacts() {
     locales,
     roles: experience.length,
     projects: projects.length,
-    verifiedProjects: projects.filter((p) => p.verified).length,
+    publiclySourcedProjects: projects.filter((p) => p.publiclySourced).length,
   };
 }
 

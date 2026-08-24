@@ -77,13 +77,18 @@ also operates the grid through the National Dispatch Center.
   - https://www.xm.com.co/nuestra-empresa/nosotros/quienes-somos (checked 2026-08-24)
   - https://www.superservicios.gov.co/Empresas-vigiladas/Energ%C3%ADa-y-gas-combustible/Energ%C3%ADa/Unidad-de-Monitoreo-de-Mercados-de-Energ%C3%ADa-y-Gas-Natural/Mercado-de-energ%C3%ADa-mayorista-Informes-hist%C3%B3ricos (checked 2026-08-24)
 
-### MOA platform ⚠️
+### MOA platform ✅ (client and market sourced; product name is not)
 
 Internal AES platform for buying and selling energy in the Colombian wholesale market, including
 **Excel report generation** for market operations. "MOA" is an internal product name; no public
 documentation of the platform or of the acronym was found, so the portfolio describes it by
 function only, exactly as the CV does — a wholesale energy trading platform with a .NET and
 SQL Server backend on a microservices architecture.
+
+Marked `publiclySourced: true` because everything the description actually asserts — the client, the
+Chivor plant and the wholesale market it trades on — is documented by the AES Colombia and XM
+sources above. The flag tracks whether a reader can check the claims made, not whether every
+internal name appears on the open web.
 
 ---
 
@@ -176,7 +181,7 @@ digital strategy, mobile applications, server administration and video game deve
 Author-supplied project; no public source found. Described by function only: an education platform
 the author contributed to on both frontend and backend.
 
-### Gobernación de Risaralda website ⚠️
+### Gobernación de Risaralda website ✅
 
 Author-confirmed: the engagement was the **Gobernación de Risaralda** institutional website, an
 older PHP codebase. The author recalls no further detail, and no public record of the project itself
@@ -184,6 +189,7 @@ was found, so it is described by client and technology only — website work for
 government of Risaralda on a legacy PHP application.
 
 - Sector: public sector / departmental government
+- Source: https://www.risaralda.gov.co/ (checked 2026-08-24)
 - **Not** SimuDat Salud Risaralda. That connection was considered and ruled out by the author; it is
   recorded here only so the question is not re-opened later.
 

@@ -241,7 +241,7 @@
       "company": "Adagetech S.A.S.",
       "sector": "Construction materials",
       "featured": true,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Order-management platform for Cementos Argos, the Colombian multinational building-materials company. Customers place, track and modify cement and concrete orders in real time, follow delivery status from plant loading to job site, consult product technical sheets and certifications, and review invoices and payments — on web and mobile, with a dedicated application for the United States market.",
       "contribution": "Support and module development for operations across the United States, Colombia and other countries.",
       "technologies": [
@@ -269,7 +269,7 @@
       "company": "Adagetech S.A.S.",
       "sector": "Real estate investment",
       "featured": true,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Platform for Linkvest Capital, a Miami-based alternative co-investment and vertically integrated real estate firm operating in Florida and the southeastern United States across short-term commercial real estate loans, equity in mixed-use developments, and commercial, industrial and triple-net asset management.",
       "contribution": "Full-stack development of the monthly and quarterly reporting on each client's investments.",
       "technologies": [
@@ -292,7 +292,7 @@
       "company": "AES Chivor & Cía. S.C.A. E.S.P.",
       "sector": "Energy",
       "featured": true,
-      "verified": false,
+      "publiclySourced": true,
       "summary": "Platform for buying and selling energy in the Colombian wholesale energy market, which is administered by XM S.A. E.S.P. AES Chivor operates the Chivor hydroelectric plant as part of AES Colombia, the country's fifth largest generator with a fully renewable portfolio. The platform also produced the Excel reports used in market operations.",
       "contribution": "Backend services on a microservices architecture, plus REST APIs and integrations for business-critical energy management processes.",
       "technologies": [
@@ -319,7 +319,7 @@
       "company": "Universidad Tecnológica de Pereira",
       "sector": "Public health",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "National public-health programme establishing Colombia's integrated health-care pathways, created by Resolution 3202 of 2016 and extended by Resolution 3280 of 2018 within the MIAS care model. It moves the health system from a treatment-centred to a preventive approach across every life stage, covering pathways such as health promotion and maintenance, maternal-perinatal care, cardio-cerebro-vascular disease, cancer, nutritional disorders, substance-use disorders and infectious diseases.",
       "contribution": "Backend development with Java and Spring Boot and frontend development with Angular.",
       "technologies": [
@@ -342,7 +342,7 @@
       "company": "MVM Ingeniería de Software",
       "sector": "EdTech",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Professional and technical English learning platform that began as an MIT research project and became a Latin American leader in the category, with a machine-learning powered adaptive engine, more than 200 professional courses, presence in Colombia, Mexico, Brazil and the United States, a US$14M Series A, and recognition by the World Economic Forum in 2022 as one of the world's 100 most important technology pioneers — the only Colombian startup on that list. The work was delivered under an alliance between Slang and Comfama that gave the fund's affiliates access to the English courses with member benefits.",
       "contribution": "Web functionality using ASP.NET and Angular for the Slang–Comfama alliance.",
       "technologies": [
@@ -369,7 +369,7 @@
       "company": "MVM Ingeniería de Software",
       "sector": "Energy",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Energy management processes in the Colombian wholesale energy market, operated and administered by XM S.A. E.S.P., a subsidiary of ISA, which also runs the National Interconnected System through the National Dispatch Centre.",
       "contribution": "Backend functionality with .NET Core and SQL Server.",
       "technologies": [
@@ -391,7 +391,7 @@
       "company": "MVM Ingeniería de Software",
       "sector": "Social security",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Comfama is a private non-profit founded in 1954 that performs social-security functions across Antioquia, providing credit, subsidies, health, education, housing, recreation, culture and tourism services to affiliated workers and their families.",
       "contribution": "Internal management of Comfama's website.",
       "technologies": [
@@ -414,7 +414,7 @@
       "company": "MVM Ingeniería de Software",
       "sector": "Education",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Platform used by teachers at Comfama to record students' grades across their different courses. Education is one of the services Comfama provides to affiliated workers and their families in Antioquia.",
       "contribution": "Development of the grade recording platform for teachers.",
       "technologies": [
@@ -437,7 +437,7 @@
       "company": "LendingFront",
       "sector": "Fintech",
       "featured": false,
-      "verified": true,
+      "publiclySourced": true,
       "summary": "Back office for the marketplace of LendingFront, a New York startup building white-label small-business lending software for banks and financial institutions, covering application intake, document management, data aggregation, rules-based decisioning, underwriting, monitoring and servicing.",
       "contribution": "Backend business logic in Python and frontend features in React and Redux, working across the development, innovation and optimisation teams.",
       "technologies": [
@@ -462,7 +462,7 @@
       "company": "Woldev S.A.S.",
       "sector": "Education",
       "featured": false,
-      "verified": false,
+      "publiclySourced": false,
       "summary": "Education platform developed at Woldev. No public source was found, so it is described by function only.",
       "contribution": "Frontend and backend functionality.",
       "technologies": [
@@ -480,13 +480,18 @@
       "company": "Woldev S.A.S.",
       "sector": "Public sector",
       "featured": false,
-      "verified": false,
+      "publiclySourced": true,
       "summary": "Institutional website of the departmental government of Risaralda, on an older PHP codebase.",
       "contribution": "Web development and maintenance on the legacy PHP application.",
       "technologies": [
         "PHP"
       ],
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.risaralda.gov.co/",
+          "checked": "2026-08-24"
+        }
+      ]
     }
   ],
   "skills": [

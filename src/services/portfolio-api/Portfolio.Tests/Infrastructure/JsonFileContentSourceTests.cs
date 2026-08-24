@@ -64,7 +64,7 @@ public sealed class JsonFileContentSourceTests : IDisposable
 
         Write("projects.en.json", """
         { "projects": [ { "id": "p1", "name": "P1", "experienceId": "one", "summary": "Base summary",
-          "verified": true, "sources": [ { "url": "https://example.com", "checked": "2026-08-24" } ] } ] }
+          "publiclySourced": true, "sources": [ { "url": "https://example.com", "checked": "2026-08-24" } ] } ] }
         """);
         Write("projects.es.json", """{ "projects": [ { "id": "p1", "summary": "Resumen base" } ] }""");
 
@@ -131,7 +131,7 @@ public sealed class JsonFileContentSourceTests : IDisposable
         Assert.Equal(english.Experience[0].Period, spanish.Experience[0].Period);
         Assert.Equal(english.Education[0].Year, spanish.Education[0].Year);
         Assert.Equal(english.Projects[0].Sources[0].Url, spanish.Projects[0].Sources[0].Url);
-        Assert.Equal(english.Projects[0].Verified, spanish.Projects[0].Verified);
+        Assert.Equal(english.Projects[0].PubliclySourced, spanish.Projects[0].PubliclySourced);
     }
 
     [Fact]

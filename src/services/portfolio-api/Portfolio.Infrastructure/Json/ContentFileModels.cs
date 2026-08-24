@@ -46,7 +46,7 @@ internal sealed record ProjectFile(
     string? ExperienceId,
     string? Sector,
     bool? Featured,
-    bool? Verified,
+    bool? PubliclySourced,
     string? Summary,
     string? CvSummary,
     string? Contribution,

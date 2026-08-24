@@ -53,7 +53,7 @@ public sealed record ProjectDto(
     string Company,
     string Sector,
     bool Featured,
-    bool Verified,
+    bool PubliclySourced,
     string Summary,
     string? Contribution,
     IReadOnlyList<string> Technologies,

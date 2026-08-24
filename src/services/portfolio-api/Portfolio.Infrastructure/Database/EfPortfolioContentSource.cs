@@ -169,7 +169,7 @@ internal sealed class EfPortfolioContentSource(PortfolioDbContext context) : IPo
                 r.ExperienceId,
                 translation.Sector,
                 r.Featured,
-                r.Verified,
+                r.PubliclySourced,
                 translation.Summary,
                 translation.CvSummary,
                 translation.Contribution,

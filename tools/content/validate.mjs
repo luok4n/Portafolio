@@ -60,8 +60,8 @@ for (const p of pEs) if (!pEnIds.includes(p.id)) fail(`projects: Spanish "${p.id
 
 for (const p of pEn) {
   if (!enIds.includes(p.experienceId)) fail(`project "${p.id}": experienceId "${p.experienceId}" matches no role`);
-  if (p.verified && (!p.sources || p.sources.length === 0)) fail(`project "${p.id}": marked verified but cites no source`);
-  if (!p.verified && !p.identityStatus) warn(`project "${p.id}": unverified — described by function only`);
+  if (p.publiclySourced && (!p.sources || p.sources.length === 0)) fail(`project "${p.id}": marked publiclySourced but cites no source`);
+  if (!p.publiclySourced && !p.identityStatus) warn(`project "${p.id}": no public source — described by function only`);
   if (p.identityStatus) warn(`project "${p.id}": ${p.identityStatus} — not publishable yet`);
   if (p.contribution === null) warn(`project "${p.id}": contribution still empty`);
 }
