@@ -1,0 +1,68 @@
+# ---------------------------------------------------------------------------
+# Personal / private source material
+# The original CV PDF carries a personal phone number and is never committed.
+# A redacted, public version lives under src/frontend/.../assets when generated.
+# ---------------------------------------------------------------------------
+Sebastian_Velez_CV_Updated.pdf
+*.private.*
+private/
+
+# ---------------------------------------------------------------------------
+# Secrets
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pfx
+*.key
+*.pem
+appsettings.Local.json
+appsettings.*.Local.json
+secrets.json
+
+# ---------------------------------------------------------------------------
+# .NET
+# ---------------------------------------------------------------------------
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.user
+*.suo
+*.userprefs
+*.dll
+*.pdb
+TestResults/
+[Cc]overage*/
+.vs/
+artifacts/
+
+# ---------------------------------------------------------------------------
+# Node / Angular
+# ---------------------------------------------------------------------------
+node_modules/
+dist/
+.angular/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ---------------------------------------------------------------------------
+# Editors & OS
+# ---------------------------------------------------------------------------
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------------------------------------
+# Docker / local infrastructure state
+# ---------------------------------------------------------------------------
+.docker-data/
+postgres-data/
