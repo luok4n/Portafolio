@@ -23,6 +23,20 @@ export interface EngineeringFlow {
   steps: string[];
 }
 
+export interface DiagramLabels {
+  architecture: {
+    alt: string;
+    browser: string; browserSub: string;
+    nginx: string; nginxSub1: string; nginxSub2: string;
+    api: string; apiSub1: string; apiSub2: string;
+    database: string; databaseSub1: string; databaseSub2: string;
+    content: string; contentSub: string;
+    edgeRest: string; edgeOrm: string; edgeSeed: string;
+    note: string[];
+  };
+  dataModel: { alt: string; hint: string; note: string[] };
+}
+
 export interface EngineeringContent {
   title: string;
   lead: string;
@@ -35,6 +49,7 @@ export interface EngineeringContent {
   testing: { title: string; description: string; items: string[] };
   operations: { title: string; items: string[] };
   stack: { title: string; description: string };
+  diagrams: DiagramLabels;
   repository: { label: string; note: string };
 }
 

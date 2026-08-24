@@ -52,7 +52,9 @@ import { EngineeringService } from '../core/engineering';
 
     a { color: var(--accent); }
 
-    .fine { font-size: 0.78rem; opacity: 0.75; }
+    /* No opacity here: it dropped the muted token to 3.32:1 against the sunken surface. Contrast
+       has to come from the palette, where it can be checked, not from a modifier on top of it. */
+    .fine { font-size: 0.78rem; }
 
     p { margin: 0; }
   `,

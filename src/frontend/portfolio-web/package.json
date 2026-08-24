@@ -6,10 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "build:full": "npm run content && ng build",
-    "content": "node ../../../tools/engineering/collect-facts.mjs && node ../../../tools/cv/build-cv.mjs && node ../../../tools/frontend/build-snapshot.mjs",
+    "content": "node ../../../tools/engineering/collect-facts.mjs && node ../../../tools/cv/build-cv.mjs && node ../../../tools/frontend/build-snapshot.mjs && node scripts/build-og-image.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:ci": "ng test --watch=false"
+    "test:ci": "ng test --watch=false",
+    "postbuild": "node scripts/build-sitemap.mjs"
   },
   "private": true,
   "packageManager": "npm@11.17.0",

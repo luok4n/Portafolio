@@ -8,7 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1a4f8a" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- SVG first for browsers that support it; .ico is the fallback for the ones that do not. -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
 </head>
 <body>
   <app-root></app-root>

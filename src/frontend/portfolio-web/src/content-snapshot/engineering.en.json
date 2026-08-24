@@ -157,5 +157,39 @@
   "repository": {
     "label": "Read the source",
     "note": "Every decision above is written down in the repository as a numbered record, including the ones I argued myself out of."
+  },
+  "diagrams": {
+    "architecture": {
+      "alt": "Browser to nginx serving prerendered HTML, to the ASP.NET Core API, to PostgreSQL. Reviewed content files seed the database.",
+      "browser": "Browser",
+      "browserSub": "reader · crawler · preview bot",
+      "nginx": "nginx",
+      "nginxSub1": "prerendered HTML",
+      "nginxSub2": "one file per route × locale",
+      "api": "Portfolio API",
+      "apiSub1": "ASP.NET Core · .NET 10",
+      "apiSub2": "stateless · read-only",
+      "database": "PostgreSQL",
+      "databaseSub1": "base tables +",
+      "databaseSub2": "translations",
+      "content": "content/",
+      "contentSub": "reviewed files · seed source",
+      "edgeRest": "REST",
+      "edgeOrm": "EF Core",
+      "edgeSeed": "seed",
+      "note": [
+        "The frontend embeds a build-time snapshot of the content.",
+        "If the API is unreachable the page still renders — it shows",
+        "cached content, never a spinner and never an error."
+      ]
+    },
+    "dataModel": {
+      "alt": "The experiences table holds facts; experience_translations holds one complete row per language, keyed by experience id and language code.",
+      "hint": "one complete row per language",
+      "note": [
+        "Facts live on the base table. Translated text lives beside it, keyed by",
+        "entity and language — so a third language is rows, not a migration."
+      ]
+    }
   }
 }

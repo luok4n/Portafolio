@@ -151,5 +151,39 @@
   "repository": {
     "label": "Ver el código",
     "note": "Cada decisión de arriba está escrita en el repositorio como un registro numerado, incluidas aquellas de las que terminé desistiendo."
+  },
+  "diagrams": {
+    "architecture": {
+      "alt": "Del navegador a nginx sirviendo HTML prerenderizado, a la API en ASP.NET Core, a PostgreSQL. Los archivos de contenido revisados siembran la base de datos.",
+      "browser": "Navegador",
+      "browserSub": "lector · crawler · bot de vista previa",
+      "nginx": "nginx",
+      "nginxSub1": "HTML prerenderizado",
+      "nginxSub2": "un archivo por ruta × idioma",
+      "api": "Portfolio API",
+      "apiSub1": "ASP.NET Core · .NET 10",
+      "apiSub2": "stateless · solo lectura",
+      "database": "PostgreSQL",
+      "databaseSub1": "tablas base +",
+      "databaseSub2": "traducciones",
+      "content": "content/",
+      "contentSub": "archivos revisados · fuente del seed",
+      "edgeRest": "REST",
+      "edgeOrm": "EF Core",
+      "edgeSeed": "seed",
+      "note": [
+        "El frontend incluye una instantánea del contenido tomada en el build.",
+        "Si la API no responde, la página se ve igual: muestra contenido en",
+        "caché, nunca un spinner y nunca un error."
+      ]
+    },
+    "dataModel": {
+      "alt": "La tabla experiences guarda los hechos; experience_translations guarda una fila completa por idioma, indexada por id de experiencia y código de idioma.",
+      "hint": "una fila completa por idioma",
+      "note": [
+        "Los hechos viven en la tabla base. El texto traducido vive al lado, indexado",
+        "por entidad e idioma — así un tercer idioma son filas, no una migración."
+      ]
+    }
   }
 }

@@ -109,7 +109,7 @@ Entregable: `src/frontend/portfolio-web`.
 - [x] Prerender por ruta y locale (29 rutas, incluidas las de 404); snapshot de contenido embebido como fallback.
 - [x] Sin spinner ni pantalla de error: solo el aviso de "contenido en caché".
 - [x] Responsive, landmarks, skip link, foco visible y `prefers-reduced-motion`.
-- [ ] Etiquetas internas de los diagramas SVG aún sin traducir — Fase 10.
+- [x] Etiquetas internas de los diagramas SVG traducidas — cerrado en la Fase 10.
 
 **Criterio de aceptación:** el sitio se ve completo en ambos idiomas con la API apagada.
 
@@ -141,12 +141,12 @@ Entregable: `src/frontend/portfolio-web`.
 - [x] Rate limiting por llamante, nunca sobre health ni métricas, con `Retry-After`.
 - [x] [`docs/security.md`](security.md): secretos, qué se publica, cabeceras, CORS, entrada, rate limiting, contenedores, dependencias, mínimo privilegio — y una sección explícita de lo que **no** hace.
 
-### Fase 10 — Pulido del portafolio
+### Fase 10 — Pulido del portafolio ✅
 
-- [ ] SEO bilingüe, Open Graph, favicon, sitemap, robots.
-- [ ] Revisión Lighthouse, accesibilidad y mobile.
-- [ ] Diagrama de arquitectura en `docs/diagrams/`.
-- [ ] `docs/architecture.md` completo y ADRs al día.
+- [x] SEO bilingüe, Open Graph con imagen por idioma, favicon SVG, sitemap generado desde la salida prerenderizada, robots.
+- [x] Lighthouse en móvil: **accesibilidad 100, buenas prácticas 100, SEO 100, rendimiento 94–96**. Dos fallos de contraste corregidos.
+- [x] Diagramas de arquitectura en [`architecture.md`](architecture.md) (Mermaid) y SVG en la app; [`docs/diagrams/`](diagrams/) explica por qué no hay imágenes exportadas.
+- [x] [`docs/architecture.md`](architecture.md) completo, con las preguntas de entrevista respondidas, y ADRs al día.
 
 ### Fase 11 — Decisión de hosting  🔸 *punto de decisión*
 

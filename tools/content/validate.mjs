@@ -104,6 +104,27 @@ if (existsSync(join(contentDir, 'engineering.en.json'))) {
     }
   }
 
+  // The diagram labels are the text most likely to be forgotten in a translation — they are inside
+  // an SVG, so a missing one renders as a blank area rather than as an obvious gap in a sentence.
+  // Comparing the key shape catches both a missing label and a mismatched number of note lines.
+  const shape = (value, path = '') => {
+    if (Array.isArray(value)) return [`${path}[]=${value.length}`];
+    if (value && typeof value === 'object') {
+      return Object.keys(value).sort().flatMap((k) => shape(value[k], path ? `${path}.${k}` : k));
+    }
+    return [path];
+  };
+
+  const enShape = shape(engEn.diagrams ?? {});
+  const esShape = shape(engEs.diagrams ?? {});
+
+  if (enShape.length === 0) {
+    fail('engineering.diagrams: missing — the SVG diagrams would render untranslated');
+  }
+
+  for (const key of enShape) if (!esShape.includes(key)) fail(`engineering.diagrams: "${key}" missing or a different length in Spanish`);
+  for (const key of esShape) if (!enShape.includes(key)) fail(`engineering.diagrams: Spanish "${key}" has no English counterpart`);
+
   // Every {placeholder} the copy uses must be a fact the collector actually produces. A placeholder
   // with no matching fact would render as literal braces on a public page.
   if (!existsSync(join(contentDir, 'engineering-facts.json'))) {

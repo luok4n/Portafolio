@@ -43,7 +43,16 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:type', content: input.type ?? 'website' });
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ property: 'og:locale', content: input.locale === 'es' ? 'es_CO' : 'en_US' });
+    // Per locale, because the card carries the headline and the years in the reader's language.
+    // Absolute: LinkedIn and WhatsApp fetch it without a page to resolve a relative URL against.
+    const image = `${SITE_ORIGIN}/og/og-${input.locale}.png`;
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:image:width', content: '1200' });
+    this.meta.updateTag({ property: 'og:image:height', content: '630' });
+    this.meta.updateTag({ property: 'og:image:alt', content: input.title });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Sebastián Vélez Ramírez' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
     this.meta.updateTag({ name: 'twitter:title', content: input.title });
     this.meta.updateTag({ name: 'twitter:description', content: input.description });
 

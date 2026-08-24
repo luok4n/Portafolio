@@ -76,3 +76,6 @@ postgres-data/
 # and being JSON it shows content changes as a readable diff.
 # ---------------------------------------------------------------------------
 src/frontend/portfolio-web/public/cv/
+# Same rule for the social preview images: rendered from the site content by
+# scripts/build-og-image.mjs, so the command is the artefact, not the PNG.
+src/frontend/portfolio-web/public/og/

@@ -22,7 +22,8 @@ COPY src/frontend/portfolio-web/ ./
 # whose "Download CV" button 404s — a silently missing asset is the kind of defect nobody notices
 # until a recruiter clicks it.
 RUN test -f public/cv/Sebastian_Velez_CV_EN.pdf && test -f public/cv/Sebastian_Velez_CV_ES.pdf \
-    || (echo "ERROR: public/cv is empty. Run 'npm run content' before building this image." && exit 1)
+    && test -f public/og/og-en.png && test -f public/og/og-es.png \
+    || (echo "ERROR: public/cv or public/og is empty. Run 'npm run content' before building this image." && exit 1)
 
 # The content snapshot is committed, so prerendering needs no API and no network here. That is the
 # point of embedding it: the image builds in a sealed environment.

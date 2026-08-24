@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+
+import { EngineeringService } from '../core/engineering';
 
 /**
  * The shape that makes the site bilingual: facts on the base table, translated text in a table keyed
@@ -12,7 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <figure>
-      <svg viewBox="0 0 700 250" role="img" [attr.aria-label]="label" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 700 250" role="img" [attr.aria-label]="labels().alt" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <marker id="dm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-head" />
@@ -38,15 +40,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <text x="416" y="104" class="col key">language_code</text>
           <text x="416" y="126" class="col">role</text>
           <text x="416" y="148" class="col">employment_type</text>
-          <text x="416" y="170" class="col hint">one complete row per language</text>
+          <text x="416" y="170" class="col hint">{{ labels().hint }}</text>
         </g>
 
         <path d="M 250 105 L 398 105" class="link" marker-end="url(#dm-arrow)" />
         <text x="324" y="96" class="edge">1 : n</text>
 
         <g class="note">
-          <text x="20" y="212">Facts live on the base table. Translated text lives beside it, keyed by</text>
-          <text x="20" y="232">entity and language — so a third language is rows, not a migration.</text>
+          @for (line of labels().note; track line; let i = $index) {
+            <text x="20" [attr.y]="212 + i * 20">{{ line }}</text>
+          }
         </g>
       </svg>
     </figure>
@@ -109,7 +112,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
 })
 export class DataModelDiagram {
-  protected readonly label =
-    'The experiences table holds facts; experience_translations holds one complete row per language, ' +
-    'keyed by experience id and language code.';
+  private readonly engineering = inject(EngineeringService);
+
+  protected readonly labels = computed(() => this.engineering.content().diagrams.dataModel);
 }

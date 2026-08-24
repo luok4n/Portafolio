@@ -138,9 +138,20 @@ jobs:
 
       # Builds from the committed snapshot, so it needs no API and no network — the property
       # ADR-0002 was chosen for.
+      #
+      # The output is inspected because `ng build` reports success even when prerendering a route
+      # threw: it logs ERROR, writes a half-rendered page, and exits 0. A page missing its diagrams
+      # would otherwise sail through every other check here.
       - name: Build and prerender
         working-directory: src/frontend/portfolio-web
-        run: npm run build
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee build.log
+          if grep -q '^ERROR' build.log; then
+            echo "::error::Prerendering logged an error, which does not fail the Angular build on its own."
+            grep '^ERROR' build.log
+            exit 1
+          fi
 
       # A prerendered page that returns an empty root element passes every build check and fails at
       # the only thing prerendering is for. Assert the HTML actually contains content.
@@ -157,7 +168,40 @@ jobs:
           grep -q 'hreflang="es"' en/index.html
           grep -q 'hreflang="en"' es/index.html
           grep -q 'application/ld+json' en/index.html
+          grep -q 'og:image' en/index.html
           echo "prerendered routes: $(find . -name index.html | wc -l)"
+
+      - name: SEO assets are generated and the sitemap is honest
+        working-directory: src/frontend/portfolio-web/dist/portfolio-web/browser
+        run: |
+          set -e
+          test -f sitemap.xml && test -f robots.txt
+          test -f og/og-en.png && test -f og/og-es.png && test -f favicon.svg
+
+          # A sitemap listing a page that says noindex, or one that does not exist, is a signal of
+          # neglect that search engines act on.
+          ! grep -q '/404' sitemap.xml || { echo "::error::sitemap lists a 404 page"; exit 1; }
+
+          # Every URL it advertises must be a file that was actually prerendered.
+          grep -oP '(?<=<loc>)[^<]+' sitemap.xml | sed 's|https\?://[^/]*||' | while read -r path; do
+            test -f ".${path}/index.html" || { echo "::error::sitemap lists $path, which was not prerendered"; exit 1; }
+          done
+          echo "sitemap entries: $(grep -c '<loc>' sitemap.xml)"
+
+      # The Spanish pages must contain no English left over from a template — the diagram labels
+      # were exactly that until phase 10.
+      - name: The Spanish pages are actually Spanish
+        working-directory: src/frontend/portfolio-web/dist/portfolio-web/browser
+        run: |
+          set -e
+          for phrase in 'reader · crawler' 'prerendered HTML' 'one complete row per language' 'Facts live on the base table'; do
+            if grep -qF "$phrase" es/ingenieria/index.html; then
+              echo "::error::untranslated text on the Spanish engineering page: $phrase"
+              exit 1
+            fi
+          done
+          grep -q 'Navegador' es/ingenieria/index.html
+          echo "no untranslated diagram labels"
 
   contract:
     name: Content sources agree
@@ -235,9 +279,9 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      # The CV is generated, not committed, and the web image refuses to build without it. Chrome is
-      # already on the runner.
-      - name: Build the CVs
+      # The CV and the preview images are generated, not committed, and the web image refuses to
+      # build without them. Both need a headless browser, which the runner already has.
+      - name: Build the CVs and the preview images
         env:
           CHROME_PATH: /usr/bin/google-chrome
         run: |
@@ -246,6 +290,7 @@ jobs:
           mkdir -p src/frontend/portfolio-web/public/cv
           cp dist/cv/Sebastian_Velez_CV_EN_public.pdf src/frontend/portfolio-web/public/cv/Sebastian_Velez_CV_EN.pdf
           cp dist/cv/Sebastian_Velez_CV_ES_public.pdf src/frontend/portfolio-web/public/cv/Sebastian_Velez_CV_ES.pdf
+          node src/frontend/portfolio-web/scripts/build-og-image.mjs
 
       # Built but not pushed. A registry belongs with a deployment target, and that decision is
       # deliberately deferred to phase 11.

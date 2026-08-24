@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SV">
+  <!--
+    An SVG favicon so it stays sharp at any size and follows the reader's theme, which an .ico
+    cannot do. favicon.ico stays alongside it for the browsers that ignore this one.
+  -->
+  <style>
+    .bg { fill: #1a4f8a; }
+    .fg { fill: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #79aee6; }
+      .fg { fill: #0e1014; }
+    }
+  </style>
+  <rect class="bg" width="64" height="64" rx="14" />
+  <text class="fg" x="32" y="43" font-family="ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif"
+        font-size="30" font-weight="700" letter-spacing="-1" text-anchor="middle">SV</text>
+</svg>

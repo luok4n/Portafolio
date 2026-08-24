@@ -7,6 +7,47 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 10 — Polish (2026-08-24)
+
+Lighthouse, mobile: **accessibility 100, best practices 100, SEO 100, performance 94–96**.
+
+#### Added
+- `sitemap.xml` and `robots.txt`, generated from the prerendered output rather than from the route
+  table, so the sitemap lists exactly the pages that exist. The origin and each entry's alternates
+  are read from the pages' own canonical and `hreflang` tags — the sitemap cannot disagree with the
+  pages if only one of them decides.
+- Social preview images, one per language, rendered from the site's own content with the headless
+  browser the CV builder already needs. Without an `og:image`, LinkedIn and WhatsApp show a grey box
+  with a URL, which is the first impression the link makes.
+- An SVG favicon that follows the reader's theme, with the `.ico` as fallback.
+- `docs/architecture.md` — context, containers, the inside of the API, the bilingual data model, how
+  content reaches a reader, language resolution, operations, what is deliberately absent, and short
+  answers to the interview questions the original plan lists. Diagrams are inline Mermaid so they
+  cannot drift from the prose.
+- `docs/diagrams/README.md` explains why there are no exported images: a binary a command cannot
+  reproduce does not belong in this repository.
+- Lazy-loaded routes, so reading the home page no longer downloads the engineering diagrams and the
+  project detail template it may never open.
+
+#### Fixed
+- **The diagram labels were English on the Spanish page.** The gap recorded in phase 5, now closed:
+  labels come from the translated content, and a page whose only untranslated text sits inside the
+  engineering diagram undermines the section it illustrates.
+- Two contrast failures: the availability badge at 4.39:1 and the footer's fine print at 3.32:1. The
+  second came from an `opacity: 0.75` on top of the muted token — contrast now comes from the
+  palette, where it can be checked, rather than from a modifier on top of it.
+- The sitemap first paired pages by segment position, which cheerfully declared `/es/404` the
+  Spanish counterpart of `/en/engineering`. Translated path segments share nothing to match on.
+
+#### Changed
+- The content validator compares the diagram label structure across languages, catching both a
+  missing label and a mismatched number of note lines. A missing SVG label renders as blank space,
+  not as an obvious gap in a sentence.
+- CI now fails when prerendering logs an error. `ng build` reports success even when a route threw:
+  it logs ERROR, writes a half-rendered page, and exits 0. CI also checks that every URL in the
+  sitemap was actually prerendered, that no `noindex` page is listed, and that no English phrase
+  from a diagram survives on the Spanish page.
+
 ### Phase 9 — Observability and security (2026-08-24)
 
 #### Added
