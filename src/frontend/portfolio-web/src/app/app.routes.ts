@@ -26,6 +26,9 @@ const localeRoutes: Routes = LOCALES.map((locale) => ({
       data: { locale },
     },
     { path: ROUTE_SEGMENTS.engineering[locale], component: EngineeringPage, data: { locale } },
+    // An explicit route so the page is prerendered to a real file. nginx serves it as the 404
+    // document, which a wildcard-only route would never produce.
+    { path: ROUTE_SEGMENTS.notFound[locale], component: NotFoundPage, data: { locale } },
     { path: '**', component: NotFoundPage, data: { locale } },
   ],
 }));

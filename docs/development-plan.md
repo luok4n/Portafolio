@@ -106,7 +106,7 @@ Entregable: `src/frontend/portfolio-web`.
 
 - [x] Aplicación con layout y secciones de la fase 2, incluida la de Engineering con sus diagramas SVG.
 - [x] Transloco para strings de UI; contenido desde la API con revalidación en el navegador.
-- [x] Prerender por ruta y locale (27 rutas); snapshot de contenido embebido como fallback.
+- [x] Prerender por ruta y locale (29 rutas, incluidas las de 404); snapshot de contenido embebido como fallback.
 - [x] Sin spinner ni pantalla de error: solo el aviso de "contenido en caché".
 - [x] Responsive, landmarks, skip link, foco visible y `prefers-reduced-motion`.
 - [ ] Etiquetas internas de los diagramas SVG aún sin traducir — Fase 10.
@@ -118,10 +118,11 @@ Entregable: `src/frontend/portfolio-web`.
 - [ ] Backend: unitarios (dominio, aplicación, validaciones) e integración (endpoints, persistencia, cadena de fallback de locale).
 - [ ] Frontend: servicios, componentes críticos, estados de error/carga y cambio de idioma.
 
-### Fase 7 — Docker y Compose
+### Fase 7 — Docker y Compose ✅
 
-- [ ] Dockerfile multi-stage para API y para frontend (build → nginx), usuario no-root.
-- [ ] `docker-compose.yml` con frontend, API y PostgreSQL.
+- [x] Dockerfile multi-stage para API y para frontend (build → nginx), usuario no-root, filesystem de solo lectura en la API.
+- [x] `docker-compose.yml` con frontend, API y PostgreSQL, healthchecks y la API sin publicar al host.
+- [x] Cabeceras de seguridad, caché por tipo de recurso y 404 real (sin catch-all de SPA).
 
 **Criterio de aceptación:** `docker compose up --build` levanta el sistema completo.
 

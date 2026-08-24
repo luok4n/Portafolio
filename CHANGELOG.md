@@ -7,6 +7,41 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 7 — Docker (2026-08-24)
+
+#### Added
+- `infra/docker/api.Dockerfile` — .NET 10 multi-stage, non-root Alpine runtime with no shell, a
+  read-only filesystem and a tmpfs for `/tmp`. The repository layout is reproduced inside the image
+  rather than flattened, because the API links `content/*.json` by relative path.
+- `infra/docker/web.Dockerfile` — Angular prerender then nginx. No Node reaches the runtime image.
+  Fails the build when the generated CVs are missing rather than shipping a dead download button.
+- `infra/docker/nginx.conf` and `security-headers.conf` — static routing, API proxy, per-type
+  caching, CSP and the rest.
+- `docker-compose.yml` now brings up db, api and web. The API is **not** published to the host: it is
+  reachable only through nginx, which is how it will be deployed, so the browser sees one origin and
+  the API keeps an empty CORS allowed-origins list.
+- `.dockerignore`, and explicit `404` routes so each locale prerenders a real error document.
+
+#### Fixed
+- **Security headers were silently dropped on every HTML response.** nginx replaces inherited
+  `add_header` directives instead of merging them, so the block that set `Cache-Control` on `.html`
+  wiped the entire Content-Security-Policy. `try_files` is what made it reachable: the internal
+  redirect from `/en/` to `/en/index.html` re-evaluates locations. Found by reading the response,
+  not the config. The headers now live in a snippet included at server level and inside every
+  location that sets a header of its own.
+- The image build failed on EF's generated migrations because the root `.editorconfig`, which marks
+  them as generated code, was never copied into the build context.
+- The 404 page was prerendered with the home page's title and was indexable. It now carries its own
+  localised title and `noindex`.
+
+#### Verified
+- `docker compose up --build` → three healthy containers.
+- Every route in both languages, the CV download, the API through the proxy, and a real **404** for
+  an unknown URL — no SPA catch-all answering 200 for links that do not exist.
+- Security headers and immutable caching on hashed assets; `no-cache` on HTML.
+- **With the API stopped the site still serves complete content**; only `/api` fails, and the
+  frontend falls back to its embedded snapshot.
+
 ### Phase 5 — Frontend (2026-08-24)
 
 #### Added

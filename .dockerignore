@@ -1,0 +1,25 @@
+# Keeps the build context small and stops host build output leaking into an image.
+# node_modules alone is a few hundred megabytes that `npm ci` rebuilds correctly anyway.
+
+.git
+.github
+.vs
+.vscode
+
+**/node_modules
+**/bin
+**/obj
+**/dist
+**/.angular
+dist
+
+# Never into an image: the untracked personal data, and the CV variant that carries the phone.
+# public/cv is NOT excluded — it holds only the redacted CVs and the web image serves them.
+content/private
+dist/cv
+
+docs
+*.md
+!src/frontend/portfolio-web/README.md
+
+Sebastian_Velez_CV_Updated.pdf

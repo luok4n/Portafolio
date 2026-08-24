@@ -1,8 +1,12 @@
-# Local development dependencies.
+# The whole system, locally, with one command.
 #
-# Phase 4 needs only PostgreSQL: the API and the frontend still run from the SDK on the host, which
-# keeps the edit-run loop fast. Phase 7 adds the api and web services here so the whole system comes
-# up with one command.
+#   docker compose up --build
+#
+# Then http://localhost:8080. The web container serves the prerendered site and proxies /api to the
+# API, so the browser sees a single origin and CORS never enters the picture.
+#
+# For the fast edit-run loop, bring up only the database and run the API and the frontend from the
+# SDK on the host:
 #
 #   docker compose up -d db
 #
@@ -17,20 +21,59 @@ services:
       POSTGRES_DB: portfolio
       POSTGRES_USER: portfolio
       POSTGRES_PASSWORD: portfolio
-      # Slightly faster startup and smaller images; the locale is irrelevant for this data.
       POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
     ports:
       - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
     healthcheck:
-      # pg_isready returns success before the server finishes its first-boot restart, so the check
+      # pg_isready reports success before the server finishes its first-boot restart, so the check
       # runs a real query instead.
       test: ["CMD-SHELL", "psql -U portfolio -d portfolio -c 'select 1' || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 20
       start_period: 10s
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: infra/docker/api.Dockerfile
+    container_name: portfolio-api
+    environment:
+      Portfolio__Database__Enabled: "true"
+      Portfolio__Database__ConnectionString: "Host=db;Port=5432;Database=portfolio;Username=portfolio;Password=portfolio"
+      # Empty on purpose: the browser only ever talks to the API through nginx on the same origin,
+      # so no cross-origin access needs to be allowed at all.
+      Portfolio__Cors__AllowedOrigins: "[]"
+      Logging__LogLevel__Microsoft.EntityFrameworkCore: "Warning"
+    depends_on:
+      db:
+        condition: service_healthy
+    # Not published to the host. The API is reachable only through the web container, which is how
+    # it will be deployed.
+    expose:
+      - "8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: infra/docker/web.Dockerfile
+    container_name: portfolio-web
+    ports:
+      - "8080:8080"
+    depends_on:
+      api:
+        condition: service_healthy
+    security_opt:
+      - no-new-privileges:true
     restart: unless-stopped
 
 volumes:

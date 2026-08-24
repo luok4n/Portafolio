@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslocoDirective } from '@jsverse/transloco';
+import { Meta, Title } from '@angular/platform-browser';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 import { LocaleService } from '../core/locale.service';
 import { pathFor } from '../core/locale';
@@ -35,6 +36,24 @@ import { pathFor } from '../core/locale';
 })
 export class NotFoundPage {
   private readonly localeService = inject(LocaleService);
+  private readonly transloco = inject(TranslocoService);
+  private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
+
+  constructor() {
+    effect(() => {
+      const locale = this.localeService.locale();
+
+      // The prerendered /en/404 file is what nginx returns as the error document, so it needs its
+      // own title — otherwise a not-found response is titled as if it were the home page, which is
+      // what a browser tab and a shared link would show.
+      this.title.setTitle(`${this.transloco.translate('error.notFoundTitle', {}, locale)} — 404`);
+
+      // Deliberately not indexed. It is a real prerendered file, so without this a crawler would
+      // happily add /en/404 to the index as a normal page.
+      this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
+    });
+  }
 
   protected home(): string {
     return pathFor(this.localeService.locale(), 'home');
