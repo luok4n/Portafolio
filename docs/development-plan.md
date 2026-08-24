@@ -201,12 +201,19 @@ respetuoso con la privacidad, blog, panel de administración.
 - **Universidad Tecnológica de Pereira** — *RIAS* (Rutas Integrales de Atención en Salud) para el
   **Ministerio de Salud**. ⚠️ No figura en el CV.
 
-## 5. Preguntas abiertas (bloquean la fase 1)
+## 5. Preguntas abiertas
 
-1. **Cargo y responsabilidades en la UTP.** Falta el título del puesto y las viñetas de
-   responsabilidades para el CV y el timeline.
-2. **Aporte concreto en Comfama** (cliente de MVM), para poder describirlo.
-3. **Aprobación de la traducción al español** de todo el contenido, una vez redactado.
+**Ninguna bloquea el trabajo.** Las tres que bloqueaban la fase 1 quedaron resueltas el 2026-08-24:
+el cargo en la UTP es *Software Developer* y sus viñetas fueron aprobadas; el aporte en Comfama son
+la alianza con Slang, la gestión interna del sitio y la plataforma de notas para docentes; y la
+traducción completa al español fue aprobada.
+
+Quedan pendientes, sin bloquear nada, y visibles como advertencias en cada corrida de
+`tools/content/validate.mjs`:
+
+- **MOA**, **Teach at Home** y el **sitio de la Gobernación de Risaralda** no tienen fuente pública,
+  así que se describen solo por su función y llevan `verified: false`.
+- Las **etiquetas internas de los diagramas SVG** siguen solo en inglés — Fase 10.
 
 ## 5.1 Tarea derivada — actualizar el CV
 
