@@ -7,7 +7,31 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
-### Phase 1 — Content (in progress)
+### Phase 2 — Functional design (2026-08-24)
+
+#### Added
+- `docs/functional-design.md` — sections and their data, the per-locale route map, language switcher
+  rules, loading and fallback states, SEO metadata, UI translation key conventions, accessibility
+  targets, and the API contract this implies for phase 3.
+
+#### Decided
+- Localised path segments: `/en/projects/{slug}` and `/es/proyectos/{slug}`, with a central route
+  map as the single source of truth for the prerender route generator and the language switcher.
+  Project slugs stay untranslated — they are proper nouns.
+- The home is one anchored page; project detail pages are real routes with enough content of their
+  own to justify prerendering.
+- No `Accept-Language` auto-redirect: it would destabilise canonical URLs and take control away
+  from the reader. Language is chosen by URL and persisted.
+- The language switcher preserves route and anchor, so switching from `/en/projects/linkvest` lands
+  on `/es/proyectos/linkvest` rather than the home page.
+- No full-page spinner and no error screen anywhere: the prerendered content is already in the HTML,
+  so the API can only improve it.
+- Skills are shown without proficiency bars or numeric levels — unverifiable, and read as noise by
+  a technical interviewer.
+- Project detail pages link their public sources, which is what separates a verifiable claim from
+  an assertion.
+
+### Phase 1 — Content (complete)
 
 #### Added
 - `content/clients-research.md` — public-source background for every client and project behind the

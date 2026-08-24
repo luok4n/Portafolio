@@ -56,28 +56,28 @@ reproducible de ejecutarse.
 
 **Criterio de aceptación:** el repositorio se clona y se entiende sin contexto adicional.
 
-### Fase 1 — Contenido desde el CV
+### Fase 1 — Contenido desde el CV ✅
 
 **Objetivo:** contenido estructurado, bilingüe, trazable y aprobado por el autor.
 
-- [ ] `content/cv-source.md` — texto del CV extraído, sin modificar.
-- [ ] `content/profile.{en,es}.json`, `experience`, `projects`, `skills`, `education`, `social-links`.
-- [ ] Enriquecimiento de clientes y proyectos con fuentes públicas citadas.
-- [ ] `content/content-review.md` — inconsistencias detectadas y su resolución.
-- [ ] Aprobación explícita del autor sobre la traducción al español.
-
-**Bloqueada por:** las preguntas abiertas de la sección 5.
+- [x] `content/cv-source.md` — texto del CV extraído, sin modificar.
+- [x] `content/profile.{en,es}.json`, `experience`, `projects`, `skills`, `education`, `social-links`.
+- [x] Enriquecimiento de clientes y proyectos con fuentes públicas citadas.
+- [x] `content/content-review.md` — inconsistencias detectadas y su resolución.
+- [x] Aprobación explícita del autor sobre la traducción al español.
 
 **Criterio de aceptación:** cada bloque de contenido tiene origen identificable (CV o fuente pública
 con URL). Nada inventado.
 
-### Fase 2 — Diseño funcional e i18n
+### Fase 2 — Diseño funcional e i18n ✅
 
-- [ ] Secciones definitivas: Hero, About, Experience, Skills, Projects, Education, Contact.
-- [ ] Mapa de rutas por locale (`/en/...`, `/es/...`) y comportamiento del selector de idioma.
-- [ ] Claves de traducción de UI y convención de nombres.
-- [ ] Metadatos SEO por locale, `hreflang`, canonical, sitemap.
-- [ ] Wireframe textual y jerarquía visual.
+Entregable: [functional-design.md](functional-design.md).
+
+- [x] Secciones definitivas: Hero, About, Experience, Skills, Projects, Education, Contact.
+- [x] Mapa de rutas por locale (`/en/...`, `/es/...`) y comportamiento del selector de idioma.
+- [x] Claves de traducción de UI y convención de nombres.
+- [x] Metadatos SEO por locale, `hreflang`, canonical, sitemap.
+- [x] Wireframe textual y jerarquía visual.
 
 ### Fase 3 — Backend .NET 10
 
