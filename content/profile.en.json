@@ -1,0 +1,15 @@
+{
+  "$comment": "Source: content/cv-source.md. Changes agreed with the author are logged in content-review.md.",
+  "locale": "en",
+  "name": "Sebastián Vélez Ramírez",
+  "headline": "Senior .NET Developer | Software Engineering | Microservices & Azure",
+  "title": "Senior .NET Developer",
+  "location": "Risaralda, Colombia",
+  "email": "sebasp1234@utp.edu.co",
+  "availability": "open-to-work",
+  "summaryTemplate": "Software Engineer and Senior .NET Developer with {years}+ years of experience building and delivering scalable software solutions across the energy, fintech, real estate, public health, and education sectors. Strong experience in C#, .NET, ASP.NET Core, REST APIs, microservices, SQL Server, and Microsoft Azure, complemented by hands-on experience with Python, Java, React, PostgreSQL, Angular, PHP, and Laravel. Experienced in software architecture, cloud applications, asynchronous messaging, CI/CD, automated testing, and Agile development practices.",
+  "languages": [
+    { "language": "Spanish", "level": "Native" },
+    { "language": "English", "level": "B2" }
+  ]
+}

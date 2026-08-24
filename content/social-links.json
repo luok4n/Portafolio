@@ -1,0 +1,26 @@
+{
+  "$comment": "Phone number is deliberately absent — see docs/adr/0003-content-privacy.md.",
+  "links": [
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://co.linkedin.com/in/sebastian-velez-ramirez",
+      "display": "co.linkedin.com/in/sebastian-velez-ramirez",
+      "public": true
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "url": "https://github.com/luok4n",
+      "display": "github.com/luok4n",
+      "public": true
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "url": "mailto:sebasp1234@utp.edu.co",
+      "display": "sebasp1234@utp.edu.co",
+      "public": true
+    }
+  ]
+}

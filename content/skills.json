@@ -1,0 +1,60 @@
+{
+  "$comment": "Locale-independent: technology names are not translated, category labels are. Source: content/cv-source.md, plus Java and Spring Boot added with the UTP role (see content-review.md).",
+  "categories": [
+    {
+      "id": "languages",
+      "label": { "en": "Languages", "es": "Lenguajes" },
+      "items": ["C#", "SQL", "Python", "Java", "TypeScript", "JavaScript", "PHP"]
+    },
+    {
+      "id": "backend",
+      "label": { "en": "Backend", "es": "Backend" },
+      "items": [".NET", "ASP.NET Core", "Entity Framework Core", "Spring Boot", "Laravel", "REST APIs"]
+    },
+    {
+      "id": "frontend",
+      "label": { "en": "Frontend", "es": "Frontend" },
+      "items": ["Angular", "React", "Redux"]
+    },
+    {
+      "id": "architecture",
+      "label": { "en": "Architecture", "es": "Arquitectura" },
+      "items": ["Microservices", "Clean Architecture", "DDD", "CQRS", "MVC", "Event-Driven Architecture"]
+    },
+    {
+      "id": "cloud",
+      "label": { "en": "Cloud", "es": "Cloud" },
+      "items": ["Microsoft Azure", "AWS"]
+    },
+    {
+      "id": "azure",
+      "label": { "en": "Azure", "es": "Azure" },
+      "items": ["App Service", "Functions", "Service Bus", "Storage", "Key Vault", "Azure DevOps"]
+    },
+    {
+      "id": "databases",
+      "label": { "en": "Databases", "es": "Bases de datos" },
+      "items": ["SQL Server", "PostgreSQL", "Redis"]
+    },
+    {
+      "id": "messaging",
+      "label": { "en": "Messaging", "es": "Mensajería" },
+      "items": ["Azure Service Bus", "asynchronous messaging", "event-driven systems"]
+    },
+    {
+      "id": "devops",
+      "label": { "en": "DevOps", "es": "DevOps" },
+      "items": ["Azure DevOps", "Docker", "CI/CD", "Git"]
+    },
+    {
+      "id": "testing",
+      "label": { "en": "Testing", "es": "Testing" },
+      "items": ["xUnit", "NUnit", "Moq", "Integration Testing"]
+    },
+    {
+      "id": "methodologies",
+      "label": { "en": "Methodologies", "es": "Metodologías" },
+      "items": ["SCRUM", "Kanban", "Code Review", "Technical Mentoring"]
+    }
+  ]
+}

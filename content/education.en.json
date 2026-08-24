@@ -1,0 +1,13 @@
+{
+  "$comment": "Source: content/cv-source.md. Graduation year confirmed as 2018 by the author on 2026-08-24.",
+  "locale": "en",
+  "education": [
+    {
+      "id": "utp-bsc",
+      "degree": "B.Sc. in Systems and Computer Engineering",
+      "institution": "Universidad Tecnológica de Pereira",
+      "location": "Pereira, Colombia",
+      "year": 2018
+    }
+  ]
+}

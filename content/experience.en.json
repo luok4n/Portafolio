@@ -1,0 +1,126 @@
+{
+  "$comment": "Ordered newest first. 'start'/'end' are inclusive YYYY-MM; they drive the automatic years-of-experience calculation (unique months / 12). Highlights come from content/cv-source.md unless marked otherwise in content-review.md.",
+  "experience": [
+    {
+      "id": "adagetech",
+      "company": "Adagetech S.A.S.",
+      "role": "Senior .NET Developer",
+      "employmentType": "full-time",
+      "start": "2022-12",
+      "end": "2026-07",
+      "projects": ["argos-one", "linkvest"],
+      "technologies": ["C#", ".NET", "ASP.NET Core", "Entity Framework Core", "SQL Server", "Azure Service Bus", "Azure App Service", "Azure Functions", "Azure Storage", "Key Vault", "Azure DevOps", "Angular"],
+      "highlights": [
+        "Designed and developed backend solutions and microservices using C#, .NET, ASP.NET Core, Entity Framework Core, and SQL Server.",
+        "Designed and implemented microservices-based architectures and RESTful APIs for mission-critical applications.",
+        "Built and integrated asynchronous communication and event-driven workflows using Azure Service Bus.",
+        "Developed and maintained cloud-native solutions using Azure App Services, Azure Functions, Azure Storage, Key Vault, and Azure DevOps.",
+        "Implemented CI/CD pipelines and automated deployment processes using Azure DevOps.",
+        "Applied Clean Architecture, SOLID principles, dependency injection, design patterns, and automated testing to improve maintainability and code quality.",
+        "Performed code reviews, technical planning, effort estimation, and architectural decisions.",
+        "Mentored developers and contributed to engineering standards and technical documentation."
+      ]
+    },
+    {
+      "id": "aes-chivor",
+      "company": "AES Chivor & Cía. S.C.A. E.S.P.",
+      "role": "Software Engineer (Freelance)",
+      "employmentType": "freelance",
+      "start": "2022-03",
+      "end": "2022-12",
+      "parallelWith": ["lendingfront"],
+      "projects": ["moa"],
+      "technologies": ["C#", ".NET Core", "ASP.NET Core", "SQL Server", "Microsoft Azure"],
+      "highlights": [
+        "Designed and developed backend services using C#, .NET Core, ASP.NET Core, and SQL Server for the MOA platform supporting Colombia's wholesale energy market.",
+        "Developed REST APIs and integrations for business-critical energy management processes.",
+        "Participated in the migration of legacy applications toward a modern microservices architecture.",
+        "Implemented cloud-based solutions using Microsoft Azure and integrated distributed services.",
+        "Optimized complex SQL Server queries and database operations, reducing response times by 30%.",
+        "Participated in requirements analysis, technical design, impact analysis, and implementation of new functionalities.",
+        "Applied software engineering practices including SOLID, dependency injection, clean code, code reviews, and automated testing."
+      ]
+    },
+    {
+      "id": "lendingfront",
+      "company": "LendingFront",
+      "role": "Software Engineer",
+      "employmentType": "full-time",
+      "start": "2022-01",
+      "end": "2022-12",
+      "parallelWith": ["aes-chivor"],
+      "projects": ["marketplace-backoffice"],
+      "teams": ["Development", "Innovation", "Optimization"],
+      "technologies": ["Python", "React", "Redux", "PostgreSQL", "AWS"],
+      "highlights": [
+        "Developed and maintained the Marketplace BackOffice using Python, React, Redux, PostgreSQL, and AWS.",
+        "Developed backend functionality and business logic using Python.",
+        "Built and maintained frontend features using React and Redux.",
+        "Designed and consumed APIs to integrate frontend applications with backend services.",
+        "Implemented unit tests and mock data to improve software reliability and test coverage.",
+        "Worked with PostgreSQL for data persistence and application queries.",
+        "Participated in requirements analysis, technical estimation, code reviews, and sprint planning under SCRUM.",
+        "Collaborated with cross-functional teams to deliver new features and production improvements."
+      ]
+    },
+    {
+      "id": "mvm",
+      "company": "MVM Ingeniería de Software",
+      "role": "Development Analyst",
+      "employmentType": "full-time",
+      "start": "2019-10",
+      "end": "2021-12",
+      "projects": ["chivor-xm", "slang", "comfama"],
+      "technologies": ["C#", "ASP.NET", ".NET Core", "Entity Framework", "SQL Server", "Microsoft Azure", "Angular"],
+      "highlights": [
+        "Designed and developed cloud-based applications using C#, ASP.NET, .NET Core, Entity Framework, and SQL Server.",
+        "Developed REST APIs and backend services following software engineering and integration best practices.",
+        "Designed application integrations between internal and external systems using API-based architectures.",
+        "Developed and maintained solutions deployed on Microsoft Azure.",
+        "Used Azure services for application hosting, integration, storage, and cloud-based workloads.",
+        "Applied Entity Framework Code First for database access and domain modeling.",
+        "Worked on CHIVOR XM, developing backend functionality with .NET Core and SQL Server for energy management processes.",
+        "Worked on SLANG, developing web functionality using ASP.NET and Angular for an online learning platform.",
+        "Participated in requirements analysis, technical design, development, testing, deployment, and production support.",
+        "Improved development and deployment processes, reducing delivery time by 15%."
+      ]
+    },
+    {
+      "id": "utp",
+      "company": "Universidad Tecnológica de Pereira",
+      "role": "Software Developer",
+      "employmentType": "full-time",
+      "start": "2019-01",
+      "end": "2019-10",
+      "projects": ["rias"],
+      "technologies": ["Java", "Spring Boot", "Angular", "REST APIs"],
+      "highlightsStatus": "draft-pending-author-approval",
+      "highlights": [
+        "Developed backend services using Java and Spring Boot for the RIAS programme (Rutas Integrales de Atención en Salud) of Colombia's Ministry of Health.",
+        "Built frontend features and user interfaces using Angular.",
+        "Designed and consumed REST APIs between the Angular frontend and the Spring Boot backend.",
+        "Participated in requirements analysis, development, testing, and deployment."
+      ]
+    },
+    {
+      "id": "woldev",
+      "company": "Woldev S.A.S.",
+      "role": "Software Developer",
+      "employmentType": "full-time",
+      "start": "2018-02",
+      "end": "2019-01",
+      "projects": ["teach-at-home", "gobernacion-risaralda"],
+      "technologies": ["PHP", "Laravel", "Angular", "Python"],
+      "highlights": [
+        "Developed web applications and full-stack features using PHP, Laravel, Angular, and Python.",
+        "Developed backend functionality and business logic using PHP and Laravel.",
+        "Built frontend components and user interfaces using Angular.",
+        "Designed and consumed REST APIs for communication between frontend and backend applications.",
+        "Worked with databases and implemented data access functionality required by business applications.",
+        "Developed the Teach at Home platform, contributing to both frontend and backend functionality.",
+        "Translated client requirements into technical solutions and application features.",
+        "Participated in debugging, maintenance, testing, and deployment of web applications."
+      ]
+    }
+  ]
+}
