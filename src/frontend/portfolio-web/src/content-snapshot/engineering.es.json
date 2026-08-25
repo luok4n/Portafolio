@@ -74,6 +74,14 @@
       "decision": "Logging estructurado en JSON con lo que el framework ya trae, porque toda plataforma de contenedores recoge stdout.",
       "rejected": "Una librería de logging de terceros que habría producido exactamente las mismas líneas.",
       "cost": "Un poco más de configuración a mano, y un nombre que un revisor podría esperar ver y no encuentra."
+    },
+    {
+      "id": "hosting",
+      "title": "Kubernetes, escrito pero no desplegado",
+      "problem": "Este sitio espera unas cien visitas al mes, y está prerenderizado — un CDN lo sirve entero sin que corra ningún backend.",
+      "decision": "Un host estático, un contenedor que escala a cero para la API y un Postgres que también escala a cero. Nada que pagar, nada que parchar. Los manifiestos de Kubernetes están escritos y se ejercitan en un clúster local, con probes reales y límites de recursos.",
+      "rejected": "Un clúster administrado. El más barato que sirva ronda los $36 al mes, unos treinta y seis centavos por visitante para páginas que un CDN entrega gratis.",
+      "cost": "Kubernetes queda como artefacto local y no como clúster vivo, lo que impresiona menos a primera vista. Elegir la respuesta que suena mejor por encima de la que sostienen los números habría sido lo contrario de lo que este proyecto busca demostrar."
     }
   ],
   "flows": [

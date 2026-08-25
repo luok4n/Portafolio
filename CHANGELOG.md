@@ -7,6 +7,43 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 11 — Hosting decision (2026-08-25)
+
+The decision gate the plan deliberately left until the system existed.
+[ADR-0006](docs/adr/0006-hosting.md) records the comparison, the prices and the date they were
+checked.
+
+#### Decided
+- **Cloudflare Pages + Google Cloud Run + Neon. $0/month**, plus roughly $10–15 a year for a domain.
+  Expected traffic is about 100 visitors a month, and the frontend already serves the whole site
+  with no backend running — so the question was never "where do we host this" but "how much should a
+  backend that is optional at runtime cost". Nothing.
+- **Kubernetes is not justified in production.** The cheapest credible managed cluster is about
+  $36/month to serve those 100 visitors — roughly **$0.36 per visitor** for pages a CDN serves for
+  free. Phase 12 changes shape rather than disappearing: the manifests get written and exercised on
+  a local `kind` cluster, with real probes and resource limits, explicitly labelled as not the
+  production path.
+
+#### Ruled out, with reasons
+- **Supabase** free pauses a project after a week of inactivity and needs a manual unpause. A
+  portfolio can go a fortnight without a visit, and the failure would be discovered by a recruiter
+  rather than by the author. Neon resumes in about a second instead.
+- **Oracle Cloud Always Free** halved its Ampere allowance in June 2026 with no announcement and
+  began terminating instances above the new limit in August. It also reclaims instances whose
+  95th-percentile CPU stays under 20% over seven days, which describes this site exactly.
+- **Render free** spins down after 15 minutes with a 30–60 second cold start. At three visits a day,
+  every visitor pays it.
+- **Vercel Hobby** restricts commercial use, and a portfolio used to find work is close enough to
+  that line to be a bad foundation.
+- **AWS EKS** costs ~$73/month for the control plane before a single node runs.
+
+#### Recorded
+- The one difference between the tested and deployed topology: locally nginx makes everything
+  same-origin, so CORS is empty; deployed, the frontend and API are separate origins and the site's
+  origin goes into the existing allow-list. Small, understood, written down rather than discovered.
+- The hosting decision is now the seventh entry on the site's own engineering page, with the
+  rejected alternative and the cost stated like every other one.
+
 ### Phase 10 — Polish (2026-08-24)
 
 Lighthouse, mobile: **accessibility 100, best practices 100, SEO 100, performance 94–96**.

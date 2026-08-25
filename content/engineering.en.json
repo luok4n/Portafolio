@@ -80,6 +80,15 @@
       "decision": "Structured JSON logging with what the framework already provides, since every container platform collects stdout.",
       "rejected": "A third-party logging library that would have produced the same lines.",
       "cost": "Slightly more setup by hand, and a name a reviewer might expect to see and not find."
+    },
+    {
+      "id": "hosting",
+      "adr": "0006",
+      "title": "Kubernetes, written but not deployed",
+      "problem": "This site expects around a hundred visitors a month, and it is prerendered — a CDN serves the whole thing with no backend running at all.",
+      "decision": "A static host, a scale-to-zero container for the API and a scale-to-zero Postgres. Nothing to pay, nothing to patch. The Kubernetes manifests are written and exercised on a local cluster, with real probes and resource limits.",
+      "rejected": "A managed cluster. The cheapest credible one is about $36 a month, which is roughly thirty-six cents per visitor for pages a CDN serves for free.",
+      "cost": "Kubernetes is a local artefact rather than a live cluster, which is less impressive at a glance. Choosing the answer that sounds better over the one the numbers support would have been the opposite of what this project is for."
     }
   ],
   "flows": [

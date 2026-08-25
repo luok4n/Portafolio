@@ -115,10 +115,10 @@ Entregable: `src/frontend/portfolio-web`.
 
 ### Fase 6 — Tests ✅
 
-- [x] Backend: 89 pruebas — dominio, negociación de idioma, merge de traducciones, contrato HTTP por el pipeline real, y PostgreSQL real con Testcontainers.
+- [x] Backend: 105 pruebas — dominio, negociación de idioma, merge de traducciones, contrato HTTP por el pipeline real, PostgreSQL real con Testcontainers, y las métricas y el rate limiting de la Fase 9.
 - [x] Frontend: 62 pruebas — rutas por idioma, formato de fechas, fallback al snapshot, SEO/hreflang y el selector de idioma renderizado.
 
-**Criterio de aceptación:** 151 pruebas, todas ejecutadas en CI.
+**Criterio de aceptación:** 167 pruebas, todas ejecutadas en CI.
 
 ### Fase 7 — Docker y Compose ✅
 
@@ -148,22 +148,22 @@ Entregable: `src/frontend/portfolio-web`.
 - [x] Diagramas de arquitectura en [`architecture.md`](architecture.md) (Mermaid) y SVG en la app; [`docs/diagrams/`](diagrams/) explica por qué no hay imágenes exportadas.
 - [x] [`docs/architecture.md`](architecture.md) completo, con las preguntas de entrevista respondidas, y ADRs al día.
 
-### Fase 11 — Decisión de hosting  🔸 *punto de decisión*
+### Fase 11 — Decisión de hosting ✅ 🔸 *punto de decisión*
 
 **Objetivo:** decidir con datos, no por defecto, dónde vive el sitio y si Kubernetes aporta valor.
 
-- [ ] Comparativa de opciones gratuitas y de pago para: frontend estático, API .NET y PostgreSQL.
-- [ ] Costo mensual estimado de cada opción, con fecha de verificación de precios.
-- [ ] Evaluación honesta de Kubernetes: qué demuestra en una entrevista frente a lo que cuesta operar.
-- [ ] `docs/adr/0006-hosting.md` con la decisión y el motivo.
+- [x] Comparativa de opciones gratuitas y de pago para frontend estático, API .NET, PostgreSQL, VPS y Kubernetes.
+- [x] Costo mensual de cada opción, verificado el 2026-08-25.
+- [x] Evaluación de Kubernetes: **no se justifica en producción** (~$36/mes para ~100 visitas = $0.36 por visitante). Los manifiestos se escriben y corren en local.
+- [x] [ADR-0006](adr/0006-hosting.md): **Cloudflare Pages + Google Cloud Run + Neon, $0/mes** más el dominio.
 
 **Salida posible:** que Kubernetes no se justifique y el proyecto lo documente como decisión
 consciente — lo cual es en sí mismo una buena respuesta de arquitectura.
 
-### Fase 12 — Kubernetes y CD  *(condicional a la fase 11)*
+### Fase 12 — Kubernetes local y CD  *(la fase 11 lo dejó fuera de producción)*
 
-- [ ] Namespace, Deployments, Services, ConfigMaps, Secrets, Ingress, probes, requests/limits.
-- [ ] Cluster local (Docker Desktop, kind o minikube).
+- [ ] Namespace, Deployments, Services, ConfigMaps, Secrets, Ingress, probes contra los health endpoints reales, requests/limits.
+- [ ] Cluster local con kind, ejercitado y documentado — explícitamente **no** la ruta de producción.
 - [ ] Container registry con tags por `git-sha`, nunca solo `latest`.
 - [ ] Workflow de CD.
 

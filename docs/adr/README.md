@@ -14,7 +14,7 @@ An ADR is never edited to hide history. Superseded records keep their number and
 | [0003](0003-content-privacy.md) | What personal and client information is published | Accepted |
 | [0004](0004-backend-architecture.md) | Pragmatic Clean Architecture, minimal APIs, one storage seam | Accepted |
 | [0005](0005-engineering-section.md) | The engineering section ships with the app; its numbers are generated | Accepted |
-| 0006 | Hosting and whether Kubernetes is justified | Pending — phase 11 |
+| [0006](0006-hosting.md) | Hosting: Cloudflare Pages + Cloud Run + Neon at $0; Kubernetes stays local | Accepted |
 
 ## Format
 
