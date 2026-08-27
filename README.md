@@ -2,12 +2,15 @@
 
 Bilingual (EN/ES) professional portfolio built as a real, production-shaped application rather than a
 static one-pager: an **Angular** frontend, an **ASP.NET Core** API, **PostgreSQL** persistence, Docker,
-CI/CD and — if the final evaluation justifies it — Kubernetes.
+CI/CD, and a hosting decision taken with real prices rather than assumed at the start.
 
 The goal is twofold: publish the portfolio itself, and make every technical decision in this
 repository explainable in a Software Engineer / Senior Backend / Technical Lead interview.
 
-> **Status:** phases 0–9 complete. The whole system runs locally with one command; **it is not deployed yet** — hosting is a deliberate decision left to phase 11, and HTTPS comes with it in phase 13.
+> **Status:** built and running locally with one command; **not deployed yet**. Hosting was decided
+> with real prices in [ADR-0006](docs/adr/0006-hosting.md) — Cloudflare Pages, Cloud Run and Neon at
+> $0/month — and the deploy itself, with the domain and HTTPS, is the remaining step. Kubernetes was
+> costed for this workload and deliberately not built; the orchestration here is Docker Compose.
 
 ---
 
@@ -20,7 +23,7 @@ repository explainable in a Software Engineer / Senior Backend / Technical Lead 
 | Pragmatic Clean Architecture, minimal APIs, one storage seam | [ADR-0004](docs/adr/0004-backend-architecture.md) |
 | The engineering section ships with the app, and its numbers are generated | [ADR-0005](docs/adr/0005-engineering-section.md) |
 | What personal data is published, and what is not | [ADR-0003](docs/adr/0003-content-privacy.md) |
-| Kubernetes and hosting deliberately deferred to the end | [Development plan, phases 11–13](docs/development-plan.md) |
+| Hosting at $0/month, and why Kubernetes was costed and not built | [ADR-0006](docs/adr/0006-hosting.md) |
 
 What the project defends against, how, and what it deliberately does not do:
 [docs/security.md](docs/security.md).
@@ -59,7 +62,7 @@ empty if the API is unavailable. See [ADR-0002](docs/adr/0002-frontend-rendering
 .
 ├── content/        # Structured, reviewed portfolio content (EN/ES) — source for the DB seed
 ├── docs/           # Architecture, decisions (ADRs), security, environment, development plan
-├── infra/          # Dockerfiles, nginx, and Kubernetes manifests if phase 11 justifies them
+├── infra/          # Dockerfiles and nginx configuration
 ├── tools/          # Content validation, security scan, CV builder, generated engineering facts
 └── src/
     ├── frontend/   # Angular 22, prerendered

@@ -81,7 +81,8 @@ public static partial class DependencyInjection
     /// <remarks>
     /// Migrating on startup is right for this project — one small service, one deployment unit, a
     /// schema only this application owns. It stops being right the day a second replica can start
-    /// simultaneously against an unmigrated database, and phase 12 revisits it if Kubernetes lands.
+    /// simultaneously against an unmigrated database — the first thing to change if this ever runs more
+    /// than one replica.
     /// </remarks>
     public static async Task InitialisePortfolioDatabaseAsync(this IServiceProvider services, CancellationToken cancellationToken = default)
     {

@@ -13,15 +13,16 @@ whenever a version is bumped; CI must pin the same major versions.
 | Angular CLI | not installed | **22.x** (latest: 22.1.5) | Installed in phase 5 |
 | Docker Engine | 29.7.2 | ≥ 27 | |
 | kubectl | 1.36.1 (kustomize 5.8.1) | ≥ 1.30 | |
-| Local Kubernetes cluster | **none configured** | decided in phase 11 | `kubectl config get-contexts` returns no contexts |
+| Local Kubernetes cluster | none | **not needed** | Costed in [ADR-0006](adr/0006-hosting.md) and deliberately not built |
 | PostgreSQL | via Docker | 17.x | No local install needed |
 
-## Gaps to close before the phase they are needed in
+## Gaps
 
-- **Angular CLI** — install before phase 5: `npm install -g @angular/cli@22`.
-- **Local Kubernetes cluster** — no context exists yet. Only needed if phase 11 concludes that
-  Kubernetes adds real value. Options at that point: Docker Desktop's built-in cluster, `kind`,
-  or `minikube`.
+None. The Angular CLI arrived as a project dependency in phase 5 — `npm ci` in
+`src/frontend/portfolio-web` installs it, so nothing has to be installed globally.
+
+`kubectl` is present but unused: [ADR-0006](adr/0006-hosting.md) costed Kubernetes against this
+workload and the decision was not to build it. Nothing in this repository needs a cluster.
 
 ## Version policy
 

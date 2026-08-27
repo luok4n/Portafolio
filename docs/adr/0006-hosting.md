@@ -85,7 +85,7 @@ domain.**
 - Neon for PostgreSQL: the only free tier whose idle behaviour is a one-second resume rather than a
   manual unpause.
 
-### Kubernetes: not in production, and the manifests stay
+### Kubernetes: evaluated and not implemented
 
 For serving this site, Kubernetes is not justified. The cheapest credible managed cluster is around
 $36/month to serve about 100 visitors — roughly **$0.36 per visitor** for a page that a CDN serves
@@ -94,15 +94,17 @@ whole runtime is a folder of HTML and one stateless container. Choosing it would
 answer that sounds impressive over the one the numbers support, which is the opposite of what this
 project is meant to demonstrate.
 
-Phase 12 therefore changes shape rather than disappearing. The manifests are written and **run on a
-local cluster** — Deployments, Services, ConfigMaps, Secrets, Ingress, probes wired to the real
-health endpoints, resource requests and limits. They are exercised with `kind`, documented, and
-explicitly labelled as not the production path.
+**Phase 12 is therefore closed as not implemented.** No manifests were written and no cluster was
+run. The author's decision, taken with this comparison in hand, was that building infrastructure the
+numbers had just argued against would be theatre.
 
-That is a better answer in an interview than the alternative. "I ran a Kubernetes cluster for a
-personal site" invites the question of why; "I wrote the manifests, ran them locally, and did not
-deploy them because it would have cost thirty-six dollars a month to serve a hundred visitors"
-answers it in advance.
+The container orchestration this project actually uses is Docker Compose: three services, health
+checks, a non-root read-only API not published to the host, and a CI job that brings the whole thing
+up and smoke-tests it on every push — including stopping the API to prove the site survives it.
+
+This is written down plainly rather than dressed up. "I ran a Kubernetes cluster for a personal
+site" invites the question of why. "I costed it at thirty-six dollars a month to serve a hundred
+visitors and decided against it" answers that question before it is asked, and it is true.
 
 ### The one place the deployed topology differs from local
 
@@ -138,8 +140,10 @@ today.
   enabled. Small, understood, written down.
 - Cloud Run and Neon both sleep. The first request after idle pays a resume, which the prerendered
   frontend hides but which is nonetheless there.
-- Kubernetes will exist only as manifests running locally, which is less impressive at a glance than
-  a live cluster. That is the correct trade and the reasoning is above.
+- **There is no Kubernetes in this project at all** — not in production and not as manifests. A
+  reader looking for it will not find it, and that is a real cost: it is a common expectation for a
+  backend portfolio. The reasoning is above, and it is the honest trade rather than the flattering
+  one.
 
 **Deferred to phase 13**
 - Domain registration, DNS, and TLS. All three platforms issue certificates automatically; there is

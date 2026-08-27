@@ -217,7 +217,7 @@ one lives:
 |---|---|
 | Why a database at all? | It is not needed for ten static pages — which is exactly why building it without one would have said nothing about the work. §1 above. |
 | What if the API stops responding? | The page still renders from the embedded snapshot; only a discreet cached-content notice appears. Tested by stopping the API in CI. |
-| What if there are two replicas? | The API is stateless and its content is read-only, so replicas are interchangeable. Migration on startup is the part that stops being safe, and phase 12 revisits it. |
+| What if there are two replicas? | The API is stateless and its content is read-only, so replicas are interchangeable. Migration on startup is the part that stops being safe, and it is documented as the thing to change first if a second replica ever exists. |
 | What if PostgreSQL fails? | Readiness turns red and the API returns errors; the site keeps serving prerendered content. Real high availability for a portfolio's database would be cost without benefit. |
 | How does a new version deploy? | CI builds and tests; images are built per commit. The deployment target is decided in phase 11 and wired in phase 13. |
 | How do you know the two content sources agree? | They are compared, in a script and in a test, on every push. It has already caught a real disagreement. |

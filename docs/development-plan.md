@@ -154,18 +154,25 @@ Entregable: `src/frontend/portfolio-web`.
 
 - [x] Comparativa de opciones gratuitas y de pago para frontend estático, API .NET, PostgreSQL, VPS y Kubernetes.
 - [x] Costo mensual de cada opción, verificado el 2026-08-25.
-- [x] Evaluación de Kubernetes: **no se justifica en producción** (~$36/mes para ~100 visitas = $0.36 por visitante). Los manifiestos se escriben y corren en local.
+- [x] Evaluación de Kubernetes: **no se justifica** (~$36/mes para ~100 visitas = $0.36 por visitante). Decisión del autor: no implementarlo.
 - [x] [ADR-0006](adr/0006-hosting.md): **Cloudflare Pages + Google Cloud Run + Neon, $0/mes** más el dominio.
 
-**Salida posible:** que Kubernetes no se justifique y el proyecto lo documente como decisión
-consciente — lo cual es en sí mismo una buena respuesta de arquitectura.
+**Resultado:** Kubernetes no se justificó y el proyecto lo documenta como decisión consciente — lo
+cual es en sí mismo una respuesta de arquitectura.
 
-### Fase 12 — Kubernetes local y CD  *(la fase 11 lo dejó fuera de producción)*
+### Fase 12 — Kubernetes ⛔ *no implementada*
 
-- [ ] Namespace, Deployments, Services, ConfigMaps, Secrets, Ingress, probes contra los health endpoints reales, requests/limits.
-- [ ] Cluster local con kind, ejercitado y documentado — explícitamente **no** la ruta de producción.
-- [ ] Container registry con tags por `git-sha`, nunca solo `latest`.
-- [ ] Workflow de CD.
+La Fase 11 lo costeó en ~$36/mes para servir ~100 visitas y el autor decidió no construirlo.
+**No se escribieron manifiestos y no se levantó ningún clúster.** Construir infraestructura que los
+números acababan de desaconsejar habría sido puesta en escena.
+
+La orquestación que este proyecto sí usa es Docker Compose: tres servicios, healthchecks, la API sin
+publicar al host, y un job de CI que levanta todo y lo prueba en cada push — incluido apagar la API
+para comprobar que el sitio sobrevive.
+
+- [x] Decisión registrada en [ADR-0006](adr/0006-hosting.md).
+- [ ] Container registry con tags por `git-sha` — pendiente, va con el despliegue de la Fase 13.
+- [ ] Workflow de CD — pendiente, va con la Fase 13.
 
 ### Fase 13 — Despliegue, dominio y HTTPS
 

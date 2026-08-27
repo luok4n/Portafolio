@@ -7,6 +7,27 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Phase 12 — closed as not implemented (2026-08-27)
+
+The author's decision, taken with the phase 11 comparison in hand: Kubernetes is not built. No
+manifests were written and no cluster was run.
+
+#### Changed
+- Every place that had begun describing Kubernetes as something this project does now says what is
+  true. The engineering page's seventh decision is "Kubernetes, costed and not built"; ADR-0006 says
+  evaluated and not implemented; the plan closes phase 12 with the reason; the README, the
+  infrastructure README and the environment notes no longer refer to manifests that do not exist.
+- The orchestration this project actually uses is stated instead: Docker Compose — three services,
+  health checks, an API not published to the host, and a CI job that brings the whole thing up and
+  smoke-tests it on every push.
+- Stale status lines fixed: the README claimed phases 0–9 and "hosting left to phase 11", and
+  `environment.md` still listed a local cluster and a global Angular CLI as gaps to close.
+
+#### Note
+An earlier draft of the hosting decision said the manifests were "written and exercised on a local
+cluster". They were not. Corrected here rather than left for someone to find while reading the page
+in an interview.
+
 ### Phase 11 — Hosting decision (2026-08-25)
 
 The decision gate the plan deliberately left until the system existed.

@@ -6,7 +6,6 @@ docker/
 ├── web.Dockerfile           Angular prerender → nginx, no Node in the runtime image
 ├── nginx.conf               static routing, API proxy, caching
 └── security-headers.conf    included per location — see the note below
-kubernetes/                  only if phase 11 concludes Kubernetes is justified
 scripts/
 ```
 
