@@ -46,8 +46,10 @@ cached. **There is no loading state and no error state for content anywhere in t
 content is already in the HTML, so the API can only improve it.
 
 The snapshot is committed even though it is generated: it is a build input, so a fresh clone must be
-able to build, and being JSON it shows content changes as a readable diff. The CV PDFs are not
-committed — a binary a command reproduces does not belong in the history.
+able to build, and being JSON it shows content changes as a readable diff. The redacted CVs and the
+preview images are committed for the same reason — a host that builds from a clone would otherwise
+serve a dead download button. The CV variant carrying the phone number is not, and the security scan
+enforces that.
 
 ## Routes
 

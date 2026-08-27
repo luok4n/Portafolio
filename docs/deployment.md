@@ -12,23 +12,16 @@ without re-deriving anything.
 
 ---
 
-## Before anything: two things that will break a deploy
+## Before anything: one thing that will break a deploy
 
-Both are known, both are quick, and both produce a site that looks fine and is quietly wrong if
-skipped.
+### ~~1. The generated assets are not in Git~~ — resolved
 
-### 1. The generated assets are not in Git
+The redacted CVs and the preview images are now tracked, so a build from a git clone produces a
+complete site. Cloudflare's git integration works as configured, with nothing extra to wire up.
 
-`public/cv/` and `public/og/` are gitignored on purpose — a binary a command reproduces does not
-belong in history. A build that clones the repository therefore produces a site with a **dead
-"Download CV" button and no social preview image**, and nothing fails while that happens.
-
-Two ways out. Pick one before configuring Cloudflare:
-
-| | |
-|---|---|
-| **A — deploy from CI** *(recommended)* | GitHub Actions already builds the CVs and the preview images in the `images` job. Add a deploy step that runs the same generation and then `wrangler pages deploy`. Keeps the rule, and the deploy runs only after every check has passed. |
-| **B — commit the artefacts** | Remove the two `.gitignore` entries and commit the four files. Simpler, and Cloudflare's git integration then works untouched. The cost is binaries in history and a rule with an exception in it. |
+Only the redacted CV is tracked; the `_full` variant carries the phone number, stays in `dist/`, and
+`tools/security/scan.mjs` fails the build if one is ever committed. See
+[ADR-0003](adr/0003-content-privacy.md).
 
 ### 2. The site's own address is a placeholder
 
@@ -170,8 +163,8 @@ plainly.
 | Build output directory | `dist/portfolio-web/browser` |
 | Environment variable | `NODE_VERSION` = `24` |
 
-4. **This is where decision A or B from the top matters.** With option B the build works as
-   configured. With option A, skip the git integration and deploy from GitHub Actions instead:
+4. That is all the git integration needs — the generated assets are tracked, so nothing extra has
+   to be wired. If a CD workflow is preferred later, the same output deploys from GitHub Actions:
 
 ```bash
 npx wrangler pages deploy dist/portfolio-web/browser --project-name=portfolio
@@ -259,7 +252,6 @@ outlives that, and nothing keeps billing.
 ## Still open
 
 - The `SITE_ORIGIN` constant, and whether it becomes an environment variable.
-- Decision A or B for the generated assets.
 - Whether `/api` is proxied through Pages or called cross-origin.
 - A CD workflow. CI builds the images already; it does not push or deploy them, because until now
   there was nowhere to push to.

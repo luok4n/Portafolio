@@ -69,13 +69,17 @@ postgres-data/
 
 # ---------------------------------------------------------------------------
 # Generated frontend assets
-# The downloadable CV is built from content/ by tools/cv/build-cv.mjs. Binaries
-# that a command reproduces do not belong in the history.
-# The content snapshot under src/content-snapshot/ IS committed: it is a build
-# input the TypeScript compiler imports, so a fresh clone must be able to build,
-# and being JSON it shows content changes as a readable diff.
+#
+# The redacted CVs (public/cv/) and the social preview images (public/og/) ARE
+# tracked, despite being generated. The rule against committing reproducible
+# binaries lost to a concrete failure: a host that builds from a git clone would
+# ship a dead "Download CV" button and no preview card, and nothing would fail
+# while that happened. Four small files are the cheaper answer.
+#
+# Only the redacted CV is ever tracked. The `_full` variant carries the phone
+# number, stays in dist/, and the security scan fails if one is ever committed.
+#
+# The content snapshot under src/content-snapshot/ is committed for the same
+# reason: it is a build input the TypeScript compiler imports, so a fresh clone
+# must be able to build, and being JSON it diffs readably.
 # ---------------------------------------------------------------------------
-src/frontend/portfolio-web/public/cv/
-# Same rule for the social preview images: rendered from the site content by
-# scripts/build-og-image.mjs, so the command is the artefact, not the PNG.
-src/frontend/portfolio-web/public/og/

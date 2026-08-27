@@ -29,14 +29,23 @@ Two distinct risks:
 | **Phone number** | **No** | **No** |
 | Exact home address | No | No |
 | Original CV PDF | No | **No** — listed in `.gitignore` |
-| Redacted CV PDF (no phone) | Yes, as a download | **No** — generated into the frontend at build time |
+| Redacted CV PDF (no phone) | Yes, as a download | **Yes** — tracked so a host building from a clone can serve it |
+| Full CV PDF (with phone) | **No** | **No** — the security scan fails on any `_full.pdf` |
 
-The original `Sebastian_Velez_CV_Updated.pdf` stays on the author's machine only. A redacted copy is
-generated for the "Download CV" action by `tools/cv/build-cv.mjs` and copied into the frontend by
-`tools/frontend/build-snapshot.mjs`. Neither variant is committed: the redacted one because a binary
-a command reproduces does not belong in the history, and the full one because it carries the phone
-number. Only the redacted variant is ever copied into a bundle, so a mistake in the build cannot
-publish the number.
+The original `Sebastian_Velez_CV_Updated.pdf` stays on the author's machine only. Two variants are
+generated from `content/` by `tools/cv/build-cv.mjs`: a redacted one for the "Download CV" action and
+a full one, with the phone number, for direct applications.
+
+**Only the redacted variant is tracked.** It was initially kept out of Git on the principle that a
+binary a command reproduces does not belong in history — but that principle lost to a concrete
+failure: a host that builds from a git clone would have shipped a dead download button, and nothing
+would have failed while it happened. Two small PDFs are the cheaper answer.
+
+The full variant stays in `dist/`, which is ignored, and `tools/security/scan.mjs` fails the build if
+any file named `_full.pdf` is ever tracked. That is the realistic mistake this guards against —
+copying the wrong file into `public/cv/` — rather than committing the directory at all. Verified in
+both directions: the tracked PDFs are byte-identical to the `_public` outputs and contain no phone
+number in their extracted text, and planting a `_full.pdf` fails the scan.
 
 ### Client and project information
 

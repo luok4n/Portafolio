@@ -52,7 +52,11 @@ const PATTERNS = [
 const FORBIDDEN_PATHS = [
   { what: 'the original CV, which carries a phone number', re: /Sebastian_Velez_CV_Updated\.pdf$/ },
   { what: 'untracked personal data directory', re: /^content\/private\// },
-  { what: 'a generated CV binary', re: /^src\/frontend\/portfolio-web\/public\/cv\// },
+  // The redacted CVs and the preview images are tracked on purpose so a git-connected host can
+  // build the site. What must never be tracked is the OTHER variant: `_full` is the one that
+  // carries the phone number, and copying the wrong file into public/cv is the realistic mistake
+  // here, not committing the directory at all.
+  { what: 'the CV variant that carries a phone number', re: /_full\.pdf$/i },
   { what: 'a local settings override', re: /appsettings\.[^.]*\.?Local\.json$/i },
   { what: 'an environment file', re: /(^|\/)\.env($|\.(?!example))/ },
 ];

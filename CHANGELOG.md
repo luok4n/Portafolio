@@ -7,6 +7,28 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); the pr
 
 ## [Unreleased]
 
+### Track the generated site assets (2026-08-27)
+
+The redacted CVs and the social preview images are now committed. The rule against keeping
+reproducible binaries in Git lost to a concrete failure: a host that builds from a clone would have
+shipped a **dead "Download CV" button and no preview card**, and nothing would have failed while it
+happened. Four small files are the cheaper answer, and it removes the only obstacle to Cloudflare's
+git integration.
+
+#### Changed
+- `public/cv/` and `public/og/` are tracked. `.gitignore` explains the exception rather than just
+  dropping the entries.
+- The secret scan no longer forbids `public/cv/`. It now forbids **any tracked `_full.pdf`** — the
+  variant that carries the phone number — which is the realistic mistake here: copying the wrong
+  file into `public/cv/`, not committing the directory.
+- ADR-0003, `security.md`, `deployment.md`, and the infra and frontend READMEs say this instead of
+  the opposite.
+
+#### Verified before committing
+- Both tracked PDFs are byte-identical to the `_public` build outputs, and their extracted text
+  contains no phone number.
+- Planting a `_full.pdf` in `public/cv/` fails the scan.
+
 ### Phase 12 — closed as not implemented (2026-08-27)
 
 The author's decision, taken with the phase 11 comparison in hand: Kubernetes is not built. No

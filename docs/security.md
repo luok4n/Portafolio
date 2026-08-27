@@ -42,8 +42,10 @@ Decided in [ADR-0003](adr/0003-content-privacy.md), not left to whoever writes t
 - Client information: only what a public source already says, with the URL and the date it was
   checked recorded next to it. Nothing about internal architecture, credentials, incidents,
   unreleased work, contract terms or named individuals.
-- The CV download is the redacted variant. The one with the phone number is built locally and is
-  excluded from the Docker build context, so a mistake in the pipeline cannot publish it.
+- The CV download is the redacted variant, and it is the only one tracked. The one with the phone
+  number is built locally, stays in `dist/`, is excluded from the Docker build context, and the
+  secret scan fails on any tracked file named `_full.pdf`. Four independent things would have to go
+  wrong for it to be published.
 
 ## Transport
 
