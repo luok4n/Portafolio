@@ -64,14 +64,14 @@ after.
 It looks like this:
 
 ```text
-postgresql://portfolio_owner:AbC123@ep-cool-name-123456-pooler.us-east-2.aws.neon.tech/portfolio?sslmode=require
+postgresql://<user>:<password>@ep-<your-endpoint>-pooler.<region>.aws.neon.tech/portfolio?sslmode=require
 ```
 
 5. **Convert it to the Npgsql format the API expects.** This is the step that silently fails
    otherwise: .NET does not read a `postgresql://` URL, and Neon refuses a connection without TLS.
 
 ```text
-Host=ep-cool-name-123456-pooler.us-east-2.aws.neon.tech;Database=portfolio;Username=portfolio_owner;Password=AbC123;SSL Mode=Require;Trust Server Certificate=true
+Host=ep-<your-endpoint>-pooler.<region>.aws.neon.tech;Database=portfolio;Username=<user>;Password=<password>;SSL Mode=Require;Trust Server Certificate=true
 ```
 
 Keep that string somewhere safe for step 2. **Do not commit it** — `tools/security/scan.mjs` fails

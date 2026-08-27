@@ -40,7 +40,11 @@ const PATTERNS = [
   { what: 'Slack token', re: /\bxox[abprs]-[A-Za-z0-9-]{10,}\b/ },
   { what: 'Azure storage key', re: /AccountKey=[A-Za-z0-9+/=]{40,}/ },
   { what: 'bearer token', re: /\b[Bb]earer\s+[A-Za-z0-9._~+/-]{30,}={0,2}/ },
-  { what: 'password in a connection string', re: /(?:Password|Pwd)\s*=\s*(?!portfolio\b)[^\s;"']{6,}/i },
+  // Angle brackets are excluded rather than the rule relaxed. `Password=<password>` in a deployment
+  // guide is documentation; no real credential contains `<` or `>`, so the placeholder form is safe
+  // to skip while a genuine value of the same shape still fails. Narrowed after this pattern caught
+  // an example in docs/deployment.md — which is the tool working, not a reason to weaken it.
+  { what: 'password in a connection string', re: /(?:Password|Pwd)\s*=\s*(?!portfolio\b)(?!<)[^\s;"'<>]{6,}/i },
   { what: 'Colombian phone number', re: /\+?\s*\(?\+?57\)?[\s.-]*3\d{2}[\s.-]*\d{3}[\s.-]*\d{4}/ },
 ];
 
