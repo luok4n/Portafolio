@@ -176,6 +176,7 @@ para comprobar que el sitio sobrevive.
 
 ### Fase 13 — Despliegue, dominio y HTTPS
 
+- [x] Guía paso a paso escrita: [deployment.md](deployment.md).
 - [ ] Despliegue en el proveedor elegido.
 - [ ] DNS, HTTPS y renovación automática de certificados.
 - [ ] Smoke tests post-despliegue.

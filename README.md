@@ -83,6 +83,7 @@ see [the API](src/services/portfolio-api/README.md) and
 [the frontend](src/frontend/portfolio-web/README.md).
 
 Verified toolchain and pinned versions: [docs/environment.md](docs/environment.md).
+Step-by-step for publishing it: [docs/deployment.md](docs/deployment.md).
 
 ## Checks
 
